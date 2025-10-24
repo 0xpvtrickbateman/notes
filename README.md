@@ -1,52 +1,291 @@
-# notes
+Sprint Pre-Planning Jira Ticket Creation Report
+Meeting Date: October 24, 2025
+Prepared by: Jake
+Total Tickets to Create/Modify: 27
 
-create an office of the chief data officer business intelligence branch onboarding document for new contractors. think step by step and also review the attached documents for additional content.
+SECTION 1: EPIC CREATION
+Epic 1: Unstructured Data Intake Proof of Concept
 
-The OCDO OPQ Business Intelligence Branch is responsible for executing the USCIS Data Strategy, promoting the management and utility of data as an asset, building a data-driven culture, and facilitating data governance across the immigration system. The teams within the branch use various software and services to transform raw data into meaningful insights, revealing trends, patterns, and actionable information to support data-driven decision-making processes. By collecting, integrating, analyzing, and presenting business information, the teams help members across the organization make informed business decisions faster than ever before. 
+Type: Epic
+Components:
 
-Data Engineering Team (DE) / Backend Dataset Curation Program (BDCP): This team within the BI branch is responsible for maintaining a large part of the data architecture that supports the needs of the division as well as the storage, retrieval, and analysis of data. This team ensures that data is accurate, accessible, and secure, enabling the BI team to analyze and report on it effectively.
-BI Frontend Development Team (DSP): This team specializes in data visualization and reporting. They utilize Tableau, a leading data visualization tool, to transform complex data into easy-to-understand, interactive dashboards. This team’s work enables stakeholders to intuitively interact with the data and make informed business decisions.
-E-22 / IMAPS Development Team: This team specializes in reporting and analytics on officer productivity to support workload planning, resource allocation, and performance management. IMAPS, quite simply, enables USCIS management to understand how long it takes an adjudicator to complete a case. On the individual level, this information is not so electrifying; but, across the agency, where thousands of staff adjudicate tens-of-thousands of cases per day, the implications are obviously enormous. IMAPS already enables improved workload planning, resource allocation, and performance management. Modernizing IMAPS to ensure better, more accurate information will increase productivity and help us address the agency’s current backlog elimination efforts, through smarter planning and tracking of progress.
+Proof of concept development
+White paper creation
+Cost analysis
+Azure resource integration planning
 
-For new contactor data analysts and contractor data engineers joining the BI Branch, they can find all Access requests, Team tools and tech stack information here:  https://maestro.dhs.gov/confluence/x/fNExN
 
-New members can read about past and present data engineering projects here: https://maestro.dhs.gov/confluence/spaces/UOBI/pages/983207224/Data+Engineering+Projects?src=contextnavpagetreemode
+Risk Level: High (CIO approval required)
+Constraints: No Hugging Face models, no whitelisted LLMs, only XGB wrap model permitted
+Child Stories: Will include cost analysis, technical implementation, white paper
 
-BI Data Engineering Team Roster: https://maestro.dhs.gov/confluence/spaces/UOBI/pages/996344973/Personnel
+Epic 2075: SPC Integration with NPD (Existing - Needs Update)
 
-BI DSP Team Roster: https://maestro.dhs.gov/confluence/spaces/UOBI/pages/1115490925/BI+Team+Roster
+Type: Epic (existing)
+Status: Blocked - pending statistician personnel decision
+Action Required: Follow-up with Mike Gorman
 
-BI DSP Dashboard Development Process: https://maestro.dhs.gov/confluence/x/kCXRQQ
 
-For General Onboarding, this list encompasses the standard general requirements checklist:
-*Action
-AttainX Orientation and timesheets links & timely entry reqmts/ Training reqmts
-Fetch/ Ship laptop and PIV card
-Send benefits details
-Verify access
-Add new employee to necessary Email groups
-Send intro email to entire team (Welcome/ Training link & requirements)
-Schedule and conduct orientation/ WPaaS policy
-Post Welcome message in respective Teams channel
-Schedule Intro to business stakeholders and Project team
-Schedule Intro to Project team
-Invite to respective recurring meetings
-Invite to respective Teams channels
-Share respective Status files and domain files/folders/ Planners
-Request New Hire Profile and Photo
-Schedule First day check in
-Schedule mid-week check-in
-Update Outlook signature (specific format)
-Update USCIS myaccess profile and OPQ White pages
-Review PTO protocol/ PTO instructions and add PTO calendar
-Complete training (Security & Rules of Behavior) and send confirmation within 1 calendar day
-Submit access to required software resources (Databricks, Tableau, Maestro, etc.)
-Attend introduction meeting with CDO/Deputy CDO
-Update Skills Inventory 
-Update GFE tracker
-Update Team roster
-Own onboarding
-Own KT Plan
+SECTION 2: NEW STORIES TO CREATE
+1. Epic Writing Session
 
-<img width="1506" height="820" alt="image002" src="https://github.com/user-attachments/assets/a873f9ef-d2c6-4a83-ba08-a29342e47292" />
+Assignees: Speaker 1 & Speaker 2
+Due Date: Before November 7th
+Description: Write all epics based on new priorities and projects for 12-week planning session
+Priority: High
+
+2. Story Drafting for 12-Week Planning
+
+Assignees: Speaker 1 & Speaker 2
+Due Date: Before November 7th
+Description: Draft 4-5 stories per epic to create robust story pool
+Deliverable: Complete story backlog for planning session
+
+3. Add Cost Analysis to Unstructured Data PoC
+
+Assignees: Speaker 1 & Speaker 2
+Parent Epic: Unstructured Data Intake PoC
+Description: Develop estimated cost model for all required components including Azure resources, whitelisting requirements, and Databricks integration
+Note: Must be exceptionally robust to avoid CIO rejection
+
+4. Hide Monetary Cost Visuals - Databricks Dashboard
+
+Dashboard: "USCIS Databricks DBU and cost summary"
+Description: Remove/hide all visuals displaying monetary costs while retaining underlying queries and tables
+Priority: High - enables sharing
+
+5. Add Contractual Notice to Dashboard
+
+Description: Add text notice: "Cost metrics are unavailable due to private contractual agreements with Databricks"
+Related to: Ticket #4
+
+6. Rename Project to Portfolio Metrics
+
+Old Name: Current cost/usage analytics
+New Name: "Data Enterprise Projects Portfolio metrics"
+Scope: Expand to portfolio-level coverage
+
+7. Obtain AA Team Permissions
+
+Assignee: Speaker 1
+Contact: Ben Steiner
+Description: Request job lists and permissions from AA team for portfolio analytics
+Risk: AA team historically unresponsive
+
+8. Obtain NPD Team Permissions
+
+Assignee: Speaker 1
+Contact: Mike Gorman
+Description: Request job lists and permissions from NPD team
+
+9. Obtain E2E Team Permissions
+
+Assignee: Speaker 1
+Description: Request job lists and permissions for portfolio integration
+
+10. Obtain GDS Team Permissions
+
+Assignee: Speaker 1
+Description: Request job lists and permissions for portfolio integration
+
+11. Obtain SCP Team Permissions
+
+Assignee: Speaker 1
+Description: Request job lists and permissions for portfolio integration
+
+12. Bug: Dashboard Visual Mismatch
+
+Type: Bug
+Dashboard: Table Metadata Analysis
+Issue: Table visual doesn't match corresponding bar chart
+Priority: Medium
+
+13. Integrate Table Cleanup Log
+
+Source: "Table cleanup log"
+Target: "Table Metadata Analysis" dashboard
+Description: Show cleanup impact and trends
+
+14. Rerun Table Cleanup Script
+
+Description: Execute cleanup script for tables with excessive small files
+Note: Previous run only partially effective
+
+15. Delete "Delete Me" Tables
+
+Description: Remove all tables marked for deletion
+Type: Cleanup task
+
+16. Update Table Ownership
+
+Description: Change table ownership from individuals to groups
+Action: Outreach required to update assignments
+
+17. Record Teddy Talk Rehearsal - Jake
+
+Assignee: Speaker 1 (Jake)
+Due Date: Monday
+Description: Record rehearsal version for internal review
+
+18. Record Teddy Talk Final Version - Jake
+
+Assignee: Speaker 1 (Jake)
+Due Date: Thursday
+Description: Record production-quality video
+
+19. Send Teddy Talk to Leadership
+
+Assignee: Speaker 1 (Jake)
+Due Date: Thursday
+Description: Submit final version for leadership review
+
+20. Remove Master Collect Tasks from Daily Ephemeral
+
+Type: Technical Optimization
+Description: Remove 2 master collect tasks from daily ephemeral job cluster
+Purpose: Optimize job cluster performance
+
+21. UOBI-2173: Schedule Table Validation Meeting
+
+Type: Story (continuation)
+Attendees: Josh Williamson, WARM team
+Description: Validate latest tables and add filing type dimensionality if approved
+
+22. UOBI-2173: Validate CDO Lookup Table Lineage
+
+Type: Story (continuation)
+Issue: Table hasn't been updated in 9 months
+Actions: Check lineage, validate accuracy, document findings
+
+23. Create Teddy Talk - Nate Lanfranca
+
+Assignee: Nate Lanfranca
+Type: Story
+Description: Create separate Teddy Talk for leadership
+
+24. NPD Statistical Process Controls Kickoff Meeting
+
+Organizer: Nate Lanfranca (Data Engineering Federal Lead)
+Attendees: Mike Gorman, Josh Williamson, NPD team
+Deliverables:
+
+Meeting setup
+Business need report
+Problem scope documentation
+
+
+
+25. Update Onboarding Documentation
+
+Assignee: Jake
+Location: Data Engineering Confluence space
+Description: Prepare comprehensive onboarding materials for incoming new hire
+
+26. Document FY26 Priorities and Jira Label Strategy
+
+Assignee: Jake
+Deliverables:
+
+Add FY26 priorities to Confluence
+Document DE/DSP team alignment to D1 & OPQ priorities
+Create Jira label usage guide
+
+
+
+27. Create AI Presentation Part IV for MESH
+
+Assignee: Jake
+Description: Continue AI presentation series (Part IV) for MESH meeting
+
+
+SECTION 3: TICKETS TO CLONE/MODIFY
+Clone Issue 2175 - Liquid Clustering
+
+Assignee: Andre
+Current Success: DBUs reduced from 1,000-1,003 to 919
+Action: Clone for continued work across all applicable jobs
+Timeline: Multiple sprints
+Future Rollout: AA, E22, and NPD teams
+
+Clone Current Sprint Carryover Issues
+
+Assignee: Speaker 3
+Description: Identify and clone all tickets that need to continue into next sprint
+
+Add Sue's Requested Tickets
+
+Assignee: Speaker 2
+Description: Add specific tickets Sue messaged about to next sprint
+Note: Ensure she has work ready at sprint start
+
+Pull Andre's Backlog Items
+
+Action Needed: Identify specific tickets from Andre's backlog
+Note: Andre has existing work ready to pull
+
+Finish and Publish Mesh Confluence Draft
+
+Assignee: Speaker 1
+Due Date: Today
+Status: Currently saved as draft
+Action: Complete and publish
+
+
+SECTION 4: IMPLEMENTATION TIMELINE
+Immediate (Today)
+
+Publish Mesh Confluence draft
+
+This Week
+
+Monday: Record Teddy Talk rehearsal (Jake)
+Thursday: Record and submit final Teddy Talk (Jake)
+Hide cost visuals on dashboard
+Add contractual notice
+
+Next Sprint
+
+Add Sue's requested tickets
+Pull Andre's backlog items
+Clone carryover issues
+UOBI-2173 continuation stories
+Remove master collect tasks
+Update onboarding documentation
+Document FY26 priorities
+Create AI Presentation Part IV
+
+Before November 7th
+
+Complete all epic writing
+Draft 4-5 stories per epic
+Setup unstructured data PoC epic
+
+Ongoing/Multi-Sprint
+
+Liquid clustering implementation
+Portfolio metrics expansion (all team permissions)
+SPC/NPD integration
+Table metadata cleanup activities
+
+
+SECTION 5: DEPENDENCIES & BLOCKERS
+Known Blockers:
+
+SPC/NPD Integration: Waiting on statistician personnel decision
+AA Team Permissions: Historically unresponsive team
+Unstructured Data PoC: High risk of CIO/security rejection
+
+Dependencies:
+
+Portfolio expansion requires permissions from 5 teams
+Liquid clustering rollout depends on current program completion
+12-week planning requires epic/story completion by November 7th
+
+
+SECTION 6: RISK NOTES
+
+Unstructured Data PoC - Extreme technical constraints and high rejection risk
+AA Team Integration - Past unresponsiveness may delay portfolio expansion
+Table Cleanup - Previous attempts only partially successful, may need process revision
+Multiple Teddy Talks - Coordination needed between Jake and Nate versions
 
