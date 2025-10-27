@@ -1,0 +1,91 @@
+e22 mod notes
+
+📝 Meeting Notes
+- Topic Title: Current Data Checks and Opportunities for Improvement
+  - Description:
+    - Existing checks include crosswalks (e.g., office code validation), scope filtering, and logic aligned with RepDAS.
+    - Conditional aggregate checks across buckets (pending, receipts, denials, hours) to flag out-of-range values.
+    - Use of unique IDs and comparisons by office, region, and buckets (completions, receipts).
+    - Suggested rule-based logic to reduce false positives (e.g., prior month-end pending equals current month beginning pending; transfers vary month-to-month).
+    - Automation could complete the “final check” in ~30 minutes if data is clean; time increases when investigating anomalies or validating with stakeholders.
+  - Conclusion:
+    - The team supports enhancing rule-based logic and automating final checks; the bottleneck is investigation time when anomalies appear.
+- Topic Title: ETL Process Consolidation into Databricks
+  - Description:
+    - Several processing steps currently occur outside Databricks due to decommissioning of BenefitSmart/OBIEE Smart and legacy dependencies.
+    - Civil Surgeon and ACMS queries are replicated; SRMT logic exists but needs field mapping and formatting in Databricks.
+    - XML queries from Smart were saved in SOP and can be leveraged to recreate logic.
+    - Internal SRMT datasets and data architecture are mature and can be leveraged; the team has prior work with NBC to move Civil Surgeon SQL Server data to Databricks.
+    - Macros generate monthly office-level Excel exports (with totals) posted to ECN; these could be recreated in Databricks (including SFTP/email distribution and possibly embedded Excel formulas).
+  - Conclusion:
+    - The primary ETL gap is SRMT refinement/mapping in Databricks; other components (Civil Surgeon, ACMS) are working. The team is open to moving exports and distribution fully into Databricks.
+- Topic Title: Manual “Detaily” Data Collection and Potential System Source
+  - Description:
+    - A SharePoint list captures monthly detaily counts (in/out) from SPOT/STOPS; currently manual and may be incomplete.
+    - Belief that details are recorded via forms and SF-50 updates; potential to pull from an authoritative system (referenced as FFMS/FFMF).
+    - Manual effort was ~30 minutes/month when performed; currently not integrated into the process.
+    - Desire to remove manual office updates and source data directly from systems.
+  - Conclusion:
+    - The team will research the system of record to replace manual SharePoint capture and eliminate the process if feasible.
+- Topic Title: Historical PRT Reporting Requests
+  - Description:
+    - Requests received (SCOPS, Edelman from FOD) for historical PRT reports, despite availability in Databricks.
+    - Users rely on downloadable spreadsheets and local calculations tied to feeder forms.
+  - Conclusion:
+    - Need to assess how to provide historical PRT data access that aligns with user workflows (potentially automated spreadsheet delivery).
+- Topic Title: E-22 Visualization and Need for Interactive Planning Tools
+  - Description:
+    - Offices discontinued Tableau/SAS dashboards due to lack of interactivity compared to legacy IMATS (which had multi-tab spreadsheets with forecast/goal calculations).
+    - Example use case: adjust future completions to see impact on goals (e.g., target 4.0, current 2.9 or 6.0 scenarios).
+    - Users prefer downloadable spreadsheets with formulas; some build their own from PRT feeder forms (e.g., Daniel Koski).
+    - Idea: Databricks-based dashboard or automated templated spreadsheets allowing users to adjust production/staffing for future months.
+    - Feature to move data from Tableau to Databricks exists but was previously not licensed; may be revisited.
+  - Conclusion:
+    - Opportunity to provide interactive planning via Databricks jobs delivering formula-enabled templates or dashboards supporting user-adjustable scenarios.
+- Topic Title: Data Variance Log for E-22 vs. Other Dashboards
+  - Description:
+    - Frequent questions about differences between E-22, personal queries, and other dashboards (WARN, FOD).
+    - Causes include different date fields (mail-in vs. receipt), exceptions/filters, policy changes, PRT line changes (consolidations), caps (e.g., I-129), and system/query changes.
+    - Proposed: a living log documenting these differences, changes, and policies for transparency.
+  - Conclusion:
+    - The team supports creating a variance and change log to clarify discrepancies across reports.
+- Topic Title: EAM Documentation Format Feedback
+  - Description:
+    - EAM moved from a ~95+ page Word doc to OneNote; FOD disliked the OneNote format.
+    - Issues: OneNote search unreliability/latency; fewer examples; difficulty finding content; preference for personal copies.
+    - A survey was started but not completed.
+  - Conclusion:
+    - Need to revisit the EAM format and usability; plan to gather feedback via a survey and consider alternatives to OneNote.
+- Topic Title: Deduction Data Consolidation Post-IMATS
+  - Description:
+    - With IMATS sunset, no need to maintain deductions across multiple separate tables.
+    - Requests exist to use deduction data; some currently on staging.
+    - Aim to consolidate for easier management and potential external access.
+  - Conclusion:
+    - The team will plan consolidation of deduction data and clarify access needs.
+- Topic Title: PMO Engagement and Resourcing
+  - Description:
+    - Next steps include coordinating with PMO for quarterly goals; the timeline may need adjustment beyond Thursday.
+    - Suggestion to use PM practices: define epics, prioritize, and write stories.
+    - Resource considerations: leverage Terry and Christine; Nate’s team is two people currently.
+  - Conclusion:
+    - Proceed to draft PM artifacts and schedule with PMO; align resources across teams.
+📅 Next Arrangements
+-  Send the meeting materials and documentation to [Josh].
+-  Investigate sourcing detaily data from FFMS/FFMF (or the appropriate system) to replace manual SharePoint updates; outline data model and cadence.
+-  Refine and map SRMT ETL in Databricks using existing logic and internal datasets; recreate Smart XML logic as needed.
+-  Evaluate Databricks jobs to generate and distribute templated spreadsheets with embedded formulas (SFTP/email).
+-  Assess licensing/feature availability to move Tableau data to Databricks and determine viability and cost-benefit.
+-  Draft a data variance/change log explaining E-22 vs. WARN/FOD differences, policy changes, and PRT line updates; define governance.
+-  Resume and complete the EAM user survey; propose a more usable documentation format than OneNote.
+-  Plan consolidation of deduction data tables; inventory current tables, define target schema, and access patterns.
+-  Set up a PMO session; draft epics and stories for prioritization; align resources (Terry, Christine, Nate’s team).
+-  [Insert more]
+💡 AI Suggestions
+AI Suggestions
+AI has identified the following issues that were not concluded in the meeting or lack clear action items; please pay attention:
+1. Define the authoritative system for detaily data (confirm whether FFMS/FFMF is correct and accessible, and outline the data model and cadence).
+2. Specify the minimum interactive features required for E-22 planning (e.g., adjustable completions, staffing inputs, goal recalculation) to guide solution design.
+3. Confirm licensing/feature availability for Tableau-to-Databricks integration and evaluate costs vs. benefits.
+4. Establish governance and versioning for the data variance log (owners, update frequency, change categories).
+5. Scope and sequence deduction data consolidation (current table inventory, target schema, migration plan, stakeholder access needs).
