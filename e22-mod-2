@@ -1,0 +1,218 @@
+# E-22 Modernization Meeting Notes
+**Date:** Not specified  
+**Participants:** Josh, Adam, Amber, Nate, Jake
+
+---
+
+## 1. DATA CHECKS & ANOMALY DETECTION
+
+### Current State
+- **Manual Process:** Currently performing conditional data checks during processing
+- **Time Investment:** ~30 minutes for final check if all is good; significant additional time when issues are found
+- **Existing Challenges:**
+  - Previous anomaly detection models found 1M+ false positives monthly
+  - Lack of business rules integration
+  - No understanding of expected variance patterns
+
+### Key Technical Details
+- **Invariant Checks:** End pending from last month must exactly match beginning pending this month
+- **Variable Data:** Transfers can vary significantly month-to-month
+- **Current Validation Steps:**
+  - Office code verification
+  - PRT line logic checks
+  - Aggregate bucket validation (pending, receipts, denials, completions)
+  - Office-to-office and region-to-region comparisons
+  - Unique ID verification
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Replace noisy anomaly detection with intelligent, rules-based model**
+   - Build exemption logic for known variances
+   - Implement business rules to reduce false positives
+   - Create tiered alerting based on data characteristics
+2. **Automated drill-down investigation workflow**
+   - When anomalies detected, automatically trigger conditional checks
+   - Historical comparison automation (pull past year data)
+   - Automated stakeholder notification for validation
+3. **Time Savings Potential:** 30+ minutes monthly plus significant reduction in investigation time
+
+---
+
+## 2. ETL PROCESS MODERNIZATION
+
+### Current State
+- **Problem:** Several processing steps still outside Databricks requiring additional resources
+- **Root Cause:** BenefitSmart decommissioning; some systems not in MPD
+- **Affected Systems:**
+  - Civil Surgeon (recently brought into Databricks)
+  - SQL Server ACM
+  - SRMT
+
+### Technical Status
+- Civil Surgeon and ACMS: Successfully replicated
+- SRMT: Have logic, need field mapping and formatting
+- XML queries from Smart saved in SOP
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Complete Databricks consolidation**
+   - Move all remaining processes into Databricks
+   - Eliminate dependency on external systems
+   - Leverage existing XML queries for faster recreation
+2. **Direct lake querying**
+   - Skip MPD dependency where data already exists in lake
+   - Direct schema access for faster processing
+3. **Automated format conversion**
+   - Build adapters for different data formats
+   - Standardize output layouts programmatically
+
+---
+
+## 3. IMAX REPLACEMENT & USER NEEDS
+
+### Current Issues
+- IMAX discontinued but users still need functionality
+- Lost capabilities:
+  - Downloadable spreadsheets with formulas
+  - Data manipulation abilities
+  - Future month projections for production/staffing
+  - Visible calculations
+
+### User Pain Points
+- Multiple teams creating partial tables and dashboards
+- No unified data view
+- Can't modify production data for future planning
+- Lost Excel connectivity
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Interactive Databricks Dashboard with Excel-like functionality**
+   - Embed formulas directly in dashboards
+   - Allow user input for future month projections
+   - Enable data manipulation within controlled parameters
+2. **Templated spreadsheet automation**
+   - Drop pre-formatted Excel files with embedded formulas
+   - Auto-populate with current data
+   - Maintain calculation transparency
+3. **Tableau-to-Databricks data writeback**
+   - Investigate enabling this feature (exists but not currently licensed)
+   - Allow users to modify and save scenarios
+
+---
+
+## 4. EAM (ENTERPRISE ARCHITECTURE MODEL) DOCUMENTATION
+
+### Current Issues
+- Migrated from 95+ page Word doc to OneNote
+- Users hate new format because:
+  - Can't maintain personal copies
+  - Missing examples from old version
+  - Search function broken/extremely slow (minutes to return results)
+  - Processing indicator hidden in corner
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Replace OneNote with better solution**
+   - Implement proper search indexing
+   - Enable offline/downloadable versions
+   - Include comprehensive examples
+2. **Living documentation platform**
+   - Real-time updates visible to all users
+   - Version control with change tracking
+   - Better search performance
+3. **User experience improvements**
+   - Clear processing indicators
+   - Faster search results
+   - Exportable personal copies
+
+---
+
+## 5. DATA VARIANCE LOGGING & TRANSPARENCY
+
+### Current Problem
+- Users constantly question variances between:
+  - E22 data vs personal queries
+  - Different production dashboards (WARN, FOD)
+  - NPD pulls vs reported numbers
+
+### Variance Sources
+- WARN uses mail-in date vs receipt date
+- Data exceptions and filters
+- Policy changes
+- PRT line consolidations (Ellis/C3 merged)
+- Discontinued lines
+- I-129 cap impacts
+- System/query changes
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Automated variance explanation log**
+   - Real-time documentation of all data transformations
+   - Automatic capture of policy changes
+   - Version-controlled query changes
+2. **Data lineage visualization**
+   - Show data flow and transformation points
+   - Highlight where filters/exceptions applied
+   - Interactive exploration of differences
+3. **Self-service variance analyzer**
+   - Tool to compare different data sources
+   - Automatic explanation generation
+   - Historical change tracking
+
+---
+
+## 6. DEDUCTION DATA CONSOLIDATION
+
+### Current State
+- Data housed separately in multiple tables
+- Dependency on IMAX for access (now sunset)
+- Some data on staging site
+- Unclear user access requirements
+
+### 🚀 **INNOVATION OPPORTUNITIES**
+1. **Single source of truth for deduction data**
+   - Consolidate all deduction tables
+   - Simplify management and access
+2. **Direct user access platform**
+   - Replace IMAX dependency
+   - Clear access controls
+   - Better data discovery
+
+---
+
+## NEXT STEPS & PROJECT MANAGEMENT
+
+### Immediate Actions
+1. Set up PMO meeting for quarterly goals (by Thursday)
+2. Create PM structure:
+   - Write epics for each modernization area
+   - Prioritize based on impact and effort
+   - Break down into actionable stories
+3. Resource allocation:
+   - Leverage Terry and Christine for modernization work
+   - Keep Nate's 2-person team focused
+
+### Team Assignments
+- **Josh:** Overall coordination, PMO interface
+- **Adam & Amber:** Technical requirements, current state documentation
+- **Nate:** PM structure, epic/story creation
+- **Jake:** Meeting notes, coordination support
+
+---
+
+## 💡 TOP INNOVATION PRIORITIES (By Time Savings)
+
+1. **Intelligent Anomaly Detection:** Save 30+ minutes monthly plus investigation time
+2. **Automated ETL in Databricks:** Eliminate manual consolidation steps
+3. **Excel-enabled Dashboard:** Reduce duplicate work across teams
+4. **Variance Explanation Engine:** Reduce support tickets and questions
+5. **Improved EAM Search:** Save minutes per search query
+6. **Deduction Data Consolidation:** Simplify ongoing management
+
+---
+
+## RISKS & DEPENDENCIES
+
+- PMO approval needed for quarterly goals
+- Tableau feature licensing for data writeback
+- User adoption of new tools vs familiar Excel/Word formats
+- Resource constraints with 2-person team
+
+---
+
+*Note: Focus on automation and self-service capabilities to reduce manual effort and improve user satisfaction while maintaining data governance.*
