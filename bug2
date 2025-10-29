@@ -1,0 +1,110 @@
+Perfect — I see what’s going on here. You’re in the checkout_notebooks Databricks notebook used to clone project repos into your workspace (in this case, /repos/streamline_case_processing/1360), and Sue is trying to validate that the notebook is properly creating and populating the temporary work_dir, but she’s not seeing it appear or findable in the Databricks UI.
+
+Let’s walk through exactly what Sue is missing, what’s happening under the hood, and what you can give her so she can get what she’s asking for.
+
+⸻
+
+🧩 What’s Actually Happening
+
+When the notebook runs this cell:
+
+work_dir = create_work_dir()
+print(work_dir)
+
+…it creates a temporary directory inside Databricks’ local driver storage, something like:
+
+/tmp/9ff756241-8d04-4d41-96d0-ba7b4abebca7
+
+This is not visible in the Databricks UI or Workspace browser, because /tmp is local to the driver node (ephemeral storage for that cluster/session). It’s deleted when the cluster restarts or the notebook detaches.
+
+That’s why Sue “doesn’t see the directory” — it exists only within that Python environment during execution.
+
+⸻
+
+🔍 What Sue Actually Needs
+
+She wants to verify the contents of that temporary working directory to confirm the clone step (git clone) worked — basically, to see that the repo’s notebooks and folders are there before they import into the target directory.
+
+So the goal is not to navigate to /tmp, but to list its contents programmatically.
+
+⸻
+
+✅ How You Can Give Her What She Needs
+
+You can help Sue by adding a simple diagnostic cell under the “checkout from github” section, right after this line:
+
+clone_and_checkout(repo_name, branch_name, work_dir, git_user, git_token)
+
+Add this immediately after:
+
+# Diagnostic: List contents of the temporary working directory
+import os
+
+print(f"Work directory path: {work_dir}")
+for root, dirs, files in os.walk(work_dir):
+    level = root.replace(work_dir, '').count(os.sep)
+    indent = ' ' * 4 * (level)
+    print(f"{indent}{os.path.basename(root)}/")
+    subindent = ' ' * 4 * (level + 1)
+    for f in files:
+        print(f"{subindent}{f}")
+
+This will output a tree view of everything cloned into /tmp/..., so she can confirm that the repo and its contents were cloned successfully.
+
+If you want to make it even easier, you can also let her open it directly with Databricks’ %sh command:
+
+%sh
+ls -R /tmp/9ff756241-8d04-4d41-96d0-ba7b4abebca7
+
+(You can replace the path dynamically using print(work_dir) first.)
+
+⸻
+
+💡 Why the Clone Step Failed in Your Screenshot
+
+You’re seeing:
+
+Exception: git clone step returns with error.
+
+That means the git clone command (inside clone_and_checkout()) failed, likely due to Git credentials not being correctly pulled from the Databricks secret scope:
+
+git_token = dbutils.secrets.get(scope="deploy_cdo_scope", key="git_token_d4v")
+
+You can confirm this by temporarily printing the git URL without the token to verify formatting:
+
+print(f"https://{git_user}@{repo_name}")
+
+If the error persists, have Sue confirm:
+	•	The Databricks secret scope (deploy_cdo_scope) is accessible to her workspace.
+	•	Her personal access token (PAT) from GitHub (or internal GHE instance) is still valid.
+	•	She’s running this in a cluster that supports internet access (some GovCloud workspaces block outbound Git access).
+
+⸻
+
+🧭 Summary — What to Tell Sue
+
+Here’s exactly what you can send her (or say):
+
+⸻
+
+Hi Sue — the reason you don’t see the temporary work_dir is because Databricks creates it locally under /tmp on the driver node, and it’s not visible in the Workspace UI.
+
+To confirm that the repo cloned correctly, just add this after the clone_and_checkout cell:
+
+import os
+print(f"Work directory path: {work_dir}")
+for root, dirs, files in os.walk(work_dir):
+    level = root.replace(work_dir, '').count(os.sep)
+    indent = ' ' * 4 * (level)
+    print(f"{indent}{os.path.basename(root)}/")
+    subindent = ' ' * 4 * (level + 1)
+    for f in files:
+        print(f"{subindent}{f}")
+
+That will show all the cloned files so we can confirm it worked, even though /tmp doesn’t show up in the Databricks file browser.
+
+If it still fails at the git clone step, the most likely issue is the secret token — I can help verify that your deploy_cdo_scope and git_token_d4v are accessible and valid.
+
+⸻
+
+Would you like me to write you a short “checklist message” you can paste into Teams for Sue that outlines these 3 steps (view directory contents, confirm clone, check secret scope)?
