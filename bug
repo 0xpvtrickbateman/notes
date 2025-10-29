@@ -1,0 +1,35 @@
+Understood. Here is the cleaned-up Jira bug ticket without emojis, formatted to your preference:
+
+---
+
+### Title: Bug – Regex Parsing Failure for Schedule Types in Databricks Job Detail Page
+
+**Description:**
+A parsing issue was discovered in the auto-generated Confluence job detail page powered by the Databricks Jobs API. Specifically, jobs using “simple” schedules are not having their schedule values properly parsed and displayed. This is likely due to a limitation or boundary issue in the regex pattern used to extract schedule-related metadata.
+
+Currently, only jobs with “advanced” scheduling configurations display schedule values correctly. Jobs using “simple” scheduling logic are omitted or fail to match the pattern, resulting in missing data on the dashboard.
+
+This page is generated programmatically on a recurring schedule (weekly or monthly), so this bug results in recurring blind spots in the job documentation unless fixed.
+
+---
+
+### Value Add:
+
+* Ensures complete job metadata display across both “simple” and “advanced” schedules
+* Supports consistent and reliable visibility on the auto-generated job detail dashboard
+* Reduces manual follow-up or confusion caused by hidden or missing job schedule details
+* Enables accurate downstream automation and observability dependent on schedule metadata
+
+---
+
+### Acceptance Criteria:
+
+* Identify and reproduce the regex failure on sample jobs using “simple” scheduling
+* Update regex logic or replace it with a more robust parsing approach that handles both schedule types
+* Validate that both simple and advanced schedule jobs are displayed properly on the Confluence job detail page
+* Ensure no regression in existing parsing for other job metadata fields
+* Confirm job page auto-generation still functions as expected with the updated logic
+
+---
+
+Let me know if you’d like a related follow-up story ticket written for expanding this parser into automated Confluence documentation beyond schedules.
