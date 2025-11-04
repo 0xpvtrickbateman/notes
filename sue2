@@ -1,0 +1,32 @@
+Description:
+
+Sue identified and implemented a fix for the Dashboard Feedback issue affecting the SharePoint_Code Databricks notebook. The issue was tied to the read_large_list method, which required ensuring data types were correctly handled before Spark DataFrame conversion.
+
+To resolve the issue, Sue added the following line before the spark.CreateDataFrame call:
+
+pdDataFrame = pdDataFrame.astype(str)
+
+
+This modification ensures all columns are cast to string type, preventing schema inference conflicts during the creation of the Spark DataFrame and resolving the dashboard read-back failure.
+
+Root Cause:
+
+Type mismatch error during DataFrame creation in the SharePoint feedback pipeline, causing failures in the dashboard refresh process.
+
+Resolution:
+
+Added explicit type conversion to string using astype(str) before Spark DataFrame creation.
+
+Validated that the dashboard feedback now updates successfully.
+
+Confirmed that the fix applies only to the read_large_list method within the SharePoint_Code notebook.
+
+Acceptance Criteria:
+
+✅ The Dashboard Feedback job runs successfully with no schema or read errors.
+
+✅ The SharePoint_Code notebook executes end-to-end without manual intervention.
+
+✅ Confirmed successful dashboard refresh and data accuracy post-fix.
+
+✅ The fix line pdDataFrame = pdDataFrame.astype(str) is committed and versioned in Databricks or Git.
