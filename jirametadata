@@ -1,0 +1,54 @@
+Epic Title: Build Jira Metadata Dashboards to Track BI Team Progress and Align with FY26 Goals
+Summary:
+
+Leverage Jira metadata ingested into Databricks (via the Atlassian API) to construct performance metrics and visual dashboards that showcase the work of DSP, E-22, and Data Engineering teams. These dashboards will provide insight into team progress, epic completion rates, sprint throughput, alignment with D1 and OPQ FY26 goals, and overall productivity trends.
+
+Description:
+
+The Data Engineering team has already developed Databricks pipelines that ingest Jira metadata for internal use. This Epic expands that effort to create structured Databricks tables and visualizations for the DSP and E-22 teams. The project includes defining relevant metrics, structuring data, and delivering dashboards via Tableau or Databricks SQL.
+
+The output will include:
+
+Per-team Jira story and epic metrics
+
+Story point burn-up/down charts
+
+Sprint-level delivery patterns
+
+Mapping Jira components/tags to D1/OPQ FY26 strategic initiatives
+
+Visualizations highlighting blockers, time-to-close, and backlog growth
+
+Value Add:
+
+Provides program-level visibility into team throughput and deliverable status
+
+Supports performance evaluations and sprint planning with real data
+
+Aligns operational work with agency-level strategic initiatives (D1 and FY26 goals)
+
+Helps stakeholders and leadership assess team focus and efficiency
+
+Reduces manual status tracking and reporting efforts
+
+Acceptance Criteria:
+
+Ingest DSP and E-22 Jira metadata into Databricks alongside DE team data
+
+Normalize Jira data across teams (epic, story, sprint, team attribution)
+
+Create Databricks tables filtered and structured for dashboard development
+
+Build Tableau and/or Databricks dashboards with the following views:
+
+Epic and story completion by team and quarter
+
+Sprint burndown and velocity trend lines
+
+Distribution of effort across D1/FY26-aligned tags
+
+Time-in-status and ticket aging analysis
+
+Validate with Nate and relevant team leads that dashboards meet needs
+
+Publish dashboards to shared workspace and document data sources
