@@ -1,0 +1,53 @@
+Ticket Title:
+
+Fix dashboard scheduling logic and publish step-by-step MESH SharePoint guide in Markdown
+
+Epic Link:
+
+UOBI-2278 (Validation and Scheduling Enhancements)
+
+Description:
+
+During today’s stand-up, the team discussed issues with the dashboard job schedule configuration and documentation visibility. The current simple trigger mode does not support a 4-week recurrence. The workaround agreed upon is to:
+
+Convert the job to a weekly schedule,
+
+Add logic in the Databricks notebook to control execution frequency (run only every four weeks), and
+
+Ensure that the step-by-step MESH documentation is published correctly in Markdown format within the MESH SharePoint space for visibility and compliance with acceptance criteria.
+
+Sue will take ownership of publishing the Markdown guide in MESH SharePoint and linking it to the corresponding Confluence documentation.
+
+Tasks:
+
+ Add conditional logic to the Databricks notebook so the job runs every four weeks despite being set to a weekly trigger.
+
+ Switch affected job schedule from simple to weekly (advanced) once notebook logic is in place.
+
+ Publish the step-by-step MESH guide in Markdown format in the MESH SharePoint space.
+
+ Verify SharePoint publication and link the file back to the Confluence page.
+
+ Validate that the updated dashboard job runs successfully on schedule without triggering prematurely.
+
+Acceptance Criteria:
+
+✅ Notebook logic correctly enforces a four-week execution interval.
+
+✅ Dashboard job successfully runs on the intended weekly schedule without redundant triggers.
+
+✅ Documentation is live in MESH SharePoint (Markdown format) and linked to Confluence.
+
+✅ Verification run shows successful job completion and no missed intervals.
+
+Priority:
+
+High
+
+Assignee:
+
+Sue [Secondary: Andrei for schedule implementation]
+
+Labels:
+
+bugfix, validation, databricks, dashboard, MESH, documentation
