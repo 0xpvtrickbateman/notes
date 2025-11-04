@@ -1,0 +1,767 @@
+Complete Jira Stories for Sprint Pre-Planning - FINAL
+Date: October 24, 2025
+
+Total Stories: 36 + 3 Epics (Grand Total: 42 Jira Items)
+
+EPICS
+EPIC 1: Unstructured Data Intake Proof of Concept
+Type: Epic
+
+Components: Proof of concept development, White paper creation, Cost analysis, Azure resource integration planning, Stacks system integration investigation
+
+Risk Level: High (CIO approval required)
+
+Constraints: No Hugging Face models, no whitelisted LLMs, only XGB wrap model permitted
+
+EPIC 2: Data Enterprise Projects Portfolio Metrics
+Type: Epic (renamed from cost/usage analytics)
+
+Description: Portfolio-wide analytics covering AA, NPD, E2E, GDS, and SCP teams
+
+Components: Team permissions acquisition, Dashboard expansion, Cross-portfolio metrics integration
+
+EPIC 3: SPC Integration with NPD (2075)
+Type: Epic (existing)
+
+Status: Blocked - pending statistician personnel decision
+
+Lead: Nate Lanfranca
+
+Components: Business requirements documentation, Implementation planning, NPD team coordination
+
+STORIES
+STORY 1
+Title: Write All Epics for 12-Week Planning Session
+
+Description: Create comprehensive epics based on new organizational priorities and projects in preparation for the November 7th 12-week planning session. Partner with Speaker 2 to ensure all new initiatives are properly captured and structured as epics.
+
+Value Add: Establishes clear project roadmap for next 12 weeks, ensures team alignment with organizational priorities, and provides foundation for resource planning and sprint capacity management.
+
+Acceptance Criteria:
+
+Created all epics for new priorities
+
+Included clear scope and objectives in each epic
+
+Linked epics to FY26 priorities
+
+Completed review with Speaker 2
+
+Prepared all epics for November 7th planning session
+
+STORY 2
+Title: Draft 4-5 Stories Per Epic for Story Pool
+
+Description: Create detailed user stories for each epic established for the 12-week planning session. Each epic should have 4-5 stories drafted to ensure adequate work breakdown and sprint planning flexibility. Consider using DHS Chat for story generation.
+
+Value Add: Provides ready backlog for immediate sprint execution, reduces planning overhead during sprints, and ensures consistent team velocity through pre-defined work packages.
+
+Acceptance Criteria:
+
+Drafted minimum 4 stories per epic
+
+Formatted stories with standard template and clear acceptance criteria
+
+Estimated story points for capacity planning
+
+Reviewed and approved stories with team lead
+
+Completed before November 7th planning session
+
+STORY 3
+Title: Add Cost Analysis to Unstructured Data PoC Proposal
+
+Description: Develop comprehensive cost estimation model for the unstructured data proof of concept, including Azure resource integration costs, whitelisting requirements, and Databricks implementation expenses. Must address constraints including prohibited Hugging Face models and lack of whitelisted LLMs.
+
+Value Add: Demonstrates fiscal due diligence to leadership, increases probability of CIO approval, and provides budget transparency for resource allocation decisions.
+
+Acceptance Criteria:
+
+Included all Azure resource requirements in cost model
+
+Documented whitelisting process costs
+
+Calculated Databricks integration expenses
+
+Included risk mitigation strategies for technical constraints
+
+Completed review with Speaker 2
+
+Strengthened proposal to minimize CIO rejection risk
+
+STORY 4
+Title: Investigate Stacks System for Unstructured Data Integration
+
+Description: Research and document Stacks system capabilities for form data extraction. Schedule demo with Nick Maness (branch chief, IRNSD/OAT) to understand how Stacks replaces BMS and determine integration potential for unstructured data project.
+
+Value Add: Potentially eliminates need to build extraction capabilities from scratch, significantly reduces project costs, and accelerates timeline for unstructured data initiative.
+
+Acceptance Criteria:
+
+Contacted Nick Maness and Gilbert for Stacks information
+
+Scheduled and attended demo or received documentation
+
+Documented Stacks data storage methods and formats
+
+Evaluated integration feasibility with vector database approach
+
+Identified data access requirements and permissions needed
+
+Created technical integration plan if viable
+
+STORY 5
+Title: Hide Monetary Cost Visuals on Databricks Dashboard
+
+Description: Modify the "USCIS Databricks DBU and cost summary" dashboard to remove or hide all visuals displaying monetary costs while preserving underlying queries and tables for potential future use.
+
+Value Add: Enables sharing of DBU usage analytics with stakeholders while maintaining contractual confidentiality, supports data-driven decisions without violating agreements.
+
+Acceptance Criteria:
+
+Hid or removed all monetary cost visuals
+
+Preserved DBU usage metrics visibility
+
+Maintained underlying queries and tables
+
+Tested dashboard functionality
+
+Ensured no cost data exposed to non-authorized users
+
+STORY 6
+Title: Add Contractual Notice to Cost Dashboard
+
+Description: Add explanatory text notice to the modified Databricks dashboard stating "Cost metrics are unavailable due to private contractual agreements with Databricks."
+
+Value Add: Provides transparency to dashboard users about missing cost data, prevents confusion and unnecessary inquiries, maintains professional communication standards.
+
+Acceptance Criteria:
+
+Added notice text to dashboard in visible location
+
+Matched text formatting to dashboard design standards
+
+Displayed notice on all relevant dashboard pages
+
+Completed review with legal/contracts team if required
+
+STORY 7
+Title: Rename Project to "Data Enterprise Projects Portfolio Metrics"
+
+Description: Update project naming conventions and documentation to reflect expansion from single program metrics to portfolio-wide analytics covering multiple teams and programs.
+
+Value Add: Accurately reflects expanded project scope, improves stakeholder understanding, and positions project as enterprise-level initiative for increased visibility and support.
+
+Acceptance Criteria:
+
+Renamed project in all documentation
+
+Updated Confluence spaces
+
+Updated dashboard titles
+
+Sent communication to stakeholders about name change
+
+Updated Jira project settings if applicable
+
+STORY 8
+Title: Obtain AA Team Permissions for Portfolio Analytics
+
+Description: Contact Ben Steiner to request job lists and permissions from the AA team for integration into the portfolio-level analytics dashboard. Document any access challenges given team's historical unresponsiveness.
+
+Value Add: Enables comprehensive portfolio visibility, improves cross-team performance monitoring, and supports data-driven resource allocation decisions.
+
+Acceptance Criteria:
+
+Made initial contact with Ben Steiner
+
+Documented permissions request formally
+
+Obtained job lists or documented blockers
+
+Granted access permissions or identified escalation path
+
+Documented integration requirements
+
+STORY 9
+Title: Obtain NPD Team Permissions for Portfolio Analytics
+
+Description: Contact Mike Gorman to request job lists and permissions from the NPD team for integration into the portfolio-level analytics dashboard.
+
+Value Add: Expands analytics coverage to include NPD team metrics, enables cross-program performance comparison, and supports enterprise-wide optimization initiatives.
+
+Acceptance Criteria:
+
+Established contact with Mike Gorman
+
+Obtained NPD job lists
+
+Received required permissions
+
+Documented integration requirements
+
+Agreed upon timeline for integration
+
+STORY 10
+Title: Obtain E2E Team Permissions for Portfolio Analytics
+
+Description: Request job lists and permissions from the E2E team for integration into the enterprise portfolio analytics dashboard.
+
+Value Add: Completes portfolio coverage for end-to-end process visibility, enables identification of cross-team dependencies and bottlenecks.
+
+Acceptance Criteria:
+
+Identified and engaged E2E team contact
+
+Obtained job lists and permissions
+
+Validated access in Databricks
+
+Documented integration requirements
+
+STORY 11
+Title: Obtain GDS Team Permissions for Portfolio Analytics
+
+Description: Request job lists and permissions from the GDS team for integration into the enterprise portfolio analytics dashboard.
+
+Value Add: Incorporates GDS metrics into portfolio view, enables comprehensive performance monitoring across all data teams.
+
+Acceptance Criteria:
+
+Identified and engaged GDS team contact
+
+Obtained job lists and permissions
+
+Validated access
+
+Established integration timeline
+
+STORY 12
+Title: Obtain SCP Team Permissions for Portfolio Analytics
+
+Description: Request job lists and permissions from the SCP team for integration into the enterprise portfolio analytics dashboard.
+
+Value Add: Completes portfolio coverage, ensures all teams are represented in enterprise metrics, supports comprehensive resource optimization.
+
+Acceptance Criteria:
+
+Identified and engaged SCP team contact
+
+Obtained permissions and job lists
+
+Validated access
+
+Documented integration requirements
+
+STORY 13
+Title: Fix Dashboard Visual Mismatch Bug in Table Metadata Analysis
+
+Description: Investigate and resolve bug where table visual does not match corresponding bar chart on the Table Metadata Analysis dashboard.
+
+Value Add: Ensures data visualization accuracy, maintains dashboard credibility, and prevents misinterpretation of metrics by stakeholders.
+
+Acceptance Criteria:
+
+Identified root cause of mismatch
+
+Implemented bug fix
+
+Displayed matching data in visual and bar chart
+
+Tested fix across different browsers
+
+Updated documentation if needed
+
+STORY 14
+Title: Integrate Table Cleanup Log into Metadata Dashboard
+
+Description: Add the "Table cleanup log" to the "Table Metadata Analysis" dashboard to display cleanup impact, trends, and effectiveness over time.
+
+Value Add: Provides visibility into cleanup efforts ROI, demonstrates storage optimization progress, and supports data governance initiatives.
+
+Acceptance Criteria:
+
+Connected cleanup log data source
+
+Created visualizations for cleanup trends
+
+Displayed impact metrics clearly
+
+Preserved and displayed historical data
+
+Maintained dashboard performance
+
+STORY 15
+Title: Rerun Table Cleanup Script for Small Files
+
+Description: Execute table cleanup script targeting tables with excessive small files, addressing issues from partially effective previous run.
+
+Value Add: Reduces storage costs, improves query performance, and optimizes Databricks resource utilization through file consolidation.
+
+Acceptance Criteria:
+
+Updated script to address previous run limitations
+
+Identified all tables with excessive small files
+
+Executed cleanup script successfully
+
+Logged and documented results
+
+Measured performance improvements
+
+STORY 16
+Title: Delete Tables Marked "Delete Me"
+
+Description: Remove all tables that have been marked for deletion in the metadata system as part of ongoing cleanup efforts.
+
+Value Add: Reduces storage costs, eliminates confusion from obsolete tables, and maintains clean data environment for improved governance.
+
+Acceptance Criteria:
+
+Identified all "delete me" tables
+
+Obtained deletion approval where required
+
+Removed tables successfully
+
+Logged cleanup in tracking system
+
+Documented storage savings
+
+STORY 17
+Title: Update Table Ownership from Individuals to Groups
+
+Description: Execute outreach campaign to update table ownership from individual users to appropriate group ownership for better continuity and governance.
+
+Value Add: Ensures business continuity when individuals leave, improves accountability, and aligns with data governance best practices.
+
+Acceptance Criteria:
+
+Identified all individually-owned tables
+
+Determined appropriate group owners
+
+Completed outreach to current owners
+
+Executed ownership transfers
+
+Updated documentation to reflect new ownership
+
+STORY 18
+Title: Record Teddy Talk Rehearsal Version - Jake
+
+Description: Record rehearsal version of Teddy Talk presentation for internal review and feedback before final production.
+
+Value Add: Enables practice and refinement of presentation, reduces risk of issues in final recording, and ensures high-quality leadership communication.
+
+Acceptance Criteria:
+
+Recorded rehearsal version by Monday
+
+Met video quality standards
+
+Covered all required topics
+
+Collected internal review feedback
+
+Identified improvements for final version
+
+STORY 19
+Title: Record Teddy Talk Final Production Version - Jake
+
+Description: Record production-quality version of Teddy Talk incorporating feedback from rehearsal for submission to leadership.
+
+Value Add: Provides leadership with professional update on team accomplishments, supports visibility of data engineering initiatives, and strengthens stakeholder engagement.
+
+Acceptance Criteria:
+
+Recorded final version by Thursday
+
+Met production quality standards
+
+Incorporated all feedback from rehearsal
+
+Edited and polished video
+
+Prepared for leadership distribution
+
+STORY 20
+Title: Submit Teddy Talk to Leadership for Review
+
+Description: Send completed Teddy Talk video to leadership for review and feedback. Coordinate with Josh Williamson on scheduling and distribution.
+
+Value Add: Ensures leadership awareness of team achievements, maintains communication cadence, and supports strategic alignment.
+
+Acceptance Criteria:
+
+Submitted video by Thursday
+
+Used appropriate distribution list
+
+Included context/summary with submission
+
+Obtained confirmation of receipt
+
+Established feedback tracking mechanism
+
+STORY 21
+Title: Remove Two Master Collect Tasks from Daily Ephemeral Job Cluster
+
+Description: Optimize daily ephemeral job cluster by removing two unnecessary master collect tasks that are impacting performance.
+
+Value Add: Reduces processing time and DBU consumption, improves job cluster efficiency, and decreases operational costs.
+
+Acceptance Criteria:
+
+Identified two master collect tasks
+
+Completed impact analysis
+
+Removed tasks safely from job cluster
+
+Validated performance improvements
+
+Updated documentation
+
+STORY 22
+Title: UOBI-2173: Validate Latest Tables with Josh Williamson and WARM
+
+Description: Set up and conduct meeting with Josh Williamson and WARM team to validate which tables should be used as authoritative sources. Add filing type dimensionality if WARM approves. Investigate Form ID crosswalk discrepancies.
+
+Value Add: Ensures data accuracy and consistency, reduces risk of using outdated tables, and adds valuable filing type dimension for enhanced analytics.
+
+Acceptance Criteria:
+
+Scheduled meeting with Josh Williamson and WARM
+
+Identified and documented latest authoritative tables
+
+Gathered filing type dimensionality requirements
+
+Obtained WARM approval for dimensionality addition
+
+Created implementation plan if approved
+
+Resolved Form ID crosswalk questions
+
+STORY 23
+Title: UOBI-2173: Validate CDO Lookup Table Lineage
+
+Description: Investigate and validate the lineage of CDO lookup table which hasn't been updated in 9 months. Determine if updates are needed and consider pivoting to WARM team's table if more current.
+
+Value Add: Ensures data quality and reliability, identifies potential data staleness issues, and maintains integrity of downstream analytics.
+
+Acceptance Criteria:
+
+Performed complete lineage analysis
+
+Validated update frequency requirements
+
+Identified root cause of 9-month gap
+
+Documented recommendations
+
+Created update plan or migration plan to WARM table
+
+STORY 24
+Title: Create Teddy Talk Video - Nate Lanfranca
+
+Description: Nate Lanfranca to create and record separate Teddy Talk video for leadership review, complementing Jake's presentation.
+
+Value Add: Provides federal lead perspective to leadership, strengthens team visibility, and demonstrates depth of expertise across team.
+
+Acceptance Criteria:
+
+Recorded video by Nate Lanfranca
+
+Aligned content with team messaging
+
+Met production quality standards
+
+Submitted video for review
+
+Coordinated with Jake's version
+
+STORY 25
+Title: Setup NPD Statistical Process Controls Implementation Meeting
+
+Description: Nate Lanfranca to organize kickoff meeting with Mike Gorman, Josh Williamson, and NPD team to initiate Statistical Process Controls implementation. Create business need report documenting problems SPC will solve.
+
+Value Add: Enables data quality monitoring for NPD, establishes proactive issue detection, and aligns with industry best practices for statistical control.
+
+Acceptance Criteria:
+
+Scheduled meeting with all stakeholders
+
+Drafted business need report
+
+Defined problem statements clearly
+
+Documented SPC implementation scope
+
+Established next steps and timeline
+
+STORY 26
+Title: Update Data Engineering Onboarding Documentation
+
+Description: Jake to update comprehensive onboarding documentation in the Data Engineering Confluence space in preparation for incoming new hire and new PM starting.
+
+Value Add: Reduces onboarding time for new team members, ensures consistent knowledge transfer, and maintains operational continuity.
+
+Acceptance Criteria:
+
+Documented all current processes
+
+Updated tool access procedures
+
+Refreshed training materials
+
+Organized and made Confluence space accessible
+
+Completed review with team lead
+
+STORY 27
+Title: Document FY26 Priorities and Jira Label Strategy
+
+Description: Jake to add FY26 priorities to Confluence and document how DE and DSP teams will align all work to D1 & OPQ FY26 priorities through strategic use of Jira labels.
+
+Value Add: Ensures team alignment with organizational goals, enables priority-based reporting, and supports resource allocation decisions.
+
+Acceptance Criteria:
+
+Documented FY26 priorities in Confluence
+
+Created Jira label taxonomy
+
+Documented alignment strategy
+
+Created team training materials
+
+Published label implementation guide
+
+STORY 28
+Title: Create AI Presentation Part IV for MESH
+
+Description: Jake to develop Part IV of the AI presentation series for upcoming MESH meeting, continuing the narrative from previous presentations.
+
+Value Add: Maintains momentum on AI initiatives, educates stakeholders on AI capabilities, and supports AI adoption across the organization.
+
+Acceptance Criteria:
+
+Built presentation on Parts I-III
+
+Tailored content to MESH audience
+
+Formatted slide deck professionally
+
+Included speaker notes
+
+Completed review before MESH meeting
+
+STORY 29
+Title: Bug – Production Jobs Using Simple Scheduling Must Be Converted to Advanced Scheduling
+
+Description: Currently, several production Databricks jobs are configured using the Simple Schedule format. This has caused issues with regex-based parsing for documentation and automation workflows, particularly on the Confluence job detail page where these jobs fail to display proper schedule information. Must update all production jobs to use Advanced Scheduling.
+
+Value Add: Ensures consistent and reliable job scheduling across environments, enables successful parsing and visibility in downstream systems, reduces ambiguity caused by Daylight Saving Time, and aligns all production job configurations with long-term DevOps standards.
+
+Acceptance Criteria:
+
+Audited and identified all current production jobs using Simple Schedule
+
+Updated job configurations to use Advanced Schedule with equivalent or improved timing
+
+Used cron syntax to match or enhance existing execution intervals
+
+Set all jobs to standardized time zone (e.g., UTC) for consistency
+
+Validated all updated jobs appear correctly on auto-generated Confluence job documentation page
+
+Documented migration and provided guidance for new job setups
+
+STORY 30
+Title: Setup SQL Training Sessions for Tableau Developers
+
+Description: Coordinate with Lindsay and D-Biz to deliver SQL training sessions for Tableau developers. Training will include beginner and intermediate SQL with specific focus on Databricks SQL, CTEs, and dashboard development patterns.
+
+Value Add: Enables Tableau developers to create more sophisticated dashboards, reduces dependency on data engineering team for query development, and improves overall team SQL capabilities.
+
+Acceptance Criteria:
+
+Scheduled beginner SQL training session
+
+Scheduled intermediate SQL training session
+
+Included Databricks-specific SQL content
+
+Covered CTEs and dashboard patterns
+
+Coordinated with Lindsay and D-Biz
+
+Prepared training materials
+
+STORY 31
+Title: Configure CDO Shared Workspace for Tableau Developers
+
+Description: Set up dedicated child CDO shared workspace with appropriate permissions for Tableau developers. Configure read-only access to CDO schema and specific write access for dashboard development.
+
+Value Add: Provides secure, controlled environment for Tableau developers to work with CDO data, maintains data governance while enabling self-service analytics.
+
+Acceptance Criteria:
+
+Created child CDO shared workspace
+
+Configured read-only access to CDO schema
+
+Set write permissions for dashboard objects only
+
+Validated security lockdown
+
+Tested access with sample Tableau developer account
+
+Documented workspace configuration
+
+STORY 32
+Title: Resolve GitHub Enterprise Integration Blocking Issue
+
+Description: Work with Rachana to resolve GitHub Enterprise integration authentication issues. Currently blocked on password authentication error despite using access token. Investigate scope permissions and lowercase requirements.
+
+Value Add: Enables critical GitHub Enterprise integration for version control and CI/CD processes, unblocks development workflow automation.
+
+Acceptance Criteria:
+
+Resolved authentication error with Rachana's support
+
+Verified access token scope includes git permissions
+
+Implemented lowercase requirement if needed
+
+Tested integration functionality
+
+Documented resolution for future reference
+
+STORY 33
+Title: Follow Up on Statistician Personnel Status
+
+Description: Track and document status of statistician hiring for SPC implementation. Coordinate with Amber on personnel updates and timeline for resource availability.
+
+Value Add: Enables planning for SPC implementation timeline, unblocks Epic 2075, and ensures resource planning accuracy.
+
+Acceptance Criteria:
+
+Obtained update from Amber on statistician status
+
+Documented expected start date
+
+Updated Epic 2075 with personnel information
+
+Communicated timeline to NPD team
+
+Adjusted project planning accordingly
+
+STORY 34
+Title: Onboard New PM to Team
+
+Description: Prepare for new PM who has received GFE and is expected to start soon. Ensure they are included in Friday calls and have necessary documentation access.
+
+Value Add: Ensures smooth onboarding of new team member, maintains project continuity, and strengthens team capacity.
+
+Acceptance Criteria:
+
+Confirmed PM start date
+
+Added to Friday call invitations
+
+Provided access to Confluence documentation
+
+Scheduled initial onboarding meetings
+
+Assigned initial tasks or shadowing opportunities
+
+STORY 35
+Title: Create Job Update API for Portfolio-Wide Updates
+
+Description: Develop API to programmatically update Databricks job configurations across the portfolio. This will be essential when managing 4x current job volume after portfolio expansion.
+
+Value Add: Enables efficient bulk updates across hundreds of jobs, reduces manual configuration effort, and supports portfolio-wide standardization initiatives.
+
+Acceptance Criteria:
+
+Designed API specification for job updates
+
+Implemented core update functionality
+
+Tested with sample job updates
+
+Created documentation for API usage
+
+Validated against Databricks API limits
+
+STORY 36
+Title: Document Form ID Crosswalk Findings
+
+Description: Document Andre's research on Form ID crosswalk discrepancies between CDO and WARM tables. Create recommendation for which table to use as authoritative source.
+
+Value Add: Resolves data quality confusion, establishes single source of truth for Form IDs, and prevents downstream analytical errors.
+
+Acceptance Criteria:
+
+Documented crosswalk analysis findings
+
+Identified discrepancies between tables
+
+Created recommendation for authoritative source
+
+Shared findings with WARM team
+
+Updated dependent processes if needed
+
+CLONE/MODIFY ITEMS
+CLONE 1: Issue 2175 - Continue Liquid Clustering Implementation
+Description: Clone issue 2175 to capture ongoing liquid clustering work. Continue implementing across all suitable jobs with Andre leading implementation.
+
+Value Add: Already achieved DBU reduction from 1,000-1,003 to 919, continued implementation will further reduce costs and improve performance.
+
+Acceptance Criteria:
+
+Cloned issue 2175 successfully
+
+Identified all applicable jobs
+
+Updated implementation plan
+
+Planned future rollout to AA, E22, NPD teams
+
+CLONE 2: Current Sprint Carryover Issues
+Description: Identify and clone all issues from current sprint that need to continue into next sprint, including Sue's work items.
+
+Value Add: Maintains work continuity, prevents loss of progress, and ensures smooth sprint transition.
+
+Acceptance Criteria:
+
+Identified all carryover work
+
+Cloned issues properly
+
+Preserved progress in new tickets
+
+Updated sprint planning
+
+MODIFY 1: Publish MESH Confluence Draft
+Description: Complete and publish the MESH-related Confluence draft that is currently saved.
+
+Value Add: Provides documentation for MESH architecture, supports knowledge sharing, and enables team collaboration.
+
+Acceptance Criteria:
+
+Completed draft content
+
+Performed review
+
+Published document in Confluence
+
+Notified stakeholders
+
+Due: Today
