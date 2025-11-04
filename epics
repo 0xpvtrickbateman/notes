@@ -1,0 +1,163 @@
+🚀 Epic 1: CI/CD Workflow for Statistical Process Control (SPC)
+
+Summary:
+Develop a fully automated CI/CD workflow for Statistical Process Control (SPC) monitoring within USCIS data pipelines. This initiative will run through the end of FY26 and is intended to serve as a blueprint for embedding SPC into all stages of data product development.
+
+Description:
+This workflow will automate the detection of process anomalies, schema shifts, and stability issues across critical production pipelines. It includes defining thresholds, validating data quality at each pipeline stage, and generating alerts or rollback triggers when SPC thresholds are violated.
+
+Value Add:
+
+Ensures data reliability at scale through statistical validation checkpoints.
+
+Reduces manual effort in monitoring data quality drift.
+
+Enables reproducible, testable deployments with embedded SPC gates.
+
+Supports future ATO (Authority to Operate) readiness with auditable control layers.
+
+Preliminary Acceptance Criteria:
+
+Define SPC metrics and thresholds per pipeline stage.
+
+Create automated Git-triggered workflows to deploy SPC monitors.
+
+Set up alerting and rollback mechanisms when metrics are violated.
+
+Build dashboard to visualize SPC history over time.
+
+Document SPC decision tree logic for future iterations.
+
+🧠 Epic 2: Liquid Clustering Integration into Production Pipelines
+
+Summary:
+Deploy Liquid Clustering into production data workflows to enable adaptive cohorting, behavioral segmentation, and temporal pattern detection across USCIS workloads.
+
+Description:
+Liquid Clustering identifies shape-based or behavior-based clusters in streaming and historical datasets. This epic will integrate these algorithms into key production pipelines and output labels that can be reused in downstream AI models or BI dashboards.
+
+Value Add:
+
+Unlocks advanced analytics and ML features through data segmentation.
+
+Improves targeting and forecasting accuracy using dynamic groupings.
+
+Reduces pipeline latency by embedding clustering at the ingestion stage.
+
+Preliminary Acceptance Criteria:
+
+Package Liquid Clustering logic into Databricks workflows.
+
+Process historical backfills and validate cluster convergence.
+
+Output cluster IDs and centroids into a shared schema.
+
+Document results with visual examples for stakeholders.
+
+💬 Epic 3: DHS Chat API – Agentic Interaction Layer
+
+Summary:
+Develop and deploy a DHS Chat API with agentic functions to interface with Databricks, Confluence, and the CDO workspace.
+
+Description:
+This API will expose secure endpoints that support queries, code generation, tagging, and knowledge access by integrating functional AI agents. Submodules will include a contextualized coding assistant, an automated Confluence documentation generator, and tagging agents for pipeline observability.
+
+Value Add:
+
+Saves hundreds of engineering hours through context-aware automation.
+
+Makes the CDO workspace conversationally accessible via a secure API.
+
+Aligns with broader agency goals of deploying safe, compliant generative AI.
+
+Preliminary Acceptance Criteria:
+
+Deploy a secured API with endpoints for:
+
+Running unit/integration tests
+
+Tagging and annotating notebooks
+
+Generating documentation in Confluence format
+
+Validate that agents can access Databricks contextually (e.g. notebook metadata).
+
+Integrate with CircleCI or GitHub Actions for CI integration.
+
+🎓 Epic 4: MESH Presentations – AI Adoption & Upskilling Series
+
+Summary:
+Deliver a series of internal presentations and practical walkthroughs as part of the MESH (Method Sharing & Engineering Hub) initiative to educate USCIS developers on AI in modern workflows.
+
+Description:
+These sessions will cover topics like prompt engineering, co-developing with agents, testing agentic systems, AI DevOps, and more. They are designed to bridge the gap between traditional software engineering and emerging agent workflows.
+
+Value Add:
+
+Accelerates AI maturity across technical teams.
+
+Reduces duplication by standardizing patterns of AI use.
+
+Cultivates a stronger AI-native engineering culture in government.
+
+Preliminary Acceptance Criteria:
+
+Deliver at least 3 live or recorded presentations to MESH audiences.
+
+Provide slide decks and annotated notebooks.
+
+Gather feedback to refine future session topics.
+
+📊 Epic 5: Expand SPC Integration Across Projects with Leadership Support
+
+Summary:
+Roll out Statistical Process Control (SPC) practices across multiple products and teams in the analytics division, in partnership with Mike Gorman, Josh Williamson, and Lynn Wallace.
+
+Description:
+This epic focuses on expanding SPC from proof-of-concept to widespread use. It includes working with product owners to define metrics, onboard teams, and ensure that SPC is embedded into monitoring, dashboards, and dev cycles.
+
+Value Add:
+
+Promotes data integrity across mission-critical analytics tools.
+
+Aligns multiple product teams with consistent standards for monitoring.
+
+Demonstrates agency-wide commitment to reliability and rigor in data workflows.
+
+Preliminary Acceptance Criteria:
+
+Identify at least 5 pipelines/products to receive SPC onboarding.
+
+Coordinate with Lynn, Josh, and Mike to scope metrics and teams.
+
+Train technical leads and publish internal documentation.
+
+Launch a “SPC Rollout” dashboard to show adoption progress.
+
+📈 Epic 6: Build Cost and Usage Analytics Dashboard for Databricks Workloads
+
+Summary:
+Create a full-stack usage dashboard showing Databricks job metrics, DBU consumption, and cost data by project, team, and workspace.
+
+Description:
+This initiative will extract DBU usage logs, tag them by team/project, and surface metrics via both a Tableau dashboard and a live Databricks dashboard. The output will allow visibility into spend trends, optimization opportunities, and team-by-team usage efficiency.
+
+Value Add:
+
+Enables cost accountability and optimization across the division.
+
+Helps forecast cloud budget needs for FY26 and beyond.
+
+Identifies underutilized jobs or compute-heavy bottlenecks.
+
+Preliminary Acceptance Criteria:
+
+Create Databricks pipeline to extract and process DBU usage and cost logs.
+
+Tag each job with project/team metadata (via naming convention or job config).
+
+Build Tableau and Databricks dashboards with filters and historical trends.
+
+Validate with actual invoice-based costs.
+
+Share with finance and leadership for tracking/reporting.
