@@ -1,0 +1,171 @@
+
+EPIC: Build Dashboard Usage KPI Gold Tables for "Dashboard of Dashboards"
+Epic Description:
+Design, build, and maintain data pipelines to capture granular Tableau dashboard usage metrics in support of the "Dashboard of Dashboards" monitoring initiative. This includes parsing Tableau Server logs and/or Repository data to create gold-level tables that track session duration, filter interactions, tab/sheet navigation, and supporting product metrics at the event and aggregate levels.
+Epic Goals:
+
+Implement ETL pipelines to extract dashboard usage data from Tableau Server Repository and/or VizQL logs
+Build gold tables with event-level and aggregated usage metrics
+Enable DSP team to track KPIs: session duration, filter usage, navigation patterns, and product engagement metrics
+Maintain pipeline infrastructure for ongoing dashboard monitoring
+
+Dependencies:
+
+DSP: Provide final KPI definitions, data requirements specification, and acceptance criteria
+DBIS: Grant read-only access to Tableau Server Repository (Postgres) and relevant log locations; provide landing zone for parsed/curated data; advise on infrastructure for LogShark or equivalent
+
+
+Story 1: Collaborate with DSP on KPI Definitions and Data Requirements Specification
+Description:
+Work with DSP to finalize the dashboard usage KPI definitions and document the detailed data requirements specification that will guide the gold table design and ETL implementation.
+Acceptance Criteria:
+
+ Align with DSP on KPI measurement rules and event taxonomy
+ Document inactivity threshold definition for session boundaries
+ Review and approve field-level requirements for each KPI:
+
+Session duration: load_start, load_end, session_id, user_id, site_id, workbook_id, view_id, client_type
+Filter usage: filter field names, values applied, timestamps, user_id/session_id, count of filter changes per session
+Tab/sheet navigation: ordered sequence of views/sheets, timestamps, user_id/session_id, view_id/sheet_name
+Supporting metrics: time to first interaction, number of interactions per session, repeat visits per user, error/abort counts, initial render duration
+
+
+ Define event grain for each KPI
+ Document source mapping to VizQL log outputs and/or Tableau Server Repository tables
+ Approve Data Requirements specification document
+
+Story Points: 5
+
+Story 2: Design Gold Table Schema and Aggregation Logic
+Description:
+Design the gold table schema(s) that will store dashboard usage KPIs, including both event-level detail tables and pre-aggregated summary tables to support efficient querying by the Dashboard of Dashboards.
+Acceptance Criteria:
+
+ Define gold table schema for event-level usage data including:
+
+Primary keys and foreign keys
+Required fields per KPI as documented in Data Requirements spec
+Event timestamps and grain
+Partitioning and clustering strategy
+
+
+ Design aggregate table(s) for common query patterns (e.g., daily/weekly summaries)
+ Document aggregation logic and business rules
+ Define example queries the Dashboard of Dashboards will run
+ Review and approve schema with DSP
+ Document schema in Confluence/data catalog
+
+Story Points: 8
+
+Story 3: Evaluate Source Options and Document Preferred/Backup Paths
+Description:
+Evaluate feasible source systems for dashboard usage data (VizQL logs, Tableau Server Repository, Advanced Management Activity Log) and document the preferred acquisition path and backup options with pros/cons and operational considerations.
+Acceptance Criteria:
+
+ Assess Option A: LogShark + Tableau Server Repository
+
+Document data availability and completeness
+Assess operational complexity and infrastructure needs
+Identify any gaps in KPI coverage
+
+
+ Assess Option B: Direct VizQL log parsing
+
+Document parsing requirements and complexity
+Assess data quality and reliability
+
+
+ Assess Option C: Advanced Management Activity Log (if available)
+
+Document as structured source alternative
+
+
+ Document pros/cons and operational needs for each option
+ Recommend preferred path and backup path(s)
+ Get approval from DSP and DECP leads on source strategy
+
+Story Points: 5
+
+Story 4: Prepare DBIS Access & Enablement Request
+Description:
+Collaborate with DSP to prepare a formal Access & Enablement request for DBIS that specifies all required access permissions, log locations, landing zones, and infrastructure needs to support the dashboard usage ETL pipelines.
+Acceptance Criteria:
+
+ List all required log locations and Repository tables needed for read access
+ Specify Tableau Server Repository (Postgres) read-only access requirements
+ Define landing zone requirements for parsed/curated data
+ Document environment needs for parsing/ETL infrastructure
+ Identify any configuration changes needed for reliable log capture
+ Consult with DBIS on LogShark or equivalent infrastructure
+ Submit formal request to DBIS
+ Schedule and conduct DBIS alignment meeting
+ Capture decisions and any constraints from DBIS
+
+Story Points: 3
+
+Story 5: Implement Parsing/ETL Pipeline for Dashboard Usage Data
+Description:
+Build the ETL pipeline to extract dashboard usage data from the approved source(s), parse/transform the data according to the Data Requirements specification, and load into Databricks staging/bronze tables.
+Acceptance Criteria:
+
+ Implement extraction logic from approved source (Repository and/or logs)
+ Build parsing logic to extract required fields per KPI
+ Handle event grain and deduplication
+ Implement error handling and logging
+ Create staging/bronze tables in Databricks
+ Configure pipeline schedule/orchestration
+ Document pipeline design and operational runbook
+ Test with sample data and validate against KPI requirements
+
+Story Points: 13
+
+Story 6: Build Gold Tables with Aggregation Logic
+Description:
+Transform staged/bronze dashboard usage data into gold-level tables according to the approved schema, implementing aggregation logic, business rules, and data quality checks.
+Acceptance Criteria:
+
+ Implement silver-to-gold transformations based on approved schema
+ Apply aggregation logic for summary tables
+ Calculate derived metrics (session duration, interaction counts, etc.)
+ Implement data quality checks and validation rules
+ Create gold tables in Databricks
+ Optimize for query performance (partitioning, Z-ordering)
+ Document transformation logic and business rules
+ Configure incremental processing strategy
+
+Story Points: 13
+
+Story 7: Validate Sample Outputs Against KPIs
+Description:
+Work with DSP to validate that the gold table outputs meet the KPI definitions and acceptance criteria. Identify any gaps and implement necessary adjustments to the pipeline or schema.
+Acceptance Criteria:
+
+ Generate sample output datasets for each KPI
+ Validate session duration calculations against expected behavior
+ Verify filter usage tracking captures all required fields
+ Confirm tab/sheet navigation sequences are correctly ordered
+ Check supporting metrics (time to first interaction, error counts, etc.)
+ Run example queries from Data Requirements spec
+ Document any gaps or discrepancies
+ Implement fixes for identified issues
+ Get final approval from DSP on sample outputs
+
+Story Points: 5
+
+Story 8: Maintain Pipeline and Monitor Data Quality
+Description:
+Establish ongoing maintenance procedures for the dashboard usage pipelines, including monitoring, alerting, and periodic data quality checks to ensure reliable KPI metrics.
+Acceptance Criteria:
+
+ Set up pipeline monitoring and alerting
+ Configure data quality checks in production
+ Document troubleshooting procedures
+ Establish SLA for data freshness
+ Create operational dashboard for pipeline health
+ Schedule periodic data quality reviews
+ Document maintenance runbook
+
+Story Points: 5
+
+Total Story Points for Epic: 57
+This epic structure captures all the DECP-specific work extracted from UOBI-2219, organized into logical stories that can be tracked independently while maintaining the dependencies with DSP and DBIS.
