@@ -1,0 +1,29 @@
+
+---
+
+## **EPIC: Build Dashboard Usage KPI Gold Tables for "Dashboard of Dashboards"**
+
+**Epic Description:**
+
+Research, design, and build data pipelines to capture granular Tableau dashboard usage metrics in support of the "Dashboard of Dashboards" monitoring initiative. DECP will first collaborate with DSP to define precise KPI requirements, then conduct technical research to understand available Tableau data sources (Repository tables, VizQL logs, Advanced Management logs) and map them to the KPI needs. Armed with this knowledge, DECP will prepare a detailed, intelligent request for DBIS that clearly articulates what data access is needed, where it lives, and why it's required. Once DBIS provides access and enablement, DECP will implement ETL pipelines to parse and transform the data into gold-level tables tracking session duration, filter interactions, tab/sheet navigation, and supporting product metrics at event and aggregate levels.
+
+**Epic Goals:**
+- Partner with DSP to finalize KPI definitions and data requirements specification
+- Research Tableau data sources to understand what data exists and where it lives
+- Prepare comprehensive DBIS access request with clear technical requirements and rationale
+- Coordinate with DBIS to establish data access, landing zones, and infrastructure support
+- Implement ETL pipelines to extract and parse dashboard usage data once access is granted
+- Build gold tables with event-level and aggregated usage metrics
+- Enable DSP to track KPIs: session duration, filter usage, navigation patterns, and product engagement metrics
+- Maintain pipeline infrastructure for ongoing dashboard monitoring
+
+**Key Dependencies:**
+- **DSP**: Provide final KPI definitions, data requirements specification, and acceptance criteria; validate sample outputs
+- **DBIS**: Grant read-only access to Tableau Server Repository (Postgres) and relevant log locations; provide landing zone for parsed/curated data; advise on and potentially provide infrastructure for LogShark or equivalent; implement any configuration changes needed for reliable log capture
+
+**Approach:**
+This epic follows a phased approach: (1) Requirements definition with DSP, (2) Technical research and source mapping, (3) DBIS engagement and access enablement, (4) Pipeline implementation and gold table development, (5) Validation and ongoing maintenance.
+
+---
+
+This version makes it clear that **research and intelligent DBIS engagement** are core parts of the work, not just the pipeline building.
