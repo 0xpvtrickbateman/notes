@@ -1,0 +1,326 @@
+TICKET 1: OCDO Restricted Table Cleanup Follow-up
+Type: Story
+Epic: Division-Wide Databricks Permissions Unification
+Sprint: 25-23
+Parent Ticket: 1737
+Assignee: TBD
+Summary: Migrate OCDO restricted tables and clean up obsolete workflow references
+Description:
+As a data engineer, I want to migrate OCDO restricted tables to the proper OCDO workspace and clean up any deprecated references identified in our workflows so that our permission structure is accurate and maintains data governance compliance.
+Acceptance Criteria:
+
+All OCDO restricted tables successfully migrated to OCDO workspace
+Any items identified by Andre in the workflow are documented and cleaned up
+Validate no broken dependencies exist post-migration
+Update documentation to reflect new table locations
+Confirm job runs successfully with new table references
+
+Value Statement: Ensures proper data governance and reduces technical debt in our permission structure
+
+TICKET 2: Update Wildcard Logic for AA Permission Groups
+Type: Story
+Epic: Division-Wide Databricks Permissions Unification
+Sprint: 25-23
+Assignee: TBD (coordinate with team member working on NPD)
+Summary: Enhance user group audit notebook to capture all AA-related groups
+Description:
+As a data engineer, I want to update the group audit notebook wildcard queries to include AA-GPS-RNA-SEP patterns and any other AA sub-team variations so that all AA team members are accurately captured in our permission audits.
+Acceptance Criteria:
+
+Update wildcard patterns in Group Audit notebook to include AA-GPS-RNA-SEP-* searches
+Research and add any additional AA sub-team naming conventions
+Run job and verify AA groups appear in OCDO Public Permission Groupings table
+Validate group names display correctly in OCDO DAD User Group Audit dashboard
+Document all wildcard patterns added for future reference
+
+Value Statement: Provides complete visibility into AA team permissions for upcoming cleanup effort (53+ groups identified)
+
+TICKET 3: Update Wildcard Logic for NPD Permission Groups
+Type: Story
+Epic: Division-Wide Databricks Permissions Unification
+Sprint: 25-23
+Assignee: TBD (coordinate with team member working on AA)
+Summary: Add NPD group wildcard patterns to user group audit
+Description:
+As a data engineer, I want to extend the group audit wildcard logic to capture all NPD team groups so that we have complete visibility into NPD permissions across Databricks.
+Acceptance Criteria:
+
+Research NPD group naming conventions (confirmed as "NPD*" pattern)
+Update wildcard queries in Group Audit notebook
+Run job and verify NPD groups appear in audit tables
+Confirm NPD group members listed correctly in dashboard
+Coordinate with AA ticket assignee to avoid conflicts
+
+Value Statement: Enables comprehensive NPD permission management and future cleanup efforts
+
+TICKET 4: Bug - Fix Null Email Values in User Group Audit
+Type: Bug
+Epic: Division-Wide Databricks Permissions Unification
+Sprint: 25-23
+Priority: High
+Assignee: Jake (to create), TBD (to fix)
+Summary: Null values appearing in email field of user group audit tables
+Description:
+When running the user group audit, some records show null values in the email field despite users having valid email addresses. Investigation suggests the COALESCE(email_list, null) or array_sort function in the collection logic is causing the issue.
+Acceptance Criteria:
+
+Reproduce null email issue in development environment
+Identify root cause (COALESCE vs array_sort function)
+Update query logic to eliminate null values
+Test fix ensures all valid emails are captured
+Deploy fix to production job
+Verify no nulls in subsequent job runs
+
+Value Statement: Ensures data quality and completeness for permission auditing
+
+TICKET 5: Liquid Clustering Exploratory Analysis
+Type: Story
+Epic: Liquid Clustering Optimization
+Sprint: 25-23
+Story Points: 5+
+Assignee: Andrea
+Summary: Analyze remaining workflows for Liquid Clustering compatibility
+Description:
+As a data engineer, I want to investigate all remaining internal workflows to determine which can implement Liquid Clustering and which require high watermark logic so that we can optimize performance before rolling out to the division.
+Acceptance Criteria:
+
+Review all OCDO workflows not yet using Liquid Clustering
+Document which workflows are compatible with Liquid Clustering
+Identify workflows requiring high watermark implementation
+Create compatibility matrix with recommendations
+Estimate performance improvements and cost savings
+Prepare findings report for production implementation
+
+Value Statement: Enables data-driven optimization decisions and cost reduction strategy
+
+TICKET 6: Liquid Clustering Production Implementation
+Type: Story
+Epic: Liquid Clustering Optimization
+Sprint: 25-24
+Assignee: Andrea
+Dependencies: Complete exploratory analysis ticket first
+Summary: Deploy Liquid Clustering to production workflows
+Description:
+As a data engineer, I want to implement Liquid Clustering on all compatible workflows identified in the exploratory analysis so that we achieve optimal performance and cost savings.
+Acceptance Criteria:
+
+Implement Liquid Clustering on all identified compatible workflows
+Apply high watermark logic where required
+Validate job performance metrics post-deployment
+Monitor for any job failures or degradation
+Document configuration changes
+Create rollback plan if issues arise
+
+Value Statement: Reduces compute costs and improves query performance across production workflows
+
+TICKETS 7-10: Databricks API Enhancement Suite
+TICKET 7: Databricks API Job Management Investigation
+Type: Story
+Epic: Team Process Updates and Code Enhancements
+Sprint: 25-23
+Assignee: Andrea
+Summary: Research Databricks API v2.2 job and workflow management capabilities
+Description:
+As a data engineer, I want to investigate the Databricks API v2.2 capabilities for job and workflow management so that we can automate bulk updates and tagging.
+Acceptance Criteria:
+
+Test job listing and retrieval endpoints
+Validate job update capabilities (partial vs full)
+Compare v2.1 vs v2.2 functionality
+Document API limitations and best practices
+Create sample notebook demonstrating job queries
+
+Value Statement: Establishes foundation for automated job management
+
+TICKET 8: Databricks API Task Management
+Type: Story
+Epic: Team Process Updates and Code Enhancements
+Sprint: 25-23
+Assignee: Andrea
+Summary: Implement task-level API operations for Databricks workflows
+Description:
+As a data engineer, I want to use the Databricks API to manage individual tasks within workflows so that we can make granular updates without affecting entire jobs.
+Acceptance Criteria:
+
+Test task creation/update/deletion via API
+Validate task dependency management
+Document task-level permission requirements
+Create helper functions for common task operations
+Test error handling and rollback scenarios
+
+Value Statement: Enables precise workflow modifications without full job redeployment
+
+TICKET 9: Databricks API POST Updates Implementation
+Type: Story
+Epic: Team Process Updates and Code Enhancements
+Sprint: 25-23
+Assignee: Andrea
+Summary: Build production-ready API POST update functionality
+Description:
+As a data engineer, I want to implement POST update capabilities for Databricks jobs so that we can programmatically modify job configurations at scale.
+Acceptance Criteria:
+
+Implement POST update functions for job settings
+Add validation for required fields
+Create batch update capabilities
+Implement proper error handling and logging
+Test with production-like payloads
+
+Value Statement: Enables bulk job updates for permission changes and migrations
+
+TICKET 10: Service Principal Authentication for API
+Type: Story
+Epic: Team Process Updates and Code Enhancements
+Sprint: 25-23
+Assignee: Andrea
+Summary: Configure service principal authentication for Databricks API operations
+Description:
+As a data engineer, I want to set up service principal authentication for API calls so that we can automate job management without user credentials.
+Acceptance Criteria:
+
+Configure service principal in Databricks
+Implement OAuth token generation
+Create secure credential storage solution
+Test authentication across all API endpoints
+Document setup process for other teams
+
+Value Statement: Provides secure, automated access for production API operations
+
+TICKET 11: Remove Test GitHub Repositories
+Type: Task
+Epic: GitHub Integration
+Sprint: 25-26
+Assignee: Jake
+Summary: Clean up obsolete test repositories from team GitHub
+Description:
+As a team lead, I want to remove deprecated test repositories from our GitHub organization so that we maintain a clean, organized codebase.
+Acceptance Criteria:
+
+Delete test_git_workaround repository
+Delete test_2_internal_repo repository
+Delete CDO_Shared_Workspace (if test version)
+Verify no active dependencies on these repos
+Update team documentation to reflect removals
+
+Value Statement: Reduces confusion and maintains repository hygiene
+
+TICKET 12: Create Automated GitHub Workspace Sync Job
+Type: Story
+Epic: GitHub Integration
+Sprint: 25-26
+Assignee: TBD
+Summary: Build Databricks job to sync workspace to GitHub for search functionality
+Description:
+As a data engineer, I want an automated job that periodically pushes our entire Databricks workspace to GitHub so that we can search code across all notebooks efficiently.
+Acceptance Criteria:
+
+Create Databricks job with weekly/monthly schedule
+Configure to push entire shared workspace to GitHub
+Add clear documentation that this is READ-ONLY for search
+Ensure job doesn't interfere with operational repos
+Implement logging and failure notifications
+Test search functionality works as expected
+
+Value Statement: Enables powerful code search capabilities across entire workspace
+
+TICKET 13: Integrate Table Cleanup Log into Metadata Dashboard
+Type: Story
+Epic: Tableau Metadata and Cost Usage Analytics
+Sprint: 25-24
+Assignee: Sue
+Story Points: 5
+Summary: Add cleanup log visualization to Table Metadata Dashboard
+Description:
+As a data analyst, I want to see table cleanup history in the metadata dashboard so that I can track optimization efforts and their impacts over time.
+Acceptance Criteria:
+
+Integrate Sue's cleanup log table with existing dashboard
+Create new dashboard page for before/after comparisons
+Link cleanup metrics to KPI trends
+Add filters for date range and table selection
+Ensure performance remains acceptable
+Update documentation with new features
+
+Value Statement: Provides visibility into cleanup efforts and their effectiveness
+
+TICKET 14: GitHub Integration Project Template
+Type: Task
+Epic: GitHub Integration
+Sprint: 26-01
+Assignee: Jake
+Summary: Create cloneable template ticket for project GitHub integrations
+Description:
+As a team lead, I want to create a template ticket that team members can clone for their assigned GitHub integration projects so that we maintain consistency.
+Acceptance Criteria:
+
+Create template ticket with standard fields
+Include checklist for integration steps
+Add links to documentation and examples
+Define done criteria for integrations
+Create assignment matrix for team projects
+
+Value Statement: Standardizes GitHub integration process across team
+
+TICKET 15: OCR Cost Impact Analysis Document
+Type: Task
+Epic: Unstructured Data OCR Implementation
+Sprint: 25-23
+Due Date: Monday/Tuesday next week
+Assignee: Jake
+Summary: Complete cost analysis comparing Azure vs AWS OCR implementations
+Description:
+As a program lead, I need to complete the cost impact analysis document comparing OCR implementation options so that leadership can make informed budget decisions.
+Acceptance Criteria:
+
+Include Azure OCR cost projections
+Include AWS Textract cost projections
+Add build-from-scratch cost estimates
+Include Stacks integration cost mitigation analysis
+Format for executive presentation
+Submit to Nate for review by Tuesday
+
+Value Statement: Enables data-driven decision making for OCR implementation strategy
+
+TICKET 16: Upload FY26 Priorities to Confluence
+Type: Task
+Epic: Internal Documentation
+Sprint: 25-23
+Story Points: 1
+Assignee: Jake
+Summary: Publish FY26 team priorities documentation
+Description:
+As a team lead, I want to upload the completed FY26 priorities document to Confluence so that the team has a single source of truth for annual goals.
+Acceptance Criteria:
+
+Upload FY26 priorities document to team Confluence space
+Add to navigation/table of contents
+Send notification to team with link
+Archive FY25 priorities document
+
+Value Statement: Aligns team on strategic objectives for FY26
+
+TICKET 17: Upload Onboarding Documentation to Confluence
+Type: Task
+Epic: Internal Documentation
+Sprint: 25-23
+Story Points: 1-2
+Assignee: Jake
+Summary: Publish contractor onboarding documentation
+Description:
+As a team lead, I want to upload the onboarding documentation I've been sharing with Aaron to Confluence so that all new team members have consistent onboarding materials.
+Acceptance Criteria:
+
+Upload all onboarding documents to Confluence
+Organize in logical folder structure
+Create onboarding checklist page
+Link from main team page
+Notify team of availability
+
+Value Statement: Streamlines onboarding process for new contractors
+
+Summary
+Total New Tickets: 17
+Sprint 25-23: 12 tickets
+Sprint 25-24: 2 tickets
+Sprint 25-26: 2 tickets
+Sprint 26-01: 1 ticketRetry
