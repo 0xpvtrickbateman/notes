@@ -1,0 +1,94 @@
+### 1. Meeting Information
+- **Topic:** Sprint Planning and Project Updates
+- **Date & Time:** Not specified
+- **Participants:** Jake (Nate/Jacob), Nate (James - key decision-maker/team lead), Jake (Andre), James Scott (Tom), Sue (Sue), Jake
+### 2. Discussion Overview
+- **Agenda Item 1: Sprint 25-22 Completion and 25-23 Planning**
+  - **Key Points:** 
+    - Nate: "Sprint 25, 22, everything's completed. Alright, so we'll start with 25, 23. We have four sprints left for this calendar year, and then I have these four for 2026."
+    - Nate: "Your processing time metric is already in there, so we'll start with that."
+- **Supporting Data:** [4] sprints remaining for calendar year, sprints planned for [2026]
+  - **Interim Conclusion:** Moving to next sprint planning phase
+- **Agenda Item 2: User Group Audit Enhancement**
+  - **Key Points:**
+    - Nate: "enhancing the user group audit notebook and the resulting dashboard that we have"
+    - Nate: "there's like 53 AA groups. I think almost all of them are out of date"
+    - Andre: "when I try to use my like for the NPD i see still i see that no value for the group level"
+  - **Supporting Data:** [53] AA groups identified as potentially outdated
+  - **Recommended Actions:** Update wildcard searches for AA-GPS-RNA-SEP and NPD-related groups
+- **Agenda Item 3: OCR Project Status**
+  - **Key Points:**
+    - Jake: "So I've messaged Josh. I haven't heard back from him, but I'm reaching out to the contractor lead next Sprint"
+    - Jake: "we need to align on metrics before we can do anything"
+  - **Points of Divergence:** Waiting on external stakeholder response
+  - **Interim Conclusion:** Proceeding with contractor lead outreach if no response received
+- **Agenda Item 4: Document Review and Budget Analysis**
+  - **Key Points:**
+    - Nate: "Jacob, did you ever finish the document? Because I know I drafted one and I handed it off to you. We need to push that up to the leadership chain before we start on this."
+    - Jake: "Yeah, no, we totally do. And that's why I was talking to you and Josh about the stacks, because that completely changes the whole budget of the project."
+  - **Points of Divergence:** Discussion on whether to wait for stacks analysis or proceed with current document
+  - **Interim Conclusion:** Include cost impact analysis with caveat about stacks mitigation
+- **Agenda Item 5: Databricks API Updates**
+  - **Key Points:**
+    - Nate: "It looks like they've got a new API. It's 2.2 now instead of 2.1"
+    - Nate: "This will help us for tagging jobs later on, but also once we start getting permissions to the NPD, AA, E22, all those jobs"
+  - **Supporting Data:** API version upgrade from [2.1] to [2.2]
+  - **Recommended Actions:** Explore job and workflow API calls for bulk updates
+### 3. Decisions Made
+- **Confirmed Items:** 
+  ★ Archive Division Y Databricks ticket due to rewritten approach
+  ★ Move user group audit enhancements to Sprint [23]
+  ★ Assign Databricks API work to Andre
+  ★ Create liquid clustering investigation tickets for remaining workflows
+  ★ Document to be updated by Jake by [Monday or Tuesday]
+  ★ Archive outdated GitHub integration tickets
+  ★ Remove three test repositories from team access
+  ★ Maintain CDO Shared Workspace for search functionality
+- **Items Pending Verification:** 
+  ◆ Statistician ETA still unknown
+  ◆ Josh's response on OCR project KPIs
+  ◆ Databricks instance compatibility with API [2.2]
+  ◆ OCR implementation details remain "black box"
+  ◆ SBC integration personnel assignment pending
+  ◆ E22 team collaboration scheduling
+### 4. Actions
+- **Task:** Write follow-up ticket for OCDO cleanup tied to [1737]
+- **Responsible Person:** @Nate
+- **Deadline:** Current sprint
+- **Task:** Create exploratory analysis ticket for liquid clustering rollout
+- **Responsible Person:** @Jake  
+- **Deadline:** Next sprint
+- **Task:** Update wildcard searches for AA teams in user group audit
+- **Responsible Person:** @Andre
+- **Deadline:** Sprint [23]
+- **Task:** Investigate NPD-related groups for audit inclusion
+- **Responsible Person:** Team member (unspecified)
+- **Deadline:** Sprint [23]
+- **Task:** Follow up with contractor lead if no Josh response
+- **Responsible Person:** @Jake
+- **Deadline:** Next sprint
+- **Task:** Update document with cost impact analysis and stacks caveat
+- **Responsible Person:** @Jacob
+- **Deadline:** [Monday or Tuesday]
+- **Task:** Write bug ticket for null values in user group data
+- **Responsible Person:** @Jake  
+- **Deadline:** Not specified
+- **Task:** Create tickets for repository cleanup and automated workspace sync
+- **Responsible Person:** @Jake
+- **Deadline:** Sprint [26]
+### 5. Risk Alerts
+- **Potential Issues:**
+  - Null values appearing in user group mapping function and data affecting functionality
+  - OCR project blocked pending stakeholder alignment on KPIs
+  - [53] AA groups potentially outdated requiring cleanup effort
+  - Databricks API version compatibility uncertain
+  - Unknown personnel for SBC integration
+  - Nate departure timeline affecting project continuity
+- **Contingency Plans:**
+  - Create bug ticket if null values persist in array sort function
+  - Escalate to contractor lead if branch chief doesn't respond
+  - Validate group findings with teams during cleanup phase
+  - Test both API versions [2.1] and [2.2] for compatibility
+  - Bug ticket created to address COALESCE statement logic
+  - Database-wide permissions project assigned to Brandon post-group solidification
+  - Sprint planning extended through [2026] to accommodate transitions
