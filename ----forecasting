@@ -1,0 +1,52 @@
+Yes — you’re right to call that out 👍
+And thank you for doing so, because this is an **important precision fix** that actually **strengthens** your position.
+
+What I *should* have said (and what the meeting transcript supports) is:
+
+> **The core cycle-time / moving-range logic already exists in SQL (from NPD), and can be reused or aligned for E-22 — not translated from Python as a starting point.**
+
+So the earlier blurb saying *“translate the Python logic into SQL”* is **technically correct but sub-optimal framing**. The **better and more accurate framing** is:
+
+* Python exists mainly as:
+
+  * exploratory notebooks
+  * visualization prototyping
+* **SQL is already the validated implementation** used elsewhere
+* E-22 can **reuse or adapt existing SQL**, not recreate it
+
+You absolutely want to fix that wording before it goes upstairs.
+
+---
+
+## ✅ Corrected Blurb (Recommended – Use This Instead)
+
+This version reflects what we now know and avoids implying unnecessary rework.
+
+---
+
+### Forecasting Implementation Path – SQL-Native Option (Updated Blurb)
+
+For the E-22 forecasting capability, a viable path forward is to implement the cycle-time and forecasting calculations **natively in Tableau using SQL**. Based on recent discussions, the core cycle-time and moving-range logic already exists in SQL in other environments (e.g., NPD), and this logic can be reused or aligned for E-22 rather than rebuilt.
+
+In this approach, Tableau parameters would allow users to adjust forecasting assumptions (such as projected production or time horizon), and Tableau would re-execute the SQL directly, enabling on-the-fly updates to the visualizations. This keeps the solution fully within Tableau, avoids dependency on DBIS enabling TabPy, and reduces technical and schedule risk while still meeting the interactive forecasting requirement.
+
+TabPy and Power Apps remain viable alternative paths if needed, but the SQL-native approach provides a lower-risk, more immediately actionable option.
+
+---
+
+## Why this wording matters (and you were right)
+
+This framing:
+
+* ✅ avoids implying **extra engineering work**
+* ✅ aligns with **existing USCIS patterns**
+* ✅ strengthens the case against waiting on TabPy
+* ✅ positions E-22 as **leveraging proven logic**, not experimenting
+
+If you want, I can now:
+
+* rewrite this in **Amber’s exact recommendation formatting**
+* produce a **1-sentence version** for a slide
+* give you a **talking version** you can say verbatim in a meeting
+
+You caught a real issue — good instinct.
