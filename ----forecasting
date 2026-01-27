@@ -1,52 +1,162 @@
-Yes — you’re right to call that out 👍
-And thank you for doing so, because this is an **important precision fix** that actually **strengthens** your position.
+You can use a Python geocoding package in Databricks (e.g., geopy with OpenStreetMap Nominatim) so you don’t need an API key, but there are two important caveats:
 
-What I *should* have said (and what the meeting transcript supports) is:
+Nominatim’s usage policy forbids heavy/bulk geocoding; 100k addresses at ~1 request/second will take many hours and may violate their ToS.
+There is no offline package that can reliably give street‑level lat/long for arbitrary US addresses without hitting some external service or internal geocoder.
 
-> **The core cycle-time / moving-range logic already exists in SQL (from NPD), and can be reused or aligned for E-22 — not translated from Python as a starting point.**
+So the code below is technically how to do it, but you should clear it with your IT/lead before running on all 100k. It’s safer to run on a smaller subset or use an approved, bulk geocoding service.
 
-So the earlier blurb saying *“translate the Python logic into SQL”* is **technically correct but sub-optimal framing**. The **better and more accurate framing** is:
+0. Install the package (Databricks notebook cell)
+PYTHON
+ Copy
+%pip install geopy
 
-* Python exists mainly as:
 
-  * exploratory notebooks
-  * visualization prototyping
-* **SQL is already the validated implementation** used elsewhere
-* E-22 can **reuse or adapt existing SQL**, not recreate it
+Then restart the cluster or at least the Python process when prompted.
 
-You absolutely want to fix that wording before it goes upstairs.
+1. Make sure LATITUDE / LONGITUDE columns exist (SQL)
+SQL
+ Copy
+USE cdo_restricted;
 
----
+ALTER TABLE consolidated_leads_uscis_to_ice_for_addresses_20260113
+ADD COLUMNS IF NOT EXISTS (
+  LATITUDE  DOUBLE,
+  LONGITUDE DOUBLE
+);
 
-## ✅ Corrected Blurb (Recommended – Use This Instead)
+2. Build a distinct list of addresses that still need geocoding (Python)
 
-This version reflects what we now know and avoids implying unnecessary rework.
+This also strips apartment/unit/etc. from the street line to improve match quality.
 
----
+PYTHON
+ Copy
+from pyspark.sql import functions as F
 
-### Forecasting Implementation Path – SQL-Native Option (Updated Blurb)
+MAIN_TABLE = "cdo_restricted.consolidated_leads_uscis_to_ice_for_addresses_20260113"
 
-For the E-22 forecasting capability, a viable path forward is to implement the cycle-time and forecasting calculations **natively in Tableau using SQL**. Based on recent discussions, the core cycle-time and moving-range logic already exists in SQL in other environments (e.g., NPD), and this logic can be reused or aligned for E-22 rather than rebuilt.
+df = spark.table(MAIN_TABLE)
 
-In this approach, Tableau parameters would allow users to adjust forecasting assumptions (such as projected production or time horizon), and Tableau would re-execute the SQL directly, enabling on-the-fly updates to the visualizations. This keeps the solution fully within Tableau, avoids dependency on DBIS enabling TabPy, and reduces technical and schedule risk while still meeting the interactive forecasting requirement.
+addr_df = (
+    df.filter((F.col("LATITUDE").isNull()) | (F.col("LONGITUDE").isNull()))
+      .withColumn(
+          "STREET_FOR_GEOCODING",
+          F.regexp_replace(
+              F.col("ADDRESS"),
+              r"(?i)\s+(APT|APARTMENT|UNIT|STE|SUITE|FL|FLR|#).*$",
+              ""
+          )
+      )
+      .select("ADDRESS", "CITY", "STATE", "ZIP", "STREET_FOR_GEOCODING")
+      .dropDuplicates()
+)
 
-TabPy and Power Apps remain viable alternative paths if needed, but the SQL-native approach provides a lower-risk, more immediately actionable option.
+print("Distinct addresses to geocode:", addr_df.count())
 
----
+3. Geocode using geopy + Nominatim (Python)
 
-## Why this wording matters (and you were right)
+This uses Nominatim (no key) with a RateLimiter. At 1 request/second, 100k records will take ~28 hours.
 
-This framing:
+PYTHON
+ Copy
+import pandas as pd
+from geopy.geocoders import Nominatim
+from geopy.extra.rate_limiter import RateLimiter
 
-* ✅ avoids implying **extra engineering work**
-* ✅ aligns with **existing USCIS patterns**
-* ✅ strengthens the case against waiting on TabPy
-* ✅ positions E-22 as **leveraging proven logic**, not experimenting
+# Convert to pandas (100k rows is OK)
+addr_pdf = addr_df.toPandas()
+print("Rows in pandas:", len(addr_pdf))
 
-If you want, I can now:
+def build_full_address(row):
+    parts = [
+        row["STREET_FOR_GEOCODING"],
+        row["CITY"],
+        row["STATE"],
+        row["ZIP"],
+    ]
+    parts = [str(p).strip() for p in parts if p is not None and str(p).strip() != ""]
+    return ", ".join(parts)
 
-* rewrite this in **Amber’s exact recommendation formatting**
-* produce a **1-sentence version** for a slide
-* give you a **talking version** you can say verbatim in a meeting
+addr_pdf["FULL_ADDRESS"] = addr_pdf.apply(build_full_address, axis=1)
 
-You caught a real issue — good instinct.
+# Set up Nominatim geocoder
+geolocator = Nominatim(user_agent="databricks_geocoder")  # required
+geocode = RateLimiter(
+    geolocator.geocode,
+    min_delay_seconds=1.0,   # respect Nominatim's usage policy
+    max_retries=3,
+    error_wait_seconds=5.0
+)
+
+# Perform geocoding
+locations = []
+for i, addr in enumerate(addr_pdf["FULL_ADDRESS"]):
+    try:
+        loc = geocode(addr)
+    except Exception:
+        loc = None
+    locations.append(loc)
+
+    if (i + 1) % 1000 == 0:
+        print(f"Geocoded {i + 1} / {len(addr_pdf)}")
+
+# Extract lat/long
+latitudes = []
+longitudes = []
+for loc in locations:
+    if loc is not None:
+        latitudes.append(loc.latitude)
+        longitudes.append(loc.longitude)
+    else:
+        latitudes.append(None)
+        longitudes.append(None)
+
+addr_pdf["LATITUDE"] = latitudes
+addr_pdf["LONGITUDE"] = longitudes
+
+# Keep only columns we will merge on
+addr_pdf = addr_pdf[["ADDRESS", "CITY", "STATE", "ZIP", "LATITUDE", "LONGITUDE"]]
+
+4. Save the geocoded results to a temp Delta table (Python)
+PYTHON
+ Copy
+geocoded_sdf = spark.createDataFrame(addr_pdf)
+
+# Optional: drop rows where geocoding failed completely
+from pyspark.sql import functions as F
+geocoded_sdf = geocoded_sdf.filter(
+    (F.col("LATITUDE").isNotNull()) & (F.col("LONGITUDE").isNotNull())
+)
+
+TEMP_GEOCODED_TABLE = "cdo_restricted.tmp_geocoded_addresses"
+
+geocoded_sdf.write.mode("overwrite").saveAsTable(TEMP_GEOCODED_TABLE)
+
+print(f"Wrote {geocoded_sdf.count()} rows to {TEMP_GEOCODED_TABLE}")
+
+5. Merge lat/long back into your main table (SQL)
+SQL
+ Copy
+USE cdo_restricted;
+
+MERGE INTO consolidated_leads_uscis_to_ice_for_addresses_20260113 AS t
+USING tmp_geocoded_addresses AS s
+ON  t.ADDRESS = s.ADDRESS
+AND t.CITY    = s.CITY
+AND t.STATE   = s.STATE
+AND t.ZIP     = s.ZIP
+WHEN MATCHED THEN UPDATE SET
+  t.LATITUDE  = s.LATITUDE,
+  t.LONGITUDE = s.LONGITUDE;
+
+6. Quick check (SQL)
+SQL
+ Copy
+SELECT COUNT(*) AS remaining_without_coordinates
+FROM cdo_restricted.consolidated_leads_uscis_to_ice_for_addresses_20260113
+WHERE LATITUDE IS NULL OR LONGITUDE IS NULL;
+
+Important constraints
+This approach depends on an external service (Nominatim) even though you don’t use an API key. For 100k rows, it is slow and likely outside what Nominatim allows for “fair use.”
+There is no purely local/package‑only way to get accurate street‑level geocoding for arbitrary addresses without using some kind of geocoding service or pre‑built reference dataset.
+
+If this dataset is mission‑critical, the right path is to get access to an approved geocoding service (internal or external) and adjust the code to call that endpoint instead of Nominatim.
