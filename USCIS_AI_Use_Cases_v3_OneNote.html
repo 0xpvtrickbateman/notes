@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>USCIS OPQ AI Use Cases v3</title>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #333; max-width: 900px; margin: 0 auto; padding: 40px; line-height: 1.5; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  td, th { border: 1px solid #ccc; padding: 8px 10px; vertical-align: top; }
+</style>
+</head>
+<body>
+
+<!-- TITLE -->
+<div style="text-align:center; margin: 60px 0 40px 0;">
+  <p style="font-size:16px; color:#666; margin:0 0 8px 0;">USCIS Office of Performance and Quality</p>
+  <h1 style="font-size:36px; color:#1B3A5C; margin:0 0 8px 0;">AI Use Cases</h1>
+  <p style="font-size:20px; color:#2E75B6; margin:0 0 6px 0;">Version 3.0</p>
+  <p style="font-size:15px; color:#666;">February 2026</p>
+</div>
+
+<!-- CATEGORIES -->
+<h2 style="text-align:center; color:#1B3A5C; font-size:18px; margin-top:30px;">Use Case Categories</h2>
+
+<table style="width:80%; margin:16px auto;">
+  <tr>
+    <td style="background:#2E75B6; color:white; font-weight:bold; text-align:center; width:180px; border:none; padding:14px;">AI<br>Implementation</td>
+    <td style="background:#D5E8F0; border:none; padding:12px 16px;">Creation, maintenance, and operation of AI solutions. These use cases improve how OPQ builds, tests, documents, and manages its data and analytics products. They make the team faster and more efficient.</td>
+  </tr>
+</table>
+<table style="width:80%; margin:0 auto 20px auto;">
+  <tr>
+    <td style="background:#00796B; color:white; font-weight:bold; text-align:center; width:180px; border:none; padding:14px;">Business Value</td>
+    <td style="background:#E0F2F1; border:none; padding:12px 16px;">Using AI to deliver direct operational value to USCIS. These use cases help analysts, leadership, and program offices get answers faster, make better decisions, and reduce manual effort on routine tasks.</td>
+  </tr>
+</table>
+
+<!-- PLATFORMS -->
+<h2 style="color:#1B3A5C; font-size:18px; margin-top:30px;">Platforms</h2>
+<p style="color:#666; font-style:italic;">All use cases operate within tools already available or in active negotiation for OPQ.</p>
+
+<table style="width:80%; margin:16px auto;">
+  <tr>
+    <td style="background:#1A237E; color:white; font-weight:bold; text-align:center; width:180px; border:none; padding:14px;">DHS Chat</td>
+    <td style="background:#E8EAF6; border:none; padding:12px 16px;">DHS-managed internal AI chatbot. Available to all USCIS staff today. Supports document upload, conversational queries, and prompt-based workflows. No additional procurement required.</td>
+  </tr>
+</table>
+<table style="width:80%; margin:0 auto 20px auto;">
+  <tr>
+    <td style="background:#FF6F00; color:white; font-weight:bold; text-align:center; width:180px; border:none; padding:14px;">Databricks</td>
+    <td style="background:#FFF3E0; border:none; padding:12px 16px;">OPQ&rsquo;s data engineering and analytics platform. Includes AI Playground, Foundation Model APIs, Databricks Assistant, MLflow, and notebook-based development. Some AI features require enablement based on workspace configuration.</td>
+  </tr>
+</table>
+
+<!-- STATUS LEGEND -->
+<h2 style="color:#1B3A5C; font-size:18px; margin-top:30px;">Status Legend</h2>
+<ul style="margin:6px 0 12px 20px;">
+  <li><span style="color:#388E3C; font-weight:bold;">&#9989; Current Use:</span> OPQ teams are already doing this today using existing tools.</li>
+  <li><span style="color:#1976D2; font-weight:bold;">&#9654; Proposed:</span> Achievable with current or soon-to-be-available tools. Minimal or no additional security asks.</li>
+</ul>
+
+<!-- FIELD GUIDE -->
+<h2 style="color:#1B3A5C; font-size:18px; margin-top:24px;">Use Case Fields</h2>
+<ul style="margin:6px 0 20px 20px;">
+  <li><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> The problem being solved and the value delivered.</li>
+  <li><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> What goes in, what comes out.</li>
+  <li><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Who uses it and what it changes about their workflow.</li>
+</ul>
+
+<hr style="border:none; border-top:3px solid #2E75B6; margin:40px 0 20px 0;">
+
+<!-- ============================================================ -->
+<!-- AI IMPLEMENTATION -->
+<!-- ============================================================ -->
+<table style="width:100%; border:none; margin:30px 0 16px 0;">
+  <tr>
+    <td style="width:6px; background:#2E75B6; border:none; padding:0;"></td>
+    <td style="background:#D5E8F0; border:none; padding:16px 20px;">
+      <h2 style="color:#2E75B6; margin:0 0 4px 0; font-size:22px;">AI Implementation</h2>
+      <p style="color:#666; font-style:italic; margin:0; font-size:14px;">Creation, maintenance, and operation of AI solutions &mdash; making the team faster and more efficient</p>
+    </td>
+  </tr>
+</table>
+
+<!-- DHS Chat sub -->
+<table style="width:100%; border:none; margin:16px 0 12px 0;">
+  <tr><td style="background:#E8EAF6; border:none; padding:10px 16px; font-size:18px; font-weight:bold; color:#1A237E;">DHS Chat</td></tr>
+</table>
+
+<!-- UC 1 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">1. Code Language Conversion</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#388E3C; font-weight:bold; font-size:12px;">&#9989; Current Use</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ data engineers frequently need to convert code between languages &mdash; Python to SQL, SQL to PySpark, SAS to Python, or R to PySpark &mdash; to work within the Databricks environment. Manually rewriting code is time-consuming and error-prone. Engineers currently paste source code into DHS Chat, receive the converted version, and paste it into a Databricks notebook, saving hours of manual translation per conversion.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer pastes source code (e.g., a SAS procedure, R script, or legacy SQL query) into DHS Chat and specifies the target language. DHS Chat returns the converted code with explanations of any syntax differences or logic changes. Input: source code + target language. Output: converted code ready to paste into a Databricks notebook, with notes on translation decisions.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Data engineers use this daily when migrating legacy code, integrating code from other teams, or translating prototypes into production-ready PySpark. The converted code is always reviewed and tested by the engineer before committing &mdash; DHS Chat handles the mechanical translation, the engineer validates the logic.</p>
+<div style="border-left: 4px solid #999; background:#F5F5F5; padding:10px 14px; margin:8px 0 16px 0;">
+  <p style="margin:0 0 4px 0; font-weight:bold; color:#666; font-size:13px;">Example:</p>
+  <p style="margin:0; font-style:italic; font-size:13px;">An engineer receives a SAS script from another office that calculates processing time metrics. Instead of spending 2-3 hours manually rewriting the PROC SQL and DATA steps into PySpark, they paste it into DHS Chat with the prompt: &ldquo;Convert this SAS code to PySpark for use in a Databricks notebook. Preserve the business logic and add comments explaining any translation decisions.&rdquo; The converted code is returned in minutes, reviewed, and tested in the notebook.</p>
+</div>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 2 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">2. Code Explanation and Reverse Engineering</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#388E3C; font-weight:bold; font-size:12px;">&#9989; Current Use</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ manages a large codebase of Databricks notebooks across multiple teams and contracts. When engineers are assigned to maintain or extend notebooks they didn&rsquo;t write, understanding the existing logic is the biggest time sink. Engineers currently paste unfamiliar code into DHS Chat to get plain-language explanations, dramatically compressing ramp-up time on inherited code.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer pastes a code block, function, or entire notebook cell into DHS Chat and asks for an explanation. DHS Chat returns a step-by-step walkthrough: what the code does, why certain approaches were used, expected inputs and outputs, and any potential issues. Input: unfamiliar code. Output: plain-language explanation with annotations.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Especially valuable during team transitions and contractor onboarding. Instead of spending days tracing through unfamiliar notebooks line by line, a new engineer can understand complex pipeline logic in minutes. Teams also use it to document previously undocumented notebooks &mdash; paste the code in, get the explanation, use that as the basis for documentation.</p>
+<div style="border-left: 4px solid #999; background:#F5F5F5; padding:10px 14px; margin:8px 0 16px 0;">
+  <p style="margin:0 0 4px 0; font-weight:bold; color:#666; font-size:13px;">Example:</p>
+  <p style="margin:0; font-style:italic; font-size:13px;">A new contractor is assigned to maintain a Databricks notebook that calculates USCIS backlog metrics. The notebook has minimal comments and uses complex window functions. They paste a 40-line PySpark transformation into DHS Chat: &ldquo;Explain what this code does step by step, including what the window functions are calculating and what the final output represents.&rdquo; Within minutes, they understand the logic that would have taken a full day to trace manually.</p>
+</div>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 3 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">3. Code Optimization and Bug Fixing</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#388E3C; font-weight:bold; font-size:12px;">&#9989; Current Use</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> When a Databricks notebook throws an error, engineers spend significant time reading stack traces, isolating the issue, and testing fixes. Pasting the error and relevant code into DHS Chat shortens this debugging cycle from hours to minutes. Engineers also use DHS Chat to optimize slow-running queries, getting suggestions they then validate in the notebook. This is one of the highest-frequency uses of DHS Chat across OPQ engineering teams.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer pastes the error message, stack trace, and relevant code block into DHS Chat. DHS Chat identifies the likely root cause, explains why the error occurred, and suggests a fix. For optimization, engineers paste slow code and ask for performance improvements. Input: error output + code, or slow code + goal. Output: diagnosis, explanation, and corrected/optimized code.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Junior engineers resolve issues faster instead of blocking on senior engineer availability. The value compounds &mdash; engineers learn from the explanations and encounter the same class of bug less frequently. This workflow would be even more powerful if available natively within Databricks via Databricks Genie or Databricks Assistant, eliminating the copy-paste step and giving the AI direct context on the notebook, cluster configuration, and data schema.</p>
+<div style="border-left: 4px solid #999; background:#F5F5F5; padding:10px 14px; margin:8px 0 16px 0;">
+  <p style="margin:0 0 4px 0; font-weight:bold; color:#666; font-size:13px;">Example:</p>
+  <p style="margin:0; font-style:italic; font-size:13px;">A dashboard-feeding notebook fails during a scheduled run with a &ldquo;AnalysisException: Column ambiguous&rdquo; error after an upstream schema change. The engineer pastes the error and join logic into DHS Chat: &ldquo;This PySpark join is throwing a column ambiguity error after a schema change. Here&rsquo;s the code and the error. What&rsquo;s the fix?&rdquo; DHS Chat identifies the duplicate column name and suggests qualifying column references with table aliases.</p>
+</div>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 4 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">4. Documentation Drafting</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#388E3C; font-weight:bold; font-size:12px;">&#9989; Current Use</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ data engineers spend significant time writing documentation for notebooks, pipelines, models, and processes. Much of this documentation follows predictable structures. Engineers currently paste code and notes into DHS Chat to generate first drafts, saving hours per document while ensuring documentation doesn&rsquo;t fall behind development.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer pastes code snippets, notebook descriptions, or bullet-point notes into DHS Chat with a documentation prompt. DHS Chat generates a structured draft including purpose, data sources, methodology, inputs/outputs, and known limitations. Input: rough notes, code, or pipeline descriptions. Output: formatted documentation draft ready for review.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Data engineers generate first-draft documentation at the end of each sprint. Technical writers use AI drafts as starting points. Compliance reviewers receive more complete documentation because the barrier to writing it is lower.</p>
+<div style="border-left: 4px solid #999; background:#F5F5F5; padding:10px 14px; margin:8px 0 16px 0;">
+  <p style="margin:0 0 4px 0; font-weight:bold; color:#666; font-size:13px;">Example:</p>
+  <p style="margin:0; font-style:italic; font-size:13px;">An engineer finishes building a new ETL pipeline that ingests CLAIMS data. They paste the notebook&rsquo;s key cells and their sprint notes into DHS Chat: &ldquo;Generate technical documentation for this pipeline following this template: Purpose, Data Sources, Transformations, Output Tables, Schedule, Error Handling, Known Limitations.&rdquo; The draft is returned in 2 minutes; the engineer spends 15 minutes editing rather than 2 hours writing from scratch.</p>
+</div>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 5 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">5. Prompt Optimizer and Prompt Library</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Most OPQ staff write DHS Chat prompts from scratch every time, resulting in inconsistent quality. A prompt optimizer refines rough prompts into effective ones, and a shared library of tested templates for common tasks standardizes quality. New employees get productive with AI immediately instead of learning through trial and error.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> For the optimizer: user enters a rough prompt or task description, and it returns a restructured version using proven patterns (role assignment, step-by-step instructions, output format). For the library: OPQ maintains a shared collection of tested templates by task type. Input: draft prompt or task selection. Output: optimized prompt or populated template.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Staff consult the library before starting common DHS Chat tasks. Team leads contribute new templates when they discover effective prompts. The library becomes OPQ&rsquo;s institutional knowledge for AI usage, reducing the learning curve and improving output consistency across all teams.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- Databricks sub -->
+<table style="width:100%; border:none; margin:24px 0 12px 0;">
+  <tr><td style="background:#FFF3E0; border:none; padding:10px 16px; font-size:18px; font-weight:bold; color:#FF6F00;">Databricks</td></tr>
+</table>
+
+<!-- UC 6 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">6. AI-Assisted Unit Test Generation</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Test coverage across OPQ&rsquo;s notebooks and ETL pipelines is inconsistent. Writing tests manually is deprioritized during sprints. Databricks Assistant can generate test scaffolding directly from existing code, increasing coverage with minimal effort.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer opens a notebook and uses Databricks Assistant to generate unit tests. The assistant analyzes the code and produces test cases covering expected outputs, edge cases, null handling, and type validation. Input: existing notebook/Python code. Output: test scripts. Tests run against sample data, not production PII.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Engineers run the assistant on new code before committing. Sprint leads track test coverage as a quality metric. The automated test suite catches regressions on every commit via CI/CD, preventing production incidents.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 7 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">7. Experiment Tracking and Model Cataloging</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> When team members rotate contracts, knowledge of what models exist and what was tried disappears. MLflow experiment tracking preserves institutional knowledge. Model Registry provides a single catalog of all AI/ML models. Together they prevent redundant work and produce the AI inventory federal reporting requires.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> During model development, MLflow captures: training datasets, hyperparameters, evaluation metrics, and model artifacts. Model Registry stores approved models with metadata: owner, use case, data sources, version history, and status. Input: experiment parameters logged during development. Output: searchable experiment history and model catalog.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Data scientists check history before starting new work. AIGB reviewers reference the catalog for governance. OPQ leadership uses it for the annual AI use case inventory. New team members use it to understand the model landscape.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 8 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">8. Cost Tracking and DBU Monitoring</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Databricks compute costs are growing and OPQ has limited visibility into what&rsquo;s driving spend. Without cost attribution by team, pipeline, or use case, budget conversations rely on guesswork. Querying system tables enables real-time monitoring and prevents budget overruns.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> System Tables (system.billing.usage) provide granular DBU consumption per cluster, job, notebook, and endpoint. Scheduled queries aggregate into summaries by team and use case. Anomaly detection flags unexpected spikes. Input: System Tables usage logs. Output: cost attribution dashboards, trend reports, and anomaly alerts.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> OPQ leadership reviews cost dashboards for budget management. Engineers receive alerts when jobs exceed expected costs. Finance uses the data to forecast quarterly spend. Directly addresses the concern about running out of DBU budget early.</p>
+
+<hr style="border:none; border-top:3px solid #00796B; margin:40px 0 20px 0;">
+
+<!-- ============================================================ -->
+<!-- BUSINESS VALUE -->
+<!-- ============================================================ -->
+<table style="width:100%; border:none; margin:30px 0 16px 0;">
+  <tr>
+    <td style="width:6px; background:#00796B; border:none; padding:0;"></td>
+    <td style="background:#E0F2F1; border:none; padding:16px 20px;">
+      <h2 style="color:#00796B; margin:0 0 4px 0; font-size:22px;">Business Value</h2>
+      <p style="color:#666; font-style:italic; margin:0; font-size:14px;">Using AI to deliver direct operational value &mdash; faster answers, better decisions, less manual work</p>
+    </td>
+  </tr>
+</table>
+
+<!-- DHS Chat sub -->
+<table style="width:100%; border:none; margin:16px 0 12px 0;">
+  <tr><td style="background:#E8EAF6; border:none; padding:10px 16px; font-size:18px; font-weight:bold; color:#1A237E;">DHS Chat</td></tr>
+</table>
+
+<!-- UC 9 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">9. Policy Document Summarization</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ leadership regularly digests lengthy policy documents, audit reports, and directives. Reading a 50-100 page document takes hours. DHS Chat generates a structured summary in minutes, letting leadership focus on the sections that matter most.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> User uploads a PDF or pastes text into DHS Chat with a summarization prompt. DHS Chat produces: key findings, action items for OPQ, deadlines, and open questions. Input: policy document. Output: 1-2 page structured summary with section references.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Leadership uses summaries for briefing prep. Policy analysts use summaries as starting points. All summaries are labeled as AI-generated drafts &mdash; the original document remains authoritative.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 10 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">10. Meeting Notes and Action Item Extraction</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ staff attend numerous meetings weekly. Notes are inconsistent, action items get lost, and follow-up falls through. DHS Chat extracts structured action items from raw notes, saving time and improving accountability.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Note-taker pastes raw notes into DHS Chat. DHS Chat returns: structured summary, decisions made, action items with owners and due dates, and open questions. Input: unstructured notes. Output: formatted summary with tagged action items.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Project managers distribute AI-generated summaries for review. Action items feed into sprint planning. Meeting follow-through improves because nothing gets buried.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 11 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">11. Email and Communication Drafting</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Staff draft status updates, stakeholder communications, and memos regularly. DHS Chat generates first drafts from brief instructions, letting the author focus on substance.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> User provides key points, audience, and tone. DHS Chat produces a draft. Input: bullet points or instructions. Output: formatted draft ready for editing.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Staff edit drafts rather than writing from scratch. Saves 15-30 minutes per complex communication. Particularly valuable for professional government writing conventions.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 12 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">12. Technical Concept Translation</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ frequently explains technical concepts to non-technical stakeholders. DHS Chat rewrites technical content for the target audience in seconds.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer pastes technical content with audience instructions. DHS Chat rewrites at the appropriate level. Input: technical content + audience. Output: plain-language version.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Engineers use it before sending updates to non-technical stakeholders. Leadership uses it to understand technical briefings. Improves cross-functional communication.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 13 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">13. Research and Policy Q&amp;A</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#1A237E; font-weight:bold; font-size:13px;">DHS Chat</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Analysts research policy questions, compare frameworks, and investigate best practices. DHS Chat provides rapid initial synthesis, helping analysts identify areas to investigate further.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Analyst asks a research question. DHS Chat provides a synthesized response with key points, caveats, and suggested follow-up. Input: research question. Output: structured starting-point response.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Analysts use responses as starting points, not final answers. Useful for getting oriented on unfamiliar topics before diving into primary sources. Saves hours per research task.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- Databricks sub -->
+<table style="width:100%; border:none; margin:24px 0 12px 0;">
+  <tr><td style="background:#FFF3E0; border:none; padding:10px 16px; font-size:18px; font-weight:bold; color:#FF6F00;">Databricks</td></tr>
+</table>
+
+<!-- UC 14 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">14. Natural Language Data Queries</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> Analysts frequently need quick answers from data tables: distinct counts, date ranges, record volumes. Every question currently requires SQL knowledge or an engineering request. AI Playground and Databricks Assistant let analysts ask in plain English. Enabling Databricks Genie would make this even more powerful with persistent, context-aware data assistance.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Analyst opens AI Playground, Assistant, or Genie and asks a question in natural language. The AI generates and executes the SQL, returning results. Input: natural language question + connected table. Output: query results plus the generated SQL for transparency.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Analysts get answers in seconds. Engineers are freed from ad hoc requests (est. 20-30% of bandwidth). Generated SQL is visible, so analysts learn SQL over time. Access restricted to non-sensitive analytical tables.</p>
+<div style="border-left: 4px solid #999; background:#F5F5F5; padding:10px 14px; margin:8px 0 16px 0;">
+  <p style="margin:0 0 4px 0; font-weight:bold; color:#666; font-size:13px;">Example:</p>
+  <p style="margin:0; font-style:italic; font-size:13px;">An OPQ analyst needs to know how many distinct receipt numbers exist in a processing table for a quarterly report. They type: &ldquo;What is the distinct count of receipt_number in this table, broken out by form_type, for records created in Q3 2025?&rdquo; The result is returned in seconds with the SQL shown for verification.</p>
+</div>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 15 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">15. Data Profiling and Exploration</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> When OPQ receives a new data source, engineers spend hours profiling it manually. Databricks Assistant automates profiling, producing a comprehensive summary in minutes.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Engineer points the assistant at a table. It generates and runs profiling queries: row counts, column types, null percentages, distinct values, min/max, and sample values. Input: table reference. Output: structured data profile.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Engineers use profiles when onboarding new data sources. Analysts reference profiles before building queries. Quality discussions with upstream owners become more productive with quantified observations.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 16 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">16. Dashboard SQL Acceleration</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ builds Tableau dashboards backed by SQL queries. Writing and optimizing complex queries is time-consuming. Databricks Assistant generates and optimizes SQL directly in the notebook.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Developer describes the metric or pastes a slow query. The assistant generates optimized SQL or rewrites with improvements. Input: metric description or draft SQL. Output: production-ready SQL with explanations.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Dashboard developers accelerate query-writing. The assistant explains its optimizations, helping junior developers learn efficient patterns.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 17 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">17. Automated Data Quality Checks</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> OPQ analytics depend on data feeds from USCIS operational systems. Bad data in dashboards is typically discovered first by leadership. Automated monitoring catches problems at ingestion.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Delta Live Tables expectations validate data at each pipeline stage. Input: raw data feeds (ELIS, CLAIMS). Output: quality scorecards, quarantined records, automated alerts.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Engineers fix issues before bad data reaches production. Leadership receives weekly quality summaries. Patterns inform conversations with upstream data owners.</p>
+<hr style="border:none; border-top:1px solid #e0e0e0; margin:12px 0;">
+
+<!-- UC 18 -->
+<table style="width:100%; border:none; margin:20px 0 0 0;">
+  <tr>
+    <td style="border:none; padding:0;"><h3 style="color:#1B3A5C; font-size:17px; margin:0;">18. Predictive Volume Forecasting</h3></td>
+    <td style="border:none; text-align:center; width:120px; padding:0;"><span style="color:#1976D2; font-weight:bold; font-size:12px;">&#9654; Proposed</span></td>
+    <td style="border:none; text-align:right; width:100px; padding:0;"><span style="color:#FF6F00; font-weight:bold; font-size:13px;">Databricks</span></td>
+  </tr>
+</table>
+<p><span style="color:#1B5E20; font-weight:bold;">Business Case:</span> USCIS receipt volumes fluctuate by form type, season, and policy change. Resource allocation is reactive. Forecasting enables proactive staffing decisions weeks in advance.</p>
+<p><span style="color:#0D47A1; font-weight:bold;">Data Flow:</span> Historical receipt data feeds time-series models (Spark ML, MLflow). Input: historical operational data. Output: 30/60/90-day forecasts by form type with confidence intervals, visualized in Tableau.</p>
+<p><span style="color:#BF360C; font-weight:bold;">How It Will Be Used:</span> Leadership presents forecasts during resource planning. Service center directors use them for staffing. Forecasts are labeled as decision-support estimates, not deterministic projections.</p>
+
+<hr style="border:none; border-top:3px solid #1B3A5C; margin:40px 0 20px 0;">
+
+<!-- ============================================================ -->
+<!-- SUMMARY TABLE -->
+<!-- ============================================================ -->
+<h2 style="color:#1B3A5C; font-size:22px; margin-top:30px;">Summary: All Use Cases at a Glance</h2>
+
+<table style="width:100%; border-collapse:collapse; margin:16px 0;">
+  <tr style="background:#1B3A5C; color:white;">
+    <th style="border:1px solid #ccc; padding:8px; text-align:center; width:30px; font-size:13px;">#</th>
+    <th style="border:1px solid #ccc; padding:8px; text-align:left; font-size:13px;">Use Case</th>
+    <th style="border:1px solid #ccc; padding:8px; text-align:center; font-size:13px;">Category</th>
+    <th style="border:1px solid #ccc; padding:8px; text-align:center; font-size:13px;">Platform</th>
+    <th style="border:1px solid #ccc; padding:8px; text-align:center; font-size:13px;">Status</th>
+    <th style="border:1px solid #ccc; padding:8px; text-align:left; font-size:13px;">Security Ask</th>
+  </tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">1</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Code Language Conversion</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E2F0E8;">Current</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">2</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Code Explanation</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E2F0E8;">Current</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">3</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Code Optimization &amp; Debugging</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E2F0E8;">Current</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">4</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Documentation Drafting</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E2F0E8;">Current</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">5</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Prompt Optimizer &amp; Library</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">6</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Unit Test Generation</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">Databricks Assistant</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">7</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Experiment Tracking</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">MLflow (built-in)</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">8</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Cost Tracking &amp; Monitoring</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#D5E8F0;">AI Impl.</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">System Tables access</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">9</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Policy Summarization</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">10</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Meeting Notes &amp; Actions</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">11</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Email &amp; Comm Drafting</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">12</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Technical Translation</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">13</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Research &amp; Policy Q&amp;A</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E8EAF6;">DHS Chat</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">None</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">14</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Natural Language Queries</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">AI Playground / Genie</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">15</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Data Profiling</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">Databricks Assistant</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">16</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Dashboard SQL Acceleration</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">Databricks Assistant</td></tr>
+  <tr style="background:#f5f5f5;"><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">17</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Data Quality Checks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">Delta Live Tables</td></tr>
+  <tr><td style="border:1px solid #ccc; padding:6px; text-align:center; font-weight:bold;">18</td><td style="border:1px solid #ccc; padding:6px; font-weight:bold;">Volume Forecasting</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E0F2F1;">Biz Value</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#FFF3E0;">Databricks</td><td style="border:1px solid #ccc; padding:6px; text-align:center; background:#E3F2FD;">Proposed</td><td style="border:1px solid #ccc; padding:6px;">Spark ML (built-in)</td></tr>
+</table>
+
+<h3 style="color:#1B3A5C; font-size:17px; margin-top:24px;">Key Takeaways</h3>
+<ul style="margin:8px 0 20px 20px; line-height:1.7;">
+  <li><strong>4 of 18 use cases are already in active use today</strong> &mdash; OPQ engineers are already using DHS Chat for code conversion, code explanation, debugging, and documentation. These represent proven demand, not theoretical value.</li>
+  <li><strong>11 of 18 use cases require zero additional security asks</strong> &mdash; they work within DHS Chat and existing Databricks features.</li>
+  <li><strong>The remaining 7 require only feature enablement within Databricks</strong> (a platform USCIS already owns), not new procurement or ATO processes.</li>
+  <li><strong>Enabling Databricks Genie</strong> would consolidate several DHS Chat workarounds (code review, debugging, data queries) into a native experience with direct access to OPQ data, schemas, and notebook context &mdash; eliminating copy-paste friction and improving accuracy.</li>
+</ul>
+
+<h3 style="color:#1B3A5C; font-size:17px; margin-top:30px;">References</h3>
+<ul style="margin:8px 0 30px 20px; line-height:1.7;">
+  <li>Executive Order 14179 &ndash; Removing Barriers to American Leadership in Artificial Intelligence (Jan 23, 2025)</li>
+  <li>OMB M-25-21 &ndash; Accelerating Federal Use of AI through Innovation, Governance, and Public Trust (Apr 3, 2025)</li>
+  <li>DHS Directive 139-08 &ndash; Artificial Intelligence Use and Acquisition (Jan 15, 2025)</li>
+  <li>USCIS AI Governance Board (AIGB) Charter (Apr 2024)</li>
+</ul>
+
+</body>
+</html>
