@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CDAO Target Data Architecture &amp; Harness Context Layer</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --navy-deep:#14273D; --blue:#2E5C8A;
+    --tint:#EAF1F8; --tint2:#DCE8F4; --paper:#F7F8FA; --card:#FFFFFF;
+    --ink:#1B2733; --muted:#5A6675; --faint:#9AA4B2; --hair:#D5DEE9;
+    --risk:#B23A2E; --risk-tint:#FAEDEB; --risk-line:#E7C6C0;
+    --gold:#B08D3E; --gold-tint:#FCF7EA; --green:#2F7D55; --green-tint:#ECF7F1;
+    --r:14px;
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:"Aptos","Segoe UI",Arial,sans-serif;
+    --mono:"Cascadia Mono","Consolas","Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  /* ---------- top bar ---------- */
+  .topbar{display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap;
+    padding:22px 28px 18px;border-bottom:1px solid var(--hair);background:rgba(247,248,250,.90);backdrop-filter:blur(6px);position:sticky;top:0;z-index:30}
+  .brand h1{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.05;margin:0;color:var(--navy);letter-spacing:.2px}
+  .brand p{margin:4px 0 0;color:var(--muted);font-size:13.5px;max-width:76ch}
+  .badge{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;color:var(--blue);border:1px solid var(--tint2);background:var(--tint);border-radius:999px;padding:5px 9px;margin-left:auto;white-space:nowrap}
+
+  /* ---------- layout ---------- */
+  .layout{display:flex;align-items:stretch}
+  .stagewrap{flex:1;min-width:0;overflow-x:auto;padding:14px 14px 24px}
+  .stage{width:100%}
+  svg{width:100%;height:auto;display:block}
+
+  /* nodes */
+  .node{cursor:pointer}
+  .node .box{fill:var(--card);stroke:var(--hair);stroke-width:1;transition:stroke .18s,filter .18s,opacity .2s}
+  .node .box.tintB{fill:var(--tint2);stroke:var(--blue)}
+  .node .box.tint{fill:var(--tint)}
+  .node .box.paper{fill:#F2F4F7;stroke:var(--faint);stroke-dasharray:5 4}
+  .node .box.gold{fill:var(--gold-tint);stroke:var(--gold)}
+  .node .ttl{font-weight:600;font-size:14.2px;fill:var(--ink)}
+  .node .sub{font-size:11px;fill:var(--muted)}
+  .node .ico{fill:none;stroke:var(--navy);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .node .ico.mute{stroke:var(--faint)}
+  .node:hover .box,.node.active .box{stroke:var(--blue);filter:drop-shadow(0 4px 10px rgba(31,58,95,.16))}
+  .node:focus-visible{outline:none}
+  .node:focus-visible .box{stroke:var(--blue);stroke-width:2}
+
+  .lbl{font-size:11.5px;fill:var(--muted)}
+  .lbl.sec{font-weight:700;fill:var(--navy);letter-spacing:.3px;font-size:11px;text-transform:uppercase}
+  .lbl.eyebrow{fill:var(--faint);letter-spacing:2px;font-weight:600;font-size:11px}
+  .lbl.italic{font-style:italic;fill:var(--faint)}
+  .conn{fill:none;stroke:var(--blue);stroke-width:1.6}
+  .conn.thick{stroke:var(--navy);stroke-width:2.4}
+  .conn.greyd{stroke:var(--faint);stroke-width:1.4}
+  .conn.dash{stroke-dasharray:6 5}
+  .conn.feedback{stroke:var(--gold);stroke-width:1.45;stroke-dasharray:5 5}
+  .conn.gold{stroke:var(--gold);stroke-width:1.5;stroke-dasharray:6 5}
+
+  /* harness */
+  .harness-box{fill:var(--navy-deep);stroke:var(--navy-deep)}
+  .harness-title{font-family:var(--sans);font-weight:700;fill:#fff;font-size:14px;letter-spacing:.4px}
+  .harness-sub{fill:#C7D6E8;font-size:10.6px}
+  .node.inner .box{fill:#fff;stroke:#33506f}
+  .node.inner .ico{stroke:var(--navy)}
+
+  /* ---------- tooltip ---------- */
+  #tip{position:fixed;z-index:60;max-width:290px;background:var(--navy-deep);color:#EAF1F8;
+    border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.45;pointer-events:none;opacity:0;transform:translateY(4px);
+    transition:opacity .12s,transform .12s;box-shadow:0 10px 30px rgba(20,39,61,.28)}
+  #tip.show{opacity:1;transform:translateY(0)}
+  #tip .tk{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#9FC0E0;display:block;margin-bottom:3px}
+  #tip strong{color:#fff;font-size:13.5px;display:block;margin-bottom:3px;font-weight:600}
+
+  /* ---------- drawer ---------- */
+  .drawer{width:378px;flex:0 0 378px;border-left:1px solid var(--hair);background:var(--card);
+    padding:24px 24px 40px;overflow-y:auto;max-height:calc(100vh - 86px);position:sticky;top:86px}
+  .drawer .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+  .drawer h2{font-family:var(--serif);font-weight:600;font-size:25px;line-height:1.1;margin:0 0 4px;color:var(--navy)}
+  .drawer .lede{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+  .chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.4px;color:var(--navy);background:var(--tint);border:1px solid var(--tint2);border-radius:6px;padding:3px 8px}
+  .chip.risk{color:var(--risk);background:var(--risk-tint);border-color:var(--risk-line)}
+  .drawer h3{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--faint);font-weight:700;margin:18px 0 6px}
+  .drawer p{font-size:13.7px;margin:0 0 10px;color:var(--ink)}
+  .drawer ul{margin:6px 0 10px 18px;padding:0;color:var(--ink);font-size:13.4px}
+  .drawer li{margin:4px 0}
+  .drawer .q{border-left:2px solid var(--gold);padding:2px 0 2px 12px;color:var(--muted);font-size:13px;font-style:italic;margin:10px 0}
+  .hint{margin-top:18px;padding-top:16px;border-top:1px dashed var(--hair);color:var(--faint);font-size:12px}
+
+  /* ---------- supporting cards ---------- */
+  .below{padding:0 28px 34px;max-width:1180px}
+  .panel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:4px}
+  .panel{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:16px 17px;box-shadow:0 1px 0 rgba(31,58,95,.03)}
+  .panel h2{font-family:var(--serif);font-size:22px;line-height:1.1;color:var(--navy);font-weight:600;margin:0 0 7px}
+  .panel p{font-size:13.4px;color:var(--muted);margin:0 0 8px}
+  .panel ul{font-size:13.2px;margin:8px 0 0 18px;padding:0;color:var(--ink)}
+  .panel li{margin:4px 0}
+  .callout{margin-top:14px;border:1px solid var(--risk-line);background:var(--risk-tint);border-radius:14px;padding:13px 15px;color:#60251F;font-size:13px}
+  .callout b{color:var(--risk)}
+
+  @media (max-width:1100px){.panel-grid{grid-template-columns:1fr 1fr}.badge{margin-left:0}}
+  @media (max-width:920px){
+    .layout{flex-direction:column}
+    .stage{min-width:900px}
+    .drawer{width:auto;flex:none;border-left:none;border-top:1px solid var(--hair);position:static;max-height:none}
+    .brand h1{font-size:25px}
+    .below{padding:0 18px 30px}.panel-grid{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <h1>CDAO Target Data Architecture &amp; Harness Context Layer</h1>
+    <p>Hub-and-spoke consolidation into governed data products, with the harness shown as the reviewed context layer that helps Genie, SQL, and Python users interpret those products consistently. Pre-decisional mapping; any production AI, app, retrieval, or automation capability requires the appropriate USCIS/OIT governance, security, privacy, and approval path.</p>
+  </div>
+  <div class="badge">Pre-decisional draft</div>
+</div>
+
+<div class="layout">
+  <div class="stagewrap">
+    <div class="stage">
+      <svg viewBox="0 0 1440 470" role="img" aria-label="Interactive CDAO target data architecture diagram">
+        <defs>
+          <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L7 3 L0 6 Z" fill="#2E5C8A"/></marker>
+          <marker id="arn" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L7 3 L0 6 Z" fill="#1F3A5F"/></marker>
+          <marker id="argold" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0 0 L7 3 L0 6 Z" fill="#B08D3E"/></marker>
+          <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="2.6"/><path d="M4 6 V18 C4 20.6 20 20.6 20 18 V6"/><path d="M4 12 C4 14.6 20 14.6 20 12"/></symbol>
+          <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7 H10 L12 9 H21 V19 H3 Z"/></symbol>
+          <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12 3 L19 7 V15 L12 19 L5 15 V7 Z"/><circle cx="12" cy="11" r="3.2"/></symbol>
+          <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 4 L21 9 L12 14 L3 9 Z"/><path d="M3 13 L12 18 L21 13"/></symbol>
+          <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5 H20 V16 H10 L5 20 V16 H4 Z"/></symbol>
+          <symbol id="i-code" viewBox="0 0 24 24"><path d="M9 8 L5 12 L9 16"/><path d="M15 8 L19 12 L15 16"/></symbol>
+          <symbol id="i-share" viewBox="0 0 24 24"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 11 L15.7 7"/><path d="M8.3 13 L15.7 17"/></symbol>
+        </defs>
+
+        <text class="lbl eyebrow" x="252" y="40">TODAY  &#8594;  FUTURE   &#183;   GOVERNED DATA PRODUCTS   &#183;   HARNESS-INFORMED CONSUMPTION</text>
+
+        <!-- connectors first, behind nodes -->
+        <path class="conn dimmable" d="M190 206 L250 296" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M190 300 L250 300" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M190 394 L250 304" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M410 300 L480 300" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M570 208 L575 260" marker-end="url(#arn)"/>
+        <path class="conn dimmable" d="M670 300 L740 300" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M820 338 L820 365" marker-end="url(#argold)"/>
+        <path class="conn dimmable" d="M900 300 L960 216" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M900 300 L960 300" marker-end="url(#ar)"/>
+        <path class="conn dimmable" d="M900 300 L960 384" marker-end="url(#ar)"/>
+        <path class="conn thick dimmable" d="M1125 300 L1170 300" marker-end="url(#arn)"/>
+        <path class="conn gold dimmable" d="M1285 416 C1210 452 1020 452 910 408" marker-end="url(#argold)"/>
+        <path d="M930 354 L930 438" fill="none" stroke="#B23A2E" stroke-width="1.3" stroke-dasharray="6 5"/>
+
+        <!-- section labels -->
+        <text class="lbl sec" x="40" y="150">Source systems</text>
+        <text class="lbl sec" x="960" y="170">Governed data products</text>
+        <text class="lbl italic" x="40" y="438">interconnected today</text>
+        <path class="conn greyd dimmable" d="M30 210 L30 392" />
+
+        <!-- source nodes -->
+        <g class="node dimmable" data-id="c3" tabindex="0" role="button" aria-label="C3">
+          <rect class="box paper" x="40" y="176" width="150" height="60" rx="12"/>
+          <use class="ico mute" href="#i-db" x="56" y="192" width="26" height="26"/>
+          <text class="ttl" x="92" y="201">C3</text><text class="sub" x="92" y="218">transition</text>
+        </g>
+        <g class="node dimmable" data-id="elis" tabindex="0" role="button" aria-label="ELIS">
+          <rect class="box" x="40" y="270" width="150" height="60" rx="12"/>
+          <use class="ico" href="#i-db" x="56" y="286" width="26" height="26"/>
+          <text class="ttl" x="92" y="305">ELIS</text><text class="sub" x="92" y="322">source</text>
+        </g>
+        <g class="node dimmable" data-id="global" tabindex="0" role="button" aria-label="GLOBAL">
+          <rect class="box" x="40" y="364" width="150" height="60" rx="12"/>
+          <use class="ico" href="#i-db" x="56" y="380" width="26" height="26"/>
+          <text class="ttl" x="92" y="399">GLOBAL</text><text class="sub" x="92" y="416">source</text>
+        </g>
+
+        <!-- hub and governance nodes -->
+        <g class="node dimmable" data-id="eciscor" tabindex="0" role="button" aria-label="eCISCOR">
+          <rect class="box tintB" x="250" y="262" width="160" height="76" rx="13"/>
+          <use class="ico" href="#i-db" x="268" y="284" width="28" height="28"/>
+          <text class="ttl" x="306" y="294">eCISCOR</text><text class="sub" x="306" y="312">landing /</text><text class="sub" x="306" y="326">consolidation</text>
+        </g>
+        <g class="node dimmable" data-id="semantic" tabindex="0" role="button" aria-label="Semantic Metadata Layer">
+          <rect class="box tint" x="450" y="116" width="235" height="92" rx="16"/>
+          <use class="ico" href="#i-layers" x="470" y="146" width="28" height="28"/>
+          <text class="ttl" x="512" y="145">Semantic /</text>
+          <text class="ttl" x="512" y="166">Metadata Layer</text>
+          <text class="sub" x="512" y="188">Collibra / Alation + UC</text>
+        </g>
+        <g class="node dimmable" data-id="transform" tabindex="0" role="button" aria-label="Transformation and Standardization">
+          <rect class="box" x="480" y="262" width="190" height="76" rx="13"/>
+          <use class="ico" href="#i-gear" x="498" y="284" width="28" height="28"/>
+          <text class="ttl" x="536" y="295">Transformation</text><text class="sub" x="536" y="313">&amp; Standardization</text>
+        </g>
+        <g class="node dimmable" data-id="ods" tabindex="0" role="button" aria-label="ODS Consumption Service">
+          <rect class="box tintB" x="740" y="262" width="160" height="76" rx="13"/>
+          <use class="ico" href="#i-db" x="758" y="284" width="28" height="28"/>
+          <text class="ttl" x="796" y="294">ODS / Serving</text><text class="sub" x="796" y="312">consumption</text><text class="sub" x="796" y="326">service</text>
+        </g>
+        <g class="node dimmable" data-id="sharing" tabindex="0" role="button" aria-label="Sharing and trust boundary">
+          <rect class="box gold" x="740" y="365" width="160" height="58" rx="12"/>
+          <use class="ico" href="#i-share" x="758" y="381" width="26" height="26" style="stroke:var(--gold)"/>
+          <text class="ttl" x="792" y="389" style="font-size:13.5px">Sharing</text><text class="sub" x="792" y="406">trust boundary</text>
+        </g>
+
+        <!-- data products -->
+        <g class="node dimmable" data-id="dp" tabindex="0" role="button" aria-label="Governed data product">
+          <rect class="box" x="960" y="186" width="165" height="58" rx="12"/>
+          <use class="ico" href="#i-folder" x="976" y="201" width="26" height="26" style="stroke:var(--blue)"/>
+          <text class="ttl" x="1012" y="214" style="font-size:13.5px">Governed</text><text class="sub" x="1012" y="231">Data Product</text>
+        </g>
+        <g class="node dimmable" data-id="dp" tabindex="0" role="button" aria-label="Governed data product">
+          <rect class="box" x="960" y="271" width="165" height="58" rx="12"/>
+          <use class="ico" href="#i-folder" x="976" y="286" width="26" height="26" style="stroke:var(--blue)"/>
+          <text class="ttl" x="1012" y="299" style="font-size:13.5px">Governed</text><text class="sub" x="1012" y="316">Data Product</text>
+        </g>
+        <g class="node dimmable" data-id="dp" tabindex="0" role="button" aria-label="Governed data product">
+          <rect class="box" x="960" y="356" width="165" height="58" rx="12"/>
+          <use class="ico" href="#i-folder" x="976" y="371" width="26" height="26" style="stroke:var(--blue)"/>
+          <text class="ttl" x="1012" y="384" style="font-size:13.5px">Governed</text><text class="sub" x="1012" y="401">Data Product</text>
+        </g>
+
+        <!-- harness envelope -->
+        <rect class="harness-box" x="1170" y="185" width="240" height="230" rx="16"/>
+        <text class="harness-title" x="1188" y="210">CDAO HARNESS</text>
+        <text class="harness-sub" x="1188" y="228">Context layer for consumption</text>
+        <text class="harness-sub" x="1188" y="244">definitions &#183; caveats &#183; examples</text>
+        <g class="node" data-id="harness" tabindex="0" role="button" aria-label="CDAO Harness">
+          <rect x="1170" y="185" width="240" height="62" fill="transparent"/>
+        </g>
+        <g class="node inner" data-id="genie" tabindex="0" role="button" aria-label="NL Processing Genie">
+          <rect class="box" x="1186" y="258" width="208" height="52" rx="10"/>
+          <use class="ico" href="#i-chat" x="1200" y="271" width="24" height="24"/>
+          <text class="ttl" x="1232" y="289" style="font-size:13px">Genie / NL Q&amp;A</text>
+        </g>
+        <g class="node inner" data-id="sql" tabindex="0" role="button" aria-label="SQL Python">
+          <rect class="box" x="1186" y="320" width="208" height="52" rx="10"/>
+          <use class="ico" href="#i-code" x="1200" y="333" width="24" height="24"/>
+          <text class="ttl" x="1232" y="351" style="font-size:13px">SQL / Python</text>
+        </g>
+        <text class="lbl italic" x="1188" y="397">feedback, benchmarks &amp; monitoring</text>
+        <text class="lbl italic" x="1188" y="413">improve context over time</text>
+      </svg>
+    </div>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-live="polite">
+    <!-- filled by JS -->
+  </aside>
+</div>
+
+<div class="below">
+  <div class="panel-grid">
+    <section class="panel">
+      <h2>Plain-English reading</h2>
+      <p>The architecture builds trusted data products. The harness helps people and AI tools use those products with the right definitions, caveats, and answer expectations.</p>
+      <ul>
+        <li>Data Management strengthens the product.</li>
+        <li>Data Analytics validates the interpretation.</li>
+        <li>The harness carries the shared context forward.</li>
+      </ul>
+    </section>
+    <section class="panel">
+      <h2>V1 pilot ask</h2>
+      <p>Start with one small, reviewed playbook before building any app or middleware.</p>
+      <ul>
+        <li>One data product or use case</li>
+        <li>One Data Management steward</li>
+        <li>One Data Analytics validator</li>
+        <li>One Confluence harness page</li>
+        <li>One 30-day usefulness review</li>
+      </ul>
+    </section>
+    <section class="panel">
+      <h2>Before publishing</h2>
+      <p>Use this page as an alignment draft until these labels are confirmed.</p>
+      <ul>
+        <li>eCISCOR/eCISSOR spelling and ODS relationship</li>
+        <li>C3 transition/decommissioning status</li>
+        <li>Approved counting authority language</li>
+        <li>Whether sharing/trust boundary belongs in the main view</li>
+      </ul>
+    </section>
+  </div>
+  <div class="callout"><b>Publishing note:</b> The harness should be described as a reviewed context layer or playbook unless an approved technical implementation exists. Avoid wording that says it enforces access, routes queries, or guarantees correct answers.</div>
+</div>
+
+<div id="tip" role="tooltip"></div>
+
+<script>
+const DATA = {
+  _overview: {
+    eyebrow:"How to read this", title:"Governed products plus shared context",
+    lede:"The diagram shows CDAO moving toward governed data products, then adding a harness so those products are interpreted consistently at consumption time.",
+    chips:["hub-and-spoke","data products","context layer","pre-decisional"],
+    body:`<h3>The simple flow</h3><p>Source systems feed a consolidation path, data is standardized into an operational serving layer, and teams consume focused <b>governed data products</b>.</p>
+    <h3>What the harness adds</h3><p>The harness does not replace the platform. It carries reviewed definitions, caveats, example questions, and answer expectations into Genie, SQL/Python analysis, documentation, onboarding, and future integrations.</p>
+    <h3>Why this matters</h3><p>Governance at build time helps make the data product trustworthy. Context at consumption time helps make the answer understandable and consistent.</p>
+    <div class="hint">Click any box for full detail. Yellow items are useful to discuss, but should be confirmed before leadership publication.</div>`
+  },
+  c3:{eyebrow:"Source system · transition",title:"C3",lede:"Shown as transitional in this draft so the diagram does not treat it as a permanent peer without confirmation.",chips:["legacy","confirm status","transition"],
+    body:`<h3>Role</h3><p>C3 is shown as one of the current upstream systems feeding the hub.</p>
+    <h3>Publishing caution</h3><p>Keep the label neutral until Joe confirms the right status: active, transition-state, decommissioning, or sunsetting.</p>
+    <p class="q">Confirm before publishing: should the diagram say “decommissioning,” “transition,” or just “source system”?</p>`},
+  elis:{eyebrow:"Source system · today",title:"ELIS",lede:"A USCIS source feeding the consolidation path.",chips:["source","operational"],
+    body:`<h3>Role</h3><p>Feeds operational data into the hub-and-spoke pattern. Keep the slide focused on the architecture flow rather than system-level detail.</p>`},
+  global:{eyebrow:"Source system · today",title:"GLOBAL",lede:"A USCIS source system feeding the consolidation path.",chips:["source","confirm scope"],
+    body:`<h3>Role</h3><p>One of the upstream systems feeding the target architecture.</p><p class="q">Confirm exact scope and system-of-record coverage before this circulates broadly.</p>`},
+  eciscor:{eyebrow:"Consolidation hub",title:"eCISCOR",lede:"Landing and consolidation point in the target flow; relationship to the future ODS still needs confirmation.",chips:["hub","open question","confirm spelling"],
+    body:`<h3>What it means in this picture</h3><p>Source systems converge here before standardization and serving.</p>
+    <h3>Open question</h3><p>The current sketch draws eCISCOR and ODS as separate boxes. That may be right, or eCISCOR may be expected to mature into the ODS over time.</p>
+    <div class="q">Confirm with Joe: is this one system evolving, or two systems in sequence? Also confirm final spelling: eCISCOR / eCISSOR.</div>`},
+  semantic:{eyebrow:"Governance · build-time",title:"Semantic / Metadata Layer",lede:"The business dictionary, metadata, lineage, and rulebook that explain what the data means.",chips:["definitions","metadata","lineage","rules"],
+    body:`<h3>Plain language</h3><p>This layer connects business terms to approved fields, joins, filters, calculations, synonyms, caveats, lineage, and metadata. Some context may live in Collibra or Alation; some may also be represented in Unity Catalog comments, tags, views, functions, metrics, or Genie instructions.</p>
+    <h3>Why it matters</h3><p>It supports build-time standardization and supplies reviewed definitions that the harness can reuse at consumption time.</p>
+    <h3>Keep it simple</h3><p>Do not present this as a new AI system. Present it as shared meaning: the common vocabulary that makes governed products easier to use.</p>`},
+  transform:{eyebrow:"Pipeline",title:"Transformation & Standardization",lede:"Where consolidated data is cleaned, shaped, and aligned to approved rules before serving.",chips:["standardize","derive","document"],
+    body:`<h3>What happens here</h3><p>Data is prepared for reuse: standard names, derived fields, documented calculations, and known limitations.</p>
+    <h3>Why it matters</h3><p>This is where raw data becomes a more reliable data product. The stronger this layer is, the less the harness has to compensate later.</p>`},
+  ods:{eyebrow:"Serving layer",title:"ODS / Consumption Service",lede:"The curated serving layer where governed data products can be published for use.",chips:["serving layer","consumption service","open question"],
+    body:`<h3>Safe framing</h3><p>For this mapping, treat the ODS as the curated serving layer for operational reporting, analytics, and governed consumption. Avoid over-stating it as a fully approved transactional source of truth until Joe confirms the target-state design.</p>
+    <h3>Why it matters</h3><p>This is where standardized data becomes reusable for data products, Genie Spaces, SQL/Python users, dashboards, and future AI-assisted workflows.</p>
+    <h3>Open question</h3><p>Validate whether this is a separate downstream store or the mature version of eCISCOR.</p>`},
+  sharing:{eyebrow:"Sharing · external access",title:"Sharing / External Data Access",lede:"A governed sharing path that depends on policy, agreements, privacy, and approved access.",chips:["DSA dependent","policy dependent","approval path"],
+    body:`<h3>Why it stays on the map</h3><p>Joe’s sketch included sharing from the serving layer. Keeping it visible prevents the architecture from ignoring partner-facing or external data movement.</p>
+    <h3>Boundary</h3><p>Sharing should be treated as a separate approval and trust-boundary discussion. The platform can support governed sharing patterns, but USCIS sharing still depends on data-sharing agreements, policy, privacy, access controls, and mission approval.</p>
+    <div class="q">Confirm whether this belongs in the main Confluence page or should move to an appendix / follow-on architecture page.</div>`},
+  dp:{eyebrow:"Governed output",title:"Governed Data Products",lede:"Reusable products that teams inherit rather than rebuild from scratch.",chips:["reusable","focused","documented"],
+    body:`<h3>What they are</h3><p>Curated tables, views, metric views, or datasets with a clear purpose, owner, definitions, caveats, and expected use.</p>
+    <h3>What they solve</h3><p>They reduce one-off reporting and make analytics more consistent.</p>
+    <h3>What they do not solve alone</h3><p>They do not automatically teach every user what the metric means, which caveats matter, or what a strong answer should include. That is where the harness helps.</p>`},
+  harness:{eyebrow:"Context · at consumption",title:"CDAO Harness / Context Layer",lede:"Reviewed context reused across Genie, SQL/Python, documentation, prompts, and future assistants.",chips:["definitions","caveats","counting logic","V1: playbook"],
+    body:`<h3>Plain language</h3><p>The harness is the guidebook. It travels with a data product so Genie, SQL/Python users, documentation, onboarding, and future assistants use the same definitions and caveats.</p>
+    <h3>What it does</h3><ul><li>Explains business terms and approved counting logic.</li><li>Lists caveats and known limitations.</li><li>Provides example questions and strong-answer examples.</li><li>Records who reviewed the context.</li></ul>
+    <h3>Important boundary</h3><p>The harness is a reusable context layer. It does not replace Unity Catalog, data owners, Genie configuration, or platform security. Where counting logic must be technically enforced, use governed views, metric views, Unity Catalog functions, SQL functions, trusted assets, or other approved platform controls.</p>
+    <h3>Later, if approved</h3><p>The same content could inform Genie instructions, trusted assets, benchmark questions, AI Search/retrieval, or monitoring loops.</p>`},
+  genie:{eyebrow:"Consumption · harness-informed",title:"Genie / Natural Language Q&A",lede:"A focused place for natural-language questions over governed structured data.",chips:["plain language","structured data","focused space"],
+    body:`<h3>Role</h3><p>Genie helps users ask data questions in plain language. The harness helps the space carry CDAO definitions, caveats, and answer expectations.</p>
+    <h3>Important boundary</h3><p>Keep Genie Spaces focused. Do not treat one space as an enterprise-wide chat box for every dataset.</p>
+    <h3>Unstructured data</h3><p>Contracts, policy documents, meeting notes, and other document-heavy use cases need a separate retrieval pattern. They can be a future deck, not the V1 harness ask.</p>`},
+  sql:{eyebrow:"Consumption · harness-informed",title:"SQL / Python",lede:"The power-user path should use the same definitions and caveats as natural-language users.",chips:["power users","same context","reviewed logic"],
+    body:`<h3>Role</h3><p>Analysts and engineers may query data products directly. The harness still helps because the same definitions, caveats, and approved counting logic should guide both self-service and power-user analysis.</p>
+    <h3>Simple goal</h3><p>Genie users and SQL/Python users should not land on different interpretations because they used different context.</p>`}
+};
+
+const drawer = document.getElementById('drawer');
+const tip = document.getElementById('tip');
+let activeEl = null;
+
+function render(id){
+  const d = DATA[id] || DATA._overview;
+  const chips = (d.chips||[]).map(c=>{
+    const risk = /risk|confirm|boundary|open question|not V1/i.test(c) ? ' risk':'';
+    return `<span class="chip${risk}">${c}</span>`;
+  }).join('');
+  drawer.innerHTML = `<p class="eyebrow">${d.eyebrow}</p><h2>${d.title}</h2><p class="lede">${d.lede}</p>
+    <div class="chips">${chips}</div>${d.body}`;
+}
+render('_overview');
+
+function setActive(g){
+  if(activeEl) activeEl.classList.remove('active');
+  activeEl = g; if(g) g.classList.add('active');
+}
+
+document.querySelectorAll('.node').forEach(g=>{
+  const id = g.getAttribute('data-id');
+  g.addEventListener('mouseenter', e=>{
+    const d = DATA[id]; if(!d) return;
+    tip.innerHTML = `<span class="tk">${d.eyebrow}</span><strong>${d.title}</strong>${d.lede}`;
+    tip.classList.add('show');
+  });
+  g.addEventListener('mousemove', e=>{
+    const pad=14, w=tip.offsetWidth, h=tip.offsetHeight;
+    let x=e.clientX+pad, y=e.clientY+pad;
+    if(x+w>innerWidth-8) x=e.clientX-w-pad;
+    if(y+h>innerHeight-8) y=e.clientY-h-pad;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  });
+  g.addEventListener('mouseleave', ()=> tip.classList.remove('show'));
+  g.addEventListener('click', ()=>{ render(id); setActive(g); if(innerWidth<=920) drawer.scrollIntoView({behavior:'smooth',block:'start'}); });
+  g.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); render(id); setActive(g);} });
+});
+
+document.querySelector('svg').addEventListener('click', e=>{
+  if(!e.target.closest('.node')){ setActive(null); render('_overview'); }
+});
+</script>
+</body>
+</html>
