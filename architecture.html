@@ -2,7 +2,7 @@
   <div style="margin-bottom:18px;">
     <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.1;font-weight:600;color:#1F3A5F;margin:0 0 6px 0;">CDAO Target Data Architecture &amp; Harness Context Layer</div>
     <div style="font-size:14px;color:#5A6675;max-width:1040px;">
-      Hub-and-spoke consolidation into governed data products, with the harness shown as the reviewed context layer that helps Genie, SQL, and Python users interpret those products consistently.
+      Interactive teaching page for federal staff and contract teams. It shows how source systems, governed data products, Databricks, and the CDAO harness/context layer fit together without treating the harness as a new system or security control.
     </div>
     <div style="font-size:12px;color:#5A6675;margin-top:6px;">
       Pre-decisional mapping. Any production AI, app, retrieval, or automation capability requires the appropriate USCIS/OIT governance, security, privacy, and approval path. This page intentionally avoids case-level PII/SPII and internal endpoints.
@@ -10,7 +10,7 @@
   </div>
 
   <div style="background:#EAF1F8;border:1px solid #D5DEE9;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1B2733;">
-    <b>Click/hover behavior:</b> each diagram box uses a native browser hover title and a click link to the expandable detail sections below. This avoids JavaScript, which is often blocked or stripped in Confluence HTML macros.
+    <b>How to use this page:</b> select a diagram label or use the index below to jump to a teaching card. This page avoids JavaScript because many Confluence HTML macros strip scripts or advanced styling.
   </div>
 
   
@@ -101,7 +101,7 @@
 <text x="1212" y="461" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Data Product</text>
 <text x="1212" y="482" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >owned · validated</text>
 </a>
-<a href="#node-harness" style="text-decoration:none;"><title>CDAO Harness / Context Layer — reviewed definitions, caveats, examples, and approved counting logic</title><rect x="1452" y="160" width="200" height="338" rx="18" fill="#14273D" stroke="#14273D" stroke-width="1.5" />
+<a href="#node-harness" style="text-decoration:none;"><title>CDAO Harness / Context Layer — reviewed definitions, caveats, examples, and approved counting/metric logic</title><rect x="1452" y="160" width="200" height="338" rx="18" fill="#14273D" stroke="#14273D" stroke-width="1.5" />
 <text x="1472" y="196" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >CDAO Harness</text>
 <text x="1472" y="216" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Context Layer</text>
 <text x="1472" y="243" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >reviewed definitions,</text>
@@ -151,11 +151,36 @@
     </div>
     <div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
       <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:8px;">What the harness adds</div>
-      <div style="font-size:13.5px;color:#5A6675;">The harness is the reviewed context layer: definitions, caveats, approved counting logic, example questions, strong-answer examples, and review ownership. It improves interpretation; it does not replace platform governance.</div>
+      <div style="font-size:13.5px;color:#5A6675;">The harness is the reviewed context layer: definitions, caveats, approved counting/metric logic, example questions, strong-answer examples, and stewardship review. It improves interpretation; it does not replace platform governance.</div>
     </div>
     <div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
       <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:8px;">What stays governed</div>
-      <div style="font-size:13.5px;color:#5A6675;">Databricks, Unity Catalog, approved views, functions, policies, and data-owner controls remain the enforcement layer. Where logic must be technically enforced, it should be implemented in approved platform assets.</div>
+      <div style="font-size:13.5px;color:#5A6675;">Databricks and Unity Catalog remain the governed platform layer for access control, lineage, audit, data discovery, row filters, column masks, governed views, functions, and approved policies. The harness should document context; technical enforcement belongs in approved platform assets.</div>
+    </div>
+  </div>
+
+
+
+  <div style="margin-top:18px;background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:10px;">Databricks alignment: what this page can safely say</div>
+    <div style="font-size:13.5px;color:#5A6675;margin-bottom:10px;">This section keeps the architecture grounded in current Databricks platform capabilities while separating platform capability from USCIS approval, configuration, and implementation decisions.</div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;">
+      <div style="border:1px solid #D5DEE9;border-radius:12px;background:#F7F8FA;padding:12px;">
+        <div style="font-weight:700;color:#1F3A5F;margin-bottom:4px;">Genie Spaces</div>
+        <div style="font-size:13px;color:#1B2733;">A Genie Space is a domain-specific natural-language interface over curated Unity Catalog data. It can return SQL-backed results, tables, and visualizations when the space is well-curated with datasets, metadata, example SQL, business semantics, and instructions.</div>
+      </div>
+      <div style="border:1px solid #D5DEE9;border-radius:12px;background:#F7F8FA;padding:12px;">
+        <div style="font-weight:700;color:#1F3A5F;margin-bottom:4px;">Unity Catalog governance</div>
+        <div style="font-size:13px;color:#1B2733;">Unity Catalog is the Databricks governance layer for data and AI assets. It supports centralized access control, lineage, auditing, data discovery, and fine-grained controls such as row filters and column masks. Those controls are the enforcement layer, not the plain-language harness.</div>
+      </div>
+      <div style="border:1px solid #D5DEE9;border-radius:12px;background:#F7F8FA;padding:12px;">
+        <div style="font-weight:700;color:#1F3A5F;margin-bottom:4px;">Good Genie setup</div>
+        <div style="font-size:13px;color:#1B2733;">Keep each space focused. Databricks guidance recommends limiting the number of tables where possible, using curated views or metric views for complex domains, adding example queries, adding plain-text instructions, and maintaining a knowledge store with table descriptions, join relationships, and business expressions.</div>
+      </div>
+      <div style="border:1px solid #D5DEE9;border-radius:12px;background:#F7F8FA;padding:12px;">
+        <div style="font-weight:700;color:#1F3A5F;margin-bottom:4px;">Future integration path</div>
+        <div style="font-size:13px;color:#1B2733;">Databricks supports Genie APIs and Databricks Apps patterns for natural-language analytics, but this page does not claim they are approved, deployed, or available for this use case. Any production app, API, agent, retrieval, or automation path requires USCIS/OIT governance, security, privacy, FedRAMP/ATO, and funding approval as applicable.</div>
+      </div>
     </div>
   </div>
 
@@ -166,17 +191,17 @@
       
     <details id="node-source-systems" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Source systems <span style="font-weight:400;color:#5A6675;">— C3, ELIS, GLOBAL — plus adjacent identity sources in UDS context</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Joe’s diagram keeps the source side simple with C3, ELIS, and GLOBAL. The broader DSSS3 context adds adjacent identity/profile sources such as ADIS, CPMS, and CIS2 for UDS/person-centric work. Keep the main diagram simple, then use the detail notes to explain the larger ecosystem when needed.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">The source mockup keeps the source side simple with C3, ELIS, and GLOBAL. The broader DSSS3 context adds adjacent identity/profile sources such as ADIS, CPMS, and CIS2 for UDS/person-centric work. Keep the main diagram simple, then use the detail notes to explain the larger ecosystem when needed.</div>
     </details>
     
     <details id="node-c3" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">C3 / CLAIMS3 <span style="font-weight:400;color:#5A6675;">— Legacy benefits case-management source; status should be confirmed before labeling decommissioning</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use C3 as a source-system example, not as a confirmed current-state claim unless Joe or the system owner validates the exact transition/decommissioning wording.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use C3 as a source-system example, not as a confirmed current-state claim unless the appropriate system owner validates the exact transition/decommissioning wording.</div>
     </details>
     
     <details id="node-elis" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">ELIS / ELIS2 <span style="font-weight:400;color:#5A6675;">— Electronic Immigration System; key online benefits source</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">ELIS appears as a source in Joe’s architecture and in the DSSS3 context. Product-line status is time-sensitive, so do not use old on-hold/active status screenshots as current without validation.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">ELIS appears as a source in the architecture mockup and in the DSSS3 context. Product-line status is time-sensitive, so do not use old on-hold/active status screenshots as current without validation.</div>
     </details>
     
     <details id="node-global" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
@@ -186,7 +211,7 @@
     
     <details id="node-eciscor" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">eCISCOR / DBIS <span style="font-weight:400;color:#5A6675;">— Enterprise Citizenship and Immigration Services Centralized Operational Repository</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">eCISCOR is maintained by DBIS and aggregates operational source data for analytical use. In this map it is shown as the consolidation hub, but the relationship between eCISCOR, ODS, and the future consumption service still needs Joe’s confirmation.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">eCISCOR is maintained by DBIS and aggregates operational source data for analytical use. In this map it is shown as the consolidation hub, but the relationship between eCISCOR, ODS, and the future consumption service still needs architecture-owner confirmation.</div>
     </details>
     
     <details id="node-semantic" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
@@ -206,7 +231,7 @@
     
     <details id="node-sharing" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Sharing / external access boundary <span style="font-weight:400;color:#5A6675;">— Policy, DSA, privacy, and access approval dependent</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Sharing belongs in the architecture because Joe’s diagram included it, but keep it visually small. The important point is that external sharing is governed by agreements, policy, approvals, privacy/security controls, and curated datasets.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Sharing belongs in the architecture because the source mockup included it, but keep it visually small. The important point is that external sharing is governed by agreements, policy, approvals, privacy/security controls, and curated datasets.</div>
     </details>
     
     <details id="node-products" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
@@ -215,18 +240,18 @@
     </details>
     
     <details id="node-harness" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
-      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">CDAO Harness / Context Layer <span style="font-weight:400;color:#5A6675;">— Reviewed definitions, caveats, examples, approved counting logic, and answer expectations</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">The harness improves interpretation. It is not a new database, not a system of record, not a security bypass, and not automatic enforcement by itself. Where logic must be enforced technically, use approved Databricks/Unity Catalog assets such as governed views, functions, metric logic, permissions, and trusted examples.</div>
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">CDAO Harness / Context Layer <span style="font-weight:400;color:#5A6675;">— Reviewed definitions, caveats, examples, approved counting/metric logic, and answer expectations</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">The harness improves interpretation. It is not a new database, not a system of record, not a security bypass, and not automatic enforcement by itself. Where logic must be enforced technically, use approved Databricks and Unity Catalog assets such as governed views, metric views, Unity Catalog functions, permissions, row filters, column masks, and validated examples.</div>
     </details>
     
     <details id="node-consumption" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
-      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Consumption paths: Genie + SQL/Python <span style="font-weight:400;color:#5A6675;">— Natural-language and power-user paths should inherit the same reviewed context</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Genie, SQL, and Python users should not interpret the same data product differently. The harness page gives them a shared reference point while the governed platform remains the control point.</div>
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Consumption paths: Genie + SQL/Python <span style="font-weight:400;color:#5A6675;">— Natural-language and power-user paths should use the same reviewed context</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Genie, SQL, and Python users should not interpret the same data product differently. The harness page gives them a shared reference point while Databricks and approved data governance controls remain the control point.</div>
     </details>
     
     <details id="node-feedback" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
       <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Feedback, benchmarks, and monitoring <span style="font-weight:400;color:#5A6675;">— The improvement loop after V1</span></summary>
-      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use benchmarks, trusted examples, data-quality checks, user feedback, usage monitoring, and DBU/cost monitoring to improve the harness and data products over time. This aligns with the OPQ AI posture’s emphasis on testing, audit, human review, and lifecycle monitoring.</div>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use benchmarks, validated examples, data-quality checks, user feedback, usage monitoring, and DBU/cost monitoring to improve the harness and data products over time. Databricks supports Genie testing/benchmarks and Unity Catalog data-quality monitoring patterns, but the specific USCIS implementation path must be approved.</div>
     </details>
     
     </div>
@@ -266,10 +291,10 @@
 
   <div style="margin-top:18px;background:#FAEDEB;border:1px solid #E7C6C0;border-radius:14px;padding:16px;">
     <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#B23A2E;font-weight:600;margin-bottom:10px;">Open items before broader circulation</div>
-    <ul style="margin:8px 0 0 20px;padding:0;font-size:13.5px;color:#1B2733;"><li style="margin:6px 0;">Confirm final eCISCOR / ODS / Consumption Service relationship with Joe.</li><li style="margin:6px 0;">Confirm whether C3 should be labeled as active, transition-state, decommissioning, or simply a source system.</li><li style="margin:6px 0;">Confirm current USCIS-approved AI tools and whether Databricks Genie / related APIs are approved for OPQ/CD&amp;A use.</li><li style="margin:6px 0;">Pick one V1 harness pilot data product or use case.</li><li style="margin:6px 0;">Name one Data Management steward and one Data Analytics validator.</li><li style="margin:6px 0;">Define the curated data layer and public-safe aggregation/anonymization rules before public-facing AI/reporting use.</li><li style="margin:6px 0;">For UDS/person-centric use cases, confirm authoritative source hierarchy, tie-breakers, role-based access, and confidentiality behavior before using case-level views.</li></ul>
+    <ul style="margin:8px 0 0 20px;padding:0;font-size:13.5px;color:#1B2733;"><li style="margin:6px 0;">Confirm final eCISCOR / ODS / Consumption Service relationship with the appropriate architecture and data-platform owners.</li><li style="margin:6px 0;">Confirm whether C3 should be labeled as active, transition-state, decommissioning, or simply a source system.</li><li style="margin:6px 0;">Confirm current USCIS-approved AI tools and whether Databricks Genie / related APIs are approved for OPQ/CD&amp;A use.</li><li style="margin:6px 0;">Pick one V1 harness pilot data product or use case.</li><li style="margin:6px 0;">Name one Data Management steward and one Data Analytics validator.</li><li style="margin:6px 0;">Define the curated data layer and public-safe aggregation/anonymization rules before public-facing AI/reporting use.</li><li style="margin:6px 0;">For UDS/person-centric use cases, confirm authoritative source hierarchy, tie-breakers, role-based access, and confidentiality behavior before using case-level views.</li></ul>
   </div>
 
   <div style="margin-top:14px;font-size:12px;color:#5A6675;">
-    Source basis: DSSS3 Project Context Memory Pack, DSSS3 Project Context Master, DSSS3 Context Register, DSSS3 context repository, FY25 Q4 OCDO Goals, DSSS3 July 2025 monthly update, and 2026 OPQ AI Posture. Current-state claims should be validated against the latest official source before external distribution.
+    Source basis: DSSS3 Project Context Memory Pack, DSSS3 Project Context Master, DSSS3 Context Register, DSSS3 context repository, FY25 Q4 OCDO Goals, DSSS3 July 2025 monthly update, 2026 OPQ AI Posture, and current Databricks documentation reviewed for platform capability language. Current-state USCIS approval, tool availability, and implementation details must be validated against the latest official source before broader publication.
   </div>
 </div>
