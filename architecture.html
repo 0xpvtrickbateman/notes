@@ -1,134 +1,147 @@
-<div style="background:#F7F8FA;color:#1B2733;font-family:Arial,'Segoe UI',sans-serif;line-height:1.45;padding:24px;border:1px solid #D5DEE9;border-radius:12px;max-width:1400px;margin:0 auto;">
+<div style="background:#F7F8FA;color:#1B2733;font-family:Arial,'Segoe UI',sans-serif;line-height:1.45;padding:24px;border:1px solid #D5DEE9;border-radius:12px;max-width:1420px;margin:0 auto;">
   <div style="margin-bottom:18px;">
     <div style="font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1.1;font-weight:600;color:#1F3A5F;margin:0 0 6px 0;">CDAO Target Data Architecture &amp; Harness Context Layer</div>
-    <div style="font-size:14px;color:#5A6675;max-width:980px;">
+    <div style="font-size:14px;color:#5A6675;max-width:1040px;">
       Hub-and-spoke consolidation into governed data products, with the harness shown as the reviewed context layer that helps Genie, SQL, and Python users interpret those products consistently.
     </div>
     <div style="font-size:12px;color:#5A6675;margin-top:6px;">
-      Pre-decisional mapping. Any production AI, app, retrieval, or automation capability requires the appropriate USCIS/OIT governance, security, privacy, and approval path.
+      Pre-decisional mapping. Any production AI, app, retrieval, or automation capability requires the appropriate USCIS/OIT governance, security, privacy, and approval path. This page intentionally avoids case-level PII/SPII and internal endpoints.
     </div>
   </div>
 
-  <div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px 18px 12px 18px;overflow-x:auto;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 650" width="100%" height="650" role="img" aria-label="CDAO target data architecture and harness context layer diagram" style="display:block;min-width:1100px;background:#FFFFFF;">
-      <rect x="0" y="0" width="1600" height="650" fill="#FFFFFF" />
-      <defs>
-        <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#2E5C8A" /></marker>
-        <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#1F3A5F" /></marker>
-        <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#B08D3E" /></marker>
-      </defs>
+  <div style="background:#EAF1F8;border:1px solid #D5DEE9;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;color:#1B2733;">
+    <b>Click/hover behavior:</b> each diagram box uses a native browser hover title and a click link to the expandable detail sections below. This avoids JavaScript, which is often blocked or stripped in Confluence HTML macros.
+  </div>
 
-      <!-- Title strip -->
-      <text x="420" y="36" fill="#9AA4B2" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.8">TODAY → FUTURE · GOVERNED DATA PRODUCTS · HARNESS-INFORMED CONSUMPTION</text>
+  
+<div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px 18px 12px 18px;overflow-x:auto;">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1680 730" width="100%" height="730" role="img" aria-label="CDAO target data architecture and harness context layer diagram" style="display:block;min-width:1120px;background:#FFFFFF;">
+    <rect x="0" y="0" width="1680" height="730" fill="#FFFFFF" />
+    <defs>
+      <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#2E5C8A" /></marker>
+      <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#1F3A5F" /></marker>
+      <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,3 L0,6 Z" fill="#B08D3E" /></marker>
+    </defs>
+    <text x="420" y="38" fill="#9AA4B2" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" letter-spacing="1.8">TODAY → FUTURE · GOVERNED DATA PRODUCTS · HARNESS-INFORMED CONSUMPTION</text>
+    <text x="58" y="125" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" >SOURCE SYSTEMS</text>
+    <text x="1125" y="125" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" >GOVERNED DATA PRODUCTS</text>
+    <text x="1430" y="125" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" >CONSUMPTION</text>
 
-      <!-- Section labels -->
-      <text x="55" y="120" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700">SOURCE SYSTEMS</text>
-      <text x="1035" y="120" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700">GOVERNED DATA PRODUCTS</text>
-      <text x="1290" y="120" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700">CONSUMPTION</text>
+<a href="#node-c3" style="text-decoration:none;">
+<title>C3 / CLAIMS3 — source · confirm status</title>
+<rect x="58" y="160" width="168" height="66" rx="13" fill="#F2F4F7" stroke="#9AA4B2" stroke-width="1.5" stroke-dasharray="6 4" />
+<text x="82" y="191" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >C3 / CLAIMS3</text>
+<text x="82" y="212" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >source · confirm status</text>
+</a>
+<a href="#node-elis" style="text-decoration:none;">
+<title>ELIS — source</title>
+<rect x="58" y="280" width="168" height="66" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="82" y="311" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="16" font-weight="700" >ELIS</text>
+<text x="82" y="332" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >source</text>
+</a>
+<a href="#node-global" style="text-decoration:none;">
+<title>GLOBAL — source</title>
+<rect x="58" y="400" width="168" height="66" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="82" y="431" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="16" font-weight="700" >GLOBAL</text>
+<text x="82" y="452" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >source</text>
+</a>
+<path d="M42 185 L42 435" fill="none" stroke="#9AA4B2" stroke-width="1.2" stroke-dasharray="5 5" />
+<text x="58" y="496" fill="#9AA4B2" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >interconnected today</text>
+<a href="#node-eciscor" style="text-decoration:none;">
+<title>eCISCOR — landing / consolidation; DBIS-maintained</title>
+<rect x="300" y="288" width="200" height="82" rx="13" fill="#DCE8F4" stroke="#2E5C8A" stroke-width="1.5" />
+<text x="324" y="319" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="16" font-weight="700" >eCISCOR</text>
+<text x="324" y="340" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >landing / consolidation</text>
+<text x="324" y="357" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >DBIS-maintained</text>
+</a>
+<a href="#node-semantic" style="text-decoration:none;">
+<title>Semantic / Metadata Layer — Collibra / Alation + Unity Catalog; definitions · lineage · tags</title>
+<rect x="565" y="105" width="330" height="102" rx="13" fill="#EAF1F8" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="589" y="136" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="18" font-weight="700" >Semantic / Metadata Layer</text>
+<text x="589" y="157" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >Collibra / Alation + Unity Catalog</text>
+<text x="589" y="174" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >definitions · lineage · tags</text>
+</a>
+<a href="#node-transform" style="text-decoration:none;">
+<title>Transformation — &amp; Standardization; canonical rules</title>
+<rect x="565" y="288" width="250" height="82" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="589" y="319" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="16" font-weight="700" >Transformation</text>
+<text x="589" y="340" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >&amp; Standardization</text>
+<text x="589" y="357" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >canonical rules</text>
+</a>
+<a href="#node-ods" style="text-decoration:none;">
+<title>ODS / Consumption — Service / Serving Layer; confirm final pattern</title>
+<rect x="890" y="270" width="230" height="96" rx="13" fill="#DCE8F4" stroke="#2E5C8A" stroke-width="1.5" />
+<text x="914" y="301" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="16" font-weight="700" >ODS / Consumption</text>
+<text x="914" y="322" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >Service / Serving Layer</text>
+<text x="914" y="339" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >confirm final pattern</text>
+</a>
+<a href="#node-sharing" style="text-decoration:none;">
+<title>Sharing — DSA / approval dependent</title>
+<rect x="890" y="425" width="230" height="70" rx="13" fill="#FCF7EA" stroke="#B08D3E" stroke-width="1.5" />
+<text x="914" y="456" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Sharing</text>
+<text x="914" y="477" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >DSA / approval dependent</text>
+</a>
+<line x1="868" y1="410" x2="868" y2="514" stroke="#B23A2E" stroke-width="1.5" stroke-dasharray="5 5" />
+<text x="732" y="532" fill="#B23A2E" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="700" >external sharing boundary</text>
+<a href="#node-products" style="text-decoration:none;">
+<title>Data Product — focused · governed</title>
+<rect x="1188" y="180" width="218" height="68" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="1212" y="211" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Data Product</text>
+<text x="1212" y="232" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >focused · governed</text>
+</a>
+<a href="#node-products" style="text-decoration:none;">
+<title>Data Product — reusable · documented</title>
+<rect x="1188" y="305" width="218" height="68" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="1212" y="336" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Data Product</text>
+<text x="1212" y="357" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >reusable · documented</text>
+</a>
+<a href="#node-products" style="text-decoration:none;">
+<title>Data Product — owned · validated</title>
+<rect x="1188" y="430" width="218" height="68" rx="13" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
+<text x="1212" y="461" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Data Product</text>
+<text x="1212" y="482" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >owned · validated</text>
+</a>
+<a href="#node-harness" style="text-decoration:none;"><title>CDAO Harness / Context Layer — reviewed definitions, caveats, examples, and approved counting logic</title><rect x="1452" y="160" width="200" height="338" rx="18" fill="#14273D" stroke="#14273D" stroke-width="1.5" />
+<text x="1472" y="196" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >CDAO Harness</text>
+<text x="1472" y="216" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700" >Context Layer</text>
+<text x="1472" y="243" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >reviewed definitions,</text>
+<text x="1472" y="259" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >caveats, examples,</text>
+<text x="1472" y="275" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >and counting logic</text>
+</a>
+<a href="#node-consumption" style="text-decoration:none;"><title>Genie / natural language Q&amp;A — harness-informed consumption path</title><rect x="1472" y="296" width="160" height="50" rx="10" fill="#FFFFFF" stroke="#33506F" stroke-width="1.5" /><text x="1490" y="326" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" >Genie / NL Q&amp;A</text></a>
+<a href="#node-consumption" style="text-decoration:none;"><title>SQL / Python — power-user consumption path with same reviewed context</title><rect x="1472" y="364" width="160" height="50" rx="10" fill="#FFFFFF" stroke="#33506F" stroke-width="1.5" /><text x="1490" y="394" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700" >SQL / Python</text></a>
+<text x="1472" y="448" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >harness-informed</text>
+<text x="1472" y="464" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="400" >consumption paths</text>
+<path d="M226 193 L300 312" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M226 313 L300 313" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M226 433 L300 332" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M500 329 L565 329" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M730 207 L730 288" fill="none" stroke="#1F3A5F" stroke-width="1.7" marker-end="url(#arrowNavy)" />
+<path d="M815 329 L890 318" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M1005 366 L1005 425" fill="none" stroke="#B08D3E" stroke-width="1.6" marker-end="url(#arrowGold)" />
+<path d="M1120 318 L1188 214" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M1120 318 L1188 339" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M1120 318 L1188 464" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
+<path d="M1406 339 L1452 339" fill="none" stroke="#1F3A5F" stroke-width="2.1" marker-end="url(#arrowNavy)" />
+<text x="750" y="258" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >governs build</text>
+<text x="1414" y="320" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="400" >context</text>
+<a href="#node-feedback" style="text-decoration:none;"><title>Feedback, benchmarks, monitoring — the improvement loop after V1</title><path d="M1552 498 C1552 575 1268 585 1268 498" fill="none" stroke="#B08D3E" stroke-width="1.7" stroke-dasharray="6 5" marker-end="url(#arrowGold)" /><rect x="1224" y="590" width="280" height="42" rx="9" fill="#FCF7EA" stroke="#B08D3E" stroke-width="1.2" /><text x="1248" y="616" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="700" >feedback · benchmarks · monitoring</text></a>
+<text x="58" y="685" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="14" font-weight="700" >Simple read:</text>
+<text x="148" y="685" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="14" font-weight="400" >source systems → consolidation → standardization → serving layer → governed data products → harness-informed consumption → feedback loop</text>
+</svg>
+</div>
 
-      <!-- Source system boxes -->
-      <rect x="55" y="155" width="160" height="62" rx="12" fill="#F2F4F7" stroke="#9AA4B2" stroke-width="1.5" stroke-dasharray="6 4" />
-      <text x="82" y="190" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">C3</text>
-      <text x="82" y="207" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">confirm status</text>
-
-      <rect x="55" y="265" width="160" height="62" rx="12" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="82" y="302" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">ELIS</text>
-
-      <rect x="55" y="375" width="160" height="62" rx="12" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="82" y="412" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">GLOBAL</text>
-      <text x="55" y="461" fill="#9AA4B2" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-style="italic">interconnected today</text>
-
-      <!-- Interconnection guide -->
-      <path d="M40 180 L40 406" fill="none" stroke="#9AA4B2" stroke-width="1.2" stroke-dasharray="5 5" />
-      <path d="M40 186 L55 186 M40 296 L55 296 M40 406 L55 406" fill="none" stroke="#9AA4B2" stroke-width="1.2" stroke-dasharray="5 5" />
-
-      <!-- eCISCOR -->
-      <rect x="290" y="258" width="190" height="78" rx="14" fill="#DCE8F4" stroke="#2E5C8A" stroke-width="1.5" />
-      <text x="320" y="290" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">eCISCOR</text>
-      <text x="320" y="309" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">landing / consolidation</text>
-
-      <!-- Semantic / Metadata -->
-      <rect x="550" y="118" width="260" height="86" rx="16" fill="#EAF1F8" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="580" y="153" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="18" font-weight="700">Semantic / Metadata</text>
-      <text x="580" y="176" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="14">Collibra / Alation + UC</text>
-      <text x="580" y="193" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">definitions · lineage · rules</text>
-
-      <!-- Transformation -->
-      <rect x="550" y="258" width="230" height="78" rx="14" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="580" y="290" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">Transformation</text>
-      <text x="580" y="311" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="13">&amp; Standardization</text>
-
-      <!-- ODS / Consumption service -->
-      <rect x="845" y="245" width="210" height="86" rx="14" fill="#DCE8F4" stroke="#2E5C8A" stroke-width="1.5" />
-      <text x="875" y="278" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">ODS /</text>
-      <text x="875" y="299" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="17" font-weight="700">Consumption Service</text>
-      <text x="875" y="318" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">curated serving layer</text>
-
-      <!-- Sharing -->
-      <rect x="845" y="378" width="210" height="58" rx="12" fill="#FCF7EA" stroke="#B08D3E" stroke-width="1.5" />
-      <text x="875" y="404" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">Sharing</text>
-      <text x="875" y="423" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">approval dependent</text>
-      <line x1="828" y1="368" x2="828" y2="449" stroke="#B23A2E" stroke-width="1.5" stroke-dasharray="5 5" />
-      <text x="730" y="462" fill="#B23A2E" font-family="Arial, Segoe UI, sans-serif" font-size="11" font-weight="700">external sharing boundary</text>
-
-      <!-- Data products -->
-      <rect x="1115" y="175" width="205" height="64" rx="12" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="1145" y="202" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">Data Product</text>
-      <text x="1145" y="221" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">focused · governed</text>
-
-      <rect x="1115" y="283" width="205" height="64" rx="12" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="1145" y="310" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">Data Product</text>
-      <text x="1145" y="329" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">reusable · documented</text>
-
-      <rect x="1115" y="391" width="205" height="64" rx="12" fill="#FFFFFF" stroke="#D5DEE9" stroke-width="1.5" />
-      <text x="1145" y="418" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">Data Product</text>
-      <text x="1145" y="437" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">owned · validated</text>
-
-      <!-- Harness -->
-      <rect x="1365" y="167" width="215" height="288" rx="18" fill="#14273D" stroke="#14273D" stroke-width="1.5" />
-      <text x="1385" y="200" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">CDAO Harness</text>
-      <text x="1385" y="221" fill="#FFFFFF" font-family="Arial, Segoe UI, sans-serif" font-size="15" font-weight="700">Context Layer</text>
-      <text x="1385" y="244" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11">reviewed definitions,</text>
-      <text x="1385" y="260" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11">caveats, examples,</text>
-      <text x="1385" y="276" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11">and counting logic</text>
-
-      <rect x="1384" y="296" width="176" height="48" rx="10" fill="#FFFFFF" stroke="#33506F" stroke-width="1.5" />
-      <text x="1404" y="326" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700">Genie / NL Q&amp;A</text>
-
-      <rect x="1384" y="358" width="176" height="48" rx="10" fill="#FFFFFF" stroke="#33506F" stroke-width="1.5" />
-      <text x="1404" y="388" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="13" font-weight="700">SQL / Python</text>
-
-      <text x="1385" y="431" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11">harness-informed</text>
-      <text x="1385" y="447" fill="#C7D6E8" font-family="Arial, Segoe UI, sans-serif" font-size="11">consumption paths</text>
-
-      <!-- Connectors -->
-      <path d="M215 186 L290 278" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M215 296 L290 296" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M215 406 L290 316" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-
-      <path d="M480 297 L550 297" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M680 204 L680 258" fill="none" stroke="#1F3A5F" stroke-width="1.7" marker-end="url(#arrowNavy)" />
-      <text x="700" y="236" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">governs build</text>
-
-      <path d="M780 297 L845 288" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M950 331 L950 378" fill="none" stroke="#B08D3E" stroke-width="1.6" marker-end="url(#arrowGold)" />
-
-      <path d="M1055 288 L1115 207" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M1055 288 L1115 315" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-      <path d="M1055 288 L1115 423" fill="none" stroke="#2E5C8A" stroke-width="1.7" marker-end="url(#arrowBlue)" />
-
-      <path d="M1320 315 L1365 315" fill="none" stroke="#1F3A5F" stroke-width="2.1" marker-end="url(#arrowNavy)" />
-      <text x="1308" y="296" fill="#5A6675" font-family="Arial, Segoe UI, sans-serif" font-size="12">context</text>
-
-      <!-- Feedback loop -->
-      <path d="M1472 455 C1472 525 1212 530 1212 455" fill="none" stroke="#B08D3E" stroke-width="1.7" stroke-dasharray="6 5" marker-end="url(#arrowGold)" />
-      <rect x="1190" y="520" width="230" height="35" rx="9" fill="#FCF7EA" stroke="#B08D3E" stroke-width="1.2" />
-      <text x="1210" y="542" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="12" font-weight="700">feedback · benchmarks · monitoring</text>
-
-      <!-- Bottom simple statement -->
-      <text x="55" y="600" fill="#1F3A5F" font-family="Arial, Segoe UI, sans-serif" font-size="14" font-weight="700">Simple read:</text>
-      <text x="147" y="600" fill="#1B2733" font-family="Arial, Segoe UI, sans-serif" font-size="14">source systems → consolidation → standardization → serving layer → governed data products → harness-informed consumption → feedback loop</text>
-    </svg>
+  <div style="margin-top:12px;background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;font-size:13px;color:#5A6675;">
+    <b style="color:#1F3A5F;">Diagram detail index:</b>
+    <a href="#node-source-systems" style="color:#2E5C8A;">Source systems</a> ·
+    <a href="#node-eciscor" style="color:#2E5C8A;">eCISCOR</a> ·
+    <a href="#node-semantic" style="color:#2E5C8A;">Semantic/metadata</a> ·
+    <a href="#node-transform" style="color:#2E5C8A;">Transformation</a> ·
+    <a href="#node-ods" style="color:#2E5C8A;">ODS/serving layer</a> ·
+    <a href="#node-products" style="color:#2E5C8A;">Data products</a> ·
+    <a href="#node-harness" style="color:#2E5C8A;">Harness</a> ·
+    <a href="#node-consumption" style="color:#2E5C8A;">Consumption paths</a> ·
+    <a href="#node-feedback" style="color:#2E5C8A;">Feedback loop</a>
   </div>
 
   <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;">
@@ -146,14 +159,117 @@
     </div>
   </div>
 
-  <div style="margin-top:16px;background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
-    <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:8px;">Open items to confirm before broader circulation</div>
-    <ul style="margin:8px 0 0 22px;padding:0;font-size:13.5px;color:#1B2733;">
-      <li style="margin:5px 0;">Confirm final spelling and role of eCISCOR / eCISSOR.</li>
-      <li style="margin:5px 0;">Confirm whether eCISCOR becomes the ODS over time or feeds a separate ODS / serving layer.</li>
-      <li style="margin:5px 0;">Confirm whether C3 should be labeled active, transition-state, decommissioning, or source system only.</li>
-      <li style="margin:5px 0;">Confirm which governed data product or use case should be used for the first V1 harness pilot.</li>
-      <li style="margin:5px 0;">Confirm the steward / validator model: Data Management steward plus Data Analytics validator.</li>
-    </ul>
+  <div style="margin-top:18px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:start;">
+    <div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:10px;">Click-to-open detail cards</div>
+      <div style="font-size:13px;color:#5A6675;margin-bottom:10px;">These replace JavaScript popups with native Confluence-friendly expand panels. They keep the page usable even when the HTML macro strips scripts or advanced styling.</div>
+      
+    <details id="node-source-systems" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Source systems <span style="font-weight:400;color:#5A6675;">— C3, ELIS, GLOBAL — plus adjacent identity sources in UDS context</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Joe’s diagram keeps the source side simple with C3, ELIS, and GLOBAL. The broader DSSS3 context adds adjacent identity/profile sources such as ADIS, CPMS, and CIS2 for UDS/person-centric work. Keep the main diagram simple, then use the detail notes to explain the larger ecosystem when needed.</div>
+    </details>
+    
+    <details id="node-c3" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">C3 / CLAIMS3 <span style="font-weight:400;color:#5A6675;">— Legacy benefits case-management source; status should be confirmed before labeling decommissioning</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use C3 as a source-system example, not as a confirmed current-state claim unless Joe or the system owner validates the exact transition/decommissioning wording.</div>
+    </details>
+    
+    <details id="node-elis" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">ELIS / ELIS2 <span style="font-weight:400;color:#5A6675;">— Electronic Immigration System; key online benefits source</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">ELIS appears as a source in Joe’s architecture and in the DSSS3 context. Product-line status is time-sensitive, so do not use old on-hold/active status screenshots as current without validation.</div>
+    </details>
+    
+    <details id="node-global" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">GLOBAL <span style="font-weight:400;color:#5A6675;">— Asylum tracking source; modernization of RAPS/APSS context</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">GLOBAL is shown as one of the major upstream sources. It is useful for explaining asylum/refugee-related context, but keep detailed protection/confidentiality logic outside the public-facing diagram.</div>
+    </details>
+    
+    <details id="node-eciscor" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">eCISCOR / DBIS <span style="font-weight:400;color:#5A6675;">— Enterprise Citizenship and Immigration Services Centralized Operational Repository</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">eCISCOR is maintained by DBIS and aggregates operational source data for analytical use. In this map it is shown as the consolidation hub, but the relationship between eCISCOR, ODS, and the future consumption service still needs Joe’s confirmation.</div>
+    </details>
+    
+    <details id="node-semantic" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Semantic / Metadata layer <span style="font-weight:400;color:#5A6675;">— Collibra / Alation + Unity Catalog metadata</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">This is where business definitions, lineage, synonyms, data tags, and approved logic should live or be referenced. The harness should reuse this context rather than inventing definitions inside one prompt or one page.</div>
+    </details>
+    
+    <details id="node-transform" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Transformation &amp; Standardization <span style="font-weight:400;color:#5A6675;">— Where raw source data becomes usable governed information</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">This is the place for standard fields, canonical terminology, data quality checks, RefDaaS alignment, and form terminology harmonization. A key example from the context package: forms use different labels for similar ideas, so a canonical mapping is needed before analytics scale.</div>
+    </details>
+    
+    <details id="node-ods" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">ODS / Consumption Service <span style="font-weight:400;color:#5A6675;">— Curated serving layer for governed reporting and analysis</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use neutral wording until confirmed: “serving layer” or “ODS / consumption service.” Avoid claiming eCISCOR is already the true ODS unless validated.</div>
+    </details>
+    
+    <details id="node-sharing" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Sharing / external access boundary <span style="font-weight:400;color:#5A6675;">— Policy, DSA, privacy, and access approval dependent</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Sharing belongs in the architecture because Joe’s diagram included it, but keep it visually small. The important point is that external sharing is governed by agreements, policy, approvals, privacy/security controls, and curated datasets.</div>
+    </details>
+    
+    <details id="node-products" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Governed data products <span style="font-weight:400;color:#5A6675;">— Reusable, stewarded outputs such as NPD, GDS products, dashboards, marts, and curated views</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">This is the bridge between Data Management and Data Analytics: Data Management helps make trusted products; Data Analytics helps ensure questions, caveats, interpretation, and adoption are useful.</div>
+    </details>
+    
+    <details id="node-harness" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">CDAO Harness / Context Layer <span style="font-weight:400;color:#5A6675;">— Reviewed definitions, caveats, examples, approved counting logic, and answer expectations</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">The harness improves interpretation. It is not a new database, not a system of record, not a security bypass, and not automatic enforcement by itself. Where logic must be enforced technically, use approved Databricks/Unity Catalog assets such as governed views, functions, metric logic, permissions, and trusted examples.</div>
+    </details>
+    
+    <details id="node-consumption" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Consumption paths: Genie + SQL/Python <span style="font-weight:400;color:#5A6675;">— Natural-language and power-user paths should inherit the same reviewed context</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Genie, SQL, and Python users should not interpret the same data product differently. The harness page gives them a shared reference point while the governed platform remains the control point.</div>
+    </details>
+    
+    <details id="node-feedback" open style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:12px;padding:12px 14px;margin:0 0 10px 0;">
+      <summary style="cursor:pointer;font-weight:700;color:#1F3A5F;font-size:15px;">Feedback, benchmarks, and monitoring <span style="font-weight:400;color:#5A6675;">— The improvement loop after V1</span></summary>
+      <div style="font-size:13.5px;color:#1B2733;margin-top:8px;">Use benchmarks, trusted examples, data-quality checks, user feedback, usage monitoring, and DBU/cost monitoring to improve the harness and data products over time. This aligns with the OPQ AI posture’s emphasis on testing, audit, human review, and lifecycle monitoring.</div>
+    </details>
+    
+    </div>
+
+    <div style="background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:10px;">Portfolio alignment</div>
+      <div style="font-size:13.5px;color:#5A6675;">This architecture supports the four CD&amp;A/OCDO portfolio lanes captured in the project context package:</div>
+      <ul style="margin:8px 0 0 20px;padding:0;font-size:13.5px;color:#1B2733;"><li style="margin:6px 0;"><b>Data Request Management</b>: Streamline intake and issue resolution; support high-priority requests, data sharing, SNOW tracking, and response metrics.</li><li style="margin:6px 0;"><b>Data Governance</b>: Stewardship, data standards, GDS governance framework, Zero Trust tagging, privacy review, sharing governance, and quality by design.</li><li style="margin:6px 0;"><b>Data Enterprise Products</b>: NPD, GDS, dashboards, RNA, E22, DBIS product ownership, and the reusable governed data products that feed consumption.</li><li style="margin:6px 0;"><b>Data Project Management</b>: Standardized PM practices, communications/change management, FY26 priority planning, and proactive ICE/CBP engagement.</li></ul>
+
+      <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.1;color:#1F3A5F;font-weight:600;margin:18px 0 8px 0;">Responsible AI / governance guardrails</div>
+      <ul style="margin:8px 0 0 20px;padding:0;font-size:13.5px;color:#1B2733;">
+        <li style="margin:6px 0;">Humans remain accountable for AI-assisted outputs.</li>
+        <li style="margin:6px 0;">AI should not be the sole performer of final high-impact, benefits, enforcement, or other inherently governmental decisions.</li>
+        <li style="margin:6px 0;">PII/SPII use requires privacy review and appropriate controls.</li>
+        <li style="margin:6px 0;">AI-created records may require records-retention handling.</li>
+        <li style="margin:6px 0;">New AI use cases should follow the IT Demand Management / USCIS approval path and OPQ documentation pattern.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:18px;background:#FFFFFF;border:1px solid #D5DEE9;border-radius:14px;padding:16px;">
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#1F3A5F;font-weight:600;margin-bottom:10px;">Working acronym reference</div>
+    <div style="font-size:13px;color:#5A6675;margin-bottom:10px;">Condensed list for this page. Use the full DSSS3 Context Register for the complete acronym inventory.</div>
+    <table style="border-collapse:collapse;width:100%;font-size:12.5px;background:#FFFFFF;">
+      <thead>
+        <tr>
+          <th style="border:1px solid #D5DEE9;background:#1F3A5F;color:#FFFFFF;text-align:left;padding:8px 9px;">Acronym</th>
+          <th style="border:1px solid #D5DEE9;background:#1F3A5F;color:#FFFFFF;text-align:left;padding:8px 9px;">Expansion</th>
+          <th style="border:1px solid #D5DEE9;background:#1F3A5F;color:#FFFFFF;text-align:left;padding:8px 9px;">Why it matters here</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">ADIS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Arrival and Departure Information System</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Travel event history used in UDS/profile enrichment.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">C3 / CLAIMS3</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Computer Linked Application Information Management System v3</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Legacy benefits case-management source except asylum/naturalization.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">CIS2</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Modernized Central Index System</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">A-number/person immigration data aggregator; critical to identity/source-of-truth questions.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">CPMS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Customer Profile Management System</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Biographic/biometric repository used around card recipients and golden-record context.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">DBIS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Data and Business Intelligence Services</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Maintains eCISCOR and supports BI/Databricks infrastructure.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">DMD</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Data Management Division</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Data stewardship, definitions, lineage, data products, and governance ownership.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">DAD</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Data Analytics Division</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Analytics use cases, interpretation, validation, adoption, and leadership-facing analysis.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">DSSS3</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Data Strategy Support Services 3</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Contract/project context for this workstream.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">eCISCOR</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Enterprise Citizenship and Immigration Services Centralized Operational Repository</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">DBIS-maintained analytical repository and consolidation context.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">ELIS / ELIS2</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Electronic Immigration System</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Online benefits-request source and major USCIS operational source.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">GDS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Graph Data Services</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Portfolio item requiring governance framework, documentation, and transition planning.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">GLOBAL</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Global application</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Asylum tracking source and UDS source context.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">NPD</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">National Production Dataset</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Centralized national reporting/analytics dataset and enterprise product priority.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">PAER</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Performance Analysis and External Reporting</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">CD&amp;A division and intake/process context.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">PII / SPII</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Personally Identifiable Information / Sensitive PII</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Do not reproduce case-level identifiers or sensitive case details in this page.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">RefDaaS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Reference Data-as-a-Service</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Data standards priority that supports consistent definitions and values.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">RNA</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Relationship Network Analytics</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Product delivery program and UDS team context.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">UDS</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Universal Data Source</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Governed, Zero Trust-aligned enterprise data layer / POC for person/profile and receipt data.</td></tr><tr><td style="border:1px solid #D5DEE9;padding:7px 9px;font-weight:700;color:#1F3A5F;vertical-align:top;">Zero Trust</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;">Zero Trust data/security approach</td><td style="border:1px solid #D5DEE9;padding:7px 9px;vertical-align:top;color:#5A6675;">Least privilege, tagging, access controls, and policy-controlled data access.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:18px;background:#FAEDEB;border:1px solid #E7C6C0;border-radius:14px;padding:16px;">
+    <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;line-height:1.1;color:#B23A2E;font-weight:600;margin-bottom:10px;">Open items before broader circulation</div>
+    <ul style="margin:8px 0 0 20px;padding:0;font-size:13.5px;color:#1B2733;"><li style="margin:6px 0;">Confirm final eCISCOR / ODS / Consumption Service relationship with Joe.</li><li style="margin:6px 0;">Confirm whether C3 should be labeled as active, transition-state, decommissioning, or simply a source system.</li><li style="margin:6px 0;">Confirm current USCIS-approved AI tools and whether Databricks Genie / related APIs are approved for OPQ/CD&amp;A use.</li><li style="margin:6px 0;">Pick one V1 harness pilot data product or use case.</li><li style="margin:6px 0;">Name one Data Management steward and one Data Analytics validator.</li><li style="margin:6px 0;">Define the curated data layer and public-safe aggregation/anonymization rules before public-facing AI/reporting use.</li><li style="margin:6px 0;">For UDS/person-centric use cases, confirm authoritative source hierarchy, tie-breakers, role-based access, and confidentiality behavior before using case-level views.</li></ul>
+  </div>
+
+  <div style="margin-top:14px;font-size:12px;color:#5A6675;">
+    Source basis: DSSS3 Project Context Memory Pack, DSSS3 Project Context Master, DSSS3 Context Register, DSSS3 context repository, FY25 Q4 OCDO Goals, DSSS3 July 2025 monthly update, and 2026 OPQ AI Posture. Current-state claims should be validated against the latest official source before external distribution.
   </div>
 </div>
