@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Harnesses &amp; Skills — CDAO Leadership Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003366; --navybg:#002240; --blue:#006699; --tint:#EAF1F6; --tint2:#D6E4EF;
+  --gold:#C0392B; --goldt:#F7EAE7; --faint:#999999; --hair:#D9DEE4; --ink:#2A2F36; --mut:#505050;
+  --green:#2E8913; --greent:#EAF4E6; --red:#962D22; --redt:#F6E4E1; --paper:#FFFFFF;
+  --serif:'Source Sans 3','Source Sans Pro',Arial,sans-serif;
+  --sans:'Source Sans 3','Source Sans Pro',-apple-system,'Segoe UI',Arial,sans-serif;
+  --mono:'Source Code Pro','Consolas','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);overflow:hidden}
+button{font-family:var(--sans)}
+
+/* ---------- chrome ---------- */
+.uscislogo{background:url('data:image/png;base64,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') no-repeat center/contain;display:inline-block;flex:none}.logochip{position:absolute;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:50;transition:width .35s ease}
+#topbar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:14px;
+  padding:0 20px;z-index:40;pointer-events:none}
+#topbar .brand{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--faint);text-transform:uppercase}
+#topbar .spacer{flex:1}
+#topbar .ctr{pointer-events:auto;display:flex;align-items:center;gap:8px}
+.navbtn{border:1px solid var(--hair);background:#fff;color:var(--navy);border-radius:10px;
+  padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s}
+.navbtn:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(22,46,81,.12);transform:translateY(-1px)}
+#count{font-size:12px;font-weight:600;color:var(--blue);min-width:56px;text-align:center;font-variant-numeric:tabular-nums}
+#dots{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:40}
+#dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--hair);cursor:pointer;padding:0;transition:all .25s}
+#dots button.on{background:var(--gold);transform:scale(1.35)}
+#dots button:hover{background:var(--blue)}
+#hint{position:fixed;bottom:14px;right:20px;font-size:11px;color:var(--faint);z-index:40}
+kbd{background:#fff;border:1px solid var(--hair);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-family:var(--sans);font-size:10px;color:var(--mut)}
+
+/* ---------- slides ---------- */
+.slide{position:absolute;inset:0;padding:70px 84px 60px;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex;animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h1{font-family:var(--serif);font-weight:700;font-size:46px;line-height:1.04;color:var(--navy);letter-spacing:-.01em}
+.sub{font-size:16px;color:var(--mut);margin-top:10px;max-width:900px}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.foot{border-top:1px solid var(--hair);padding-top:10px;display:flex;justify-content:space-between;font-size:11px;color:var(--faint)}
+.foot b{color:var(--blue)}
+
+/* dark slides */
+.slide.dark{background:radial-gradient(120% 140% at 85% -20%,#1B3A66 0%,var(--navybg) 58%)}
+.slide.dark h1{color:#fff}
+.slide.dark .sub{color:var(--tint2)}
+.slide.dark .foot{border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.45)}
+
+/* ---------- components ---------- */
+.row{display:flex;gap:22px;align-items:stretch}
+.card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 24px;
+  box-shadow:0 10px 30px rgba(22,46,81,.07);transition:transform .22s,box-shadow .22s,border-color .22s;position:relative}
+.card.hov:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,46,81,.14);border-color:var(--gold)}
+.card h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--mut);line-height:1.5}
+.card.navy{background:linear-gradient(150deg,#1B3A66,var(--navy));border-color:var(--navy)}
+.card.navy h3{color:#fff}.card.navy p{color:var(--tint2)}
+.card.gold{background:var(--goldt);border-color:var(--gold)}
+.card.tint{background:var(--tint);border-color:var(--tint2)}
+.card.green{background:var(--greent);border-color:#BFE3D4}
+.card.red{background:var(--redt);border-color:#E7C6C0}
+.ic{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);flex:none;margin-bottom:12px}
+.ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic.g{background:var(--gold)}.ic.g svg{stroke:var(--navy)}
+.ic.grn{background:var(--green)}.ic.rd{background:var(--red)}.ic.bl{background:var(--blue)}
+.ic.soft{background:var(--tint2)}.ic.soft svg{stroke:var(--navy)}
+.arrow{align-self:center;color:var(--gold);font-size:26px;font-weight:700;flex:none;user-select:none}
+.band{border-radius:14px;padding:16px 22px;font-size:15px}
+.band.tint{background:var(--tint);border:1px solid var(--tint2);color:var(--navy)}
+.band.gold{background:var(--goldt);border:1px solid var(--gold);color:var(--ink)}
+.band.navy{background:var(--navy);color:#fff}
+.band.green{background:var(--greent);border:1px solid #BFE3D4;color:var(--ink)}
+.band .lbl{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px}
+.punch{font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;color:var(--blue);text-align:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* term tooltips */
+.term{border-bottom:1.5px dashed var(--gold);cursor:help;color:inherit;font-weight:600}
+#tip{position:fixed;z-index:90;max-width:320px;background:var(--navy);color:#fff;font-size:12.5px;line-height:1.5;
+  padding:10px 14px;border-radius:10px;box-shadow:0 14px 34px rgba(15,33,56,.35);opacity:0;pointer-events:none;transition:opacity .15s}
+#tip.on{opacity:1}
+#tip .t{color:var(--gold);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px}
+
+/* drawer */
+#drawer{position:fixed;top:0;right:-460px;width:440px;height:100%;background:#fff;z-index:80;
+  box-shadow:-18px 0 50px rgba(15,33,56,.22);transition:right .35s cubic-bezier(.2,.8,.2,1);padding:34px 30px;overflow-y:auto}
+#drawer.open{right:0}
+#drawer .dl{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+#drawer h2{font-family:var(--serif);font-size:30px;color:var(--navy);margin:8px 0 14px}
+#drawer p{font-size:14px;color:var(--mut);line-height:1.65;margin-bottom:12px}
+#drawer ul{margin:0 0 12px 18px;font-size:13.5px;color:var(--ink);line-height:1.7}
+#drawer .x{position:absolute;top:16px;right:16px;border:none;background:var(--tint);width:34px;height:34px;border-radius:50%;
+  font-size:16px;color:var(--navy);cursor:pointer}
+#scrim{position:fixed;inset:0;background:rgba(15,33,56,.35);z-index:70;opacity:0;pointer-events:none;transition:opacity .3s}
+#scrim.on{opacity:1;pointer-events:auto}
+.more{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-weight:600;color:var(--blue);
+  background:none;border:none;cursor:pointer;padding:0}
+.more:hover{color:var(--gold)}
+
+/* code panels */
+.code{background:#10233F;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 14px 34px rgba(15,33,56,.25)}
+.code .bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.code .bar i{width:11px;height:11px;border-radius:50%;display:block}
+.code .bar .fn{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.code pre{margin:0;padding:16px 20px;font-family:var(--mono);font-size:13px;line-height:1.75;color:var(--tint2);white-space:pre-wrap}
+.code .k{color:var(--gold);font-weight:600}.code .w{color:#fff;font-weight:600}.code .c{color:#7E93AE;font-style:italic}.code .r{color:#E8B9B0;font-weight:600}
+.cl{display:block;border-radius:6px;padding:0 8px;margin:0 -8px;cursor:pointer;transition:background .15s}
+.cl:hover{background:rgba(201,169,110,.14)}
+
+/* toggle switch */
+.switch{display:inline-flex;background:#fff;border:1px solid var(--hair);border-radius:999px;padding:4px;gap:4px;box-shadow:0 6px 18px rgba(22,46,81,.08)}
+.switch button{border:none;background:none;border-radius:999px;padding:9px 22px;font-size:13.5px;font-weight:600;color:var(--mut);cursor:pointer;transition:all .2s}
+.switch button.on{background:var(--navy);color:#fff}
+
+/* journey */
+.jstep{flex:1;text-align:center;padding:22px 14px;border-radius:16px;background:#fff;border:1px solid var(--hair);transition:all .35s;position:relative;cursor:pointer}
+.jstep .n{position:absolute;top:10px;left:14px;font-family:var(--serif);font-size:19px;font-weight:700;color:var(--hair);transition:color .3s}
+.jstep .jic{width:56px;height:56px;margin:4px auto 12px;border-radius:50%;background:var(--tint);display:flex;align-items:center;justify-content:center;transition:all .35s}
+.jstep .jic svg{width:26px;height:26px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.jstep h4{font-size:14.5px;font-weight:700;color:var(--navy)}
+.jstep p{font-size:11.5px;color:var(--mut);margin-top:5px;line-height:1.45}
+.jstep.lit{background:linear-gradient(150deg,#1B3A66,var(--navy));border-color:var(--navy);transform:translateY(-6px);box-shadow:0 18px 40px rgba(22,46,81,.3)}
+.jstep.lit .jic{background:var(--gold)}
+.jstep.lit h4{color:#fff}.jstep.lit p{color:var(--tint2)}.jstep.lit .n{color:var(--gold)}
+.jstep.done{border-color:var(--gold);background:var(--goldt)}
+
+/* checklist */
+.chk{display:flex;align-items:flex-start;gap:11px;padding:9px 12px;border-radius:10px;cursor:pointer;transition:background .18s;font-size:14px;color:var(--ink)}
+.chk:hover{background:rgba(46,92,138,.07)}
+.chk .box{width:21px;height:21px;border-radius:6px;border:2px solid var(--blue);flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;transition:all .18s;margin-top:1px}
+.chk.on .box{background:var(--green);border-color:var(--green)}
+.chk.on{color:var(--mut)}
+
+/* hub diagram */
+.hub-wrap{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:26px;align-items:center}
+.hub{background:linear-gradient(150deg,#1B3A66,var(--navy));border-radius:20px;padding:30px 26px;text-align:center;color:#fff;box-shadow:0 18px 44px rgba(22,46,81,.3)}
+.hub .ht{font-size:15px;font-weight:700;letter-spacing:.22em;color:var(--gold);margin-bottom:12px}
+.hub p{font-size:13.5px;color:var(--tint2);line-height:1.65}
+.sat{margin:0 0 14px;cursor:pointer}
+.sat:last-child{margin-bottom:0}
+.sat.glow{border-color:var(--gold);box-shadow:0 14px 34px rgba(201,169,110,.35);transform:translateY(-3px)}
+
+/* stack diagram (slide 4) */
+.stackrow{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--hair);border-radius:13px;padding:12px 16px;margin-bottom:10px;transition:all .25s;cursor:pointer}
+.stackrow:hover{border-color:var(--gold);transform:translateX(4px)}
+.stackrow .si{width:34px;height:34px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;flex:none}
+.stackrow .si svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stackrow b{font-size:13.5px;color:var(--navy);display:block}
+.stackrow span{font-size:11.5px;color:var(--mut)}
+.stackrow.uc{background:linear-gradient(150deg,#1B3A66,var(--navy));border-color:var(--navy)}
+.stackrow.uc b{color:#fff}.stackrow.uc span{color:var(--tint2)}
+.stackrow.uc .si{background:var(--gold)}.stackrow.uc .si svg{stroke:var(--navy)}
+.gv .stackrow.uc,.gv #hRow .hchip.h-harness{outline:3px solid var(--gold);outline-offset:2px}
+
+/* flow chips slide 5 */
+.fchip{flex:1;text-align:center;border-radius:12px;padding:12px 8px;border:1px solid var(--hair);background:#fff;font-size:12.5px;transition:all .25s}
+.fchip b{display:block;font-size:13.5px;color:var(--navy)}
+.fchip span{color:var(--mut);font-size:11px}
+.fchip.navy{background:var(--navy);border-color:var(--navy)}.fchip.navy b{color:#fff}.fchip.navy span{color:var(--tint2)}
+.fchip.gold{background:var(--goldt);border-color:var(--gold)}
+.fchip.green{background:var(--greent);border-color:#BFE3D4}
+
+.num{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy);font-family:var(--serif);font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* grid overview */
+#grid{position:fixed;inset:0;background:rgba(15,33,56,.96);z-index:100;display:none;padding:60px;overflow-y:auto}
+#grid.on{display:block}
+#grid h2{color:#fff;font-family:var(--serif);font-size:28px;margin-bottom:22px}
+#grid .g{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#grid button.cell{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:16px 14px;text-align:left;color:#fff;cursor:pointer;transition:all .2s}
+#grid button.cell:hover{background:rgba(201,169,110,.18);border-color:var(--gold)}
+#grid .cell .n{font-family:var(--serif);font-size:19px;color:var(--gold)}
+#grid .cell .t{font-size:13px;font-weight:600;margin-top:4px}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="topbar">
+  <span class="uscislogo" style="width:19px;height:31px"></span>
+  <span class="brand">CDAO &nbsp;•&nbsp; AI Harness &amp; Skills</span>
+  <span class="spacer"></span>
+  <span class="ctr">
+    <button class="navbtn" onclick="toggleGrid()">Overview</button>
+    <button class="navbtn" onclick="nav(-1)">←</button>
+    <span id="count"></span>
+    <button class="navbtn" onclick="nav(1)">→</button>
+  </span>
+</div>
+<div id="tip"></div>
+<div id="scrim" onclick="closeDrawer()"></div>
+<aside id="drawer"><button class="x" onclick="closeDrawer()">✕</button><div id="dbody"></div></aside>
+<div id="grid"><h2>Jump to a slide</h2><div class="g" id="gcells"></div></div>
+
+<!-- ============ 1 · COVER ============ -->
+<section class="slide dark">
+  <div class="logochip" style="right:64px;top:40px;width:60px;height:74px"><span class="uscislogo" style="width:40px;height:66px"></span></div>
+  <div class="body" style="justify-content:center">
+    <div class="eyebrow">CDAO</div>
+    <h1 style="font-size:76px;max-width:800px;color:#fff">AI Harnesses<br>&amp; Skills</h1>
+    <p class="sub" style="font-size:20px;margin-top:18px">How CDAO can make Databricks AI useful, trusted, and repeatable.</p>
+    <div style="width:70px;height:2px;background:var(--gold);margin:26px 0 14px"></div>
+    <p style="font-size:15px;color:var(--tint2)"><b style="color:var(--gold)">Context before capability.</b>&ensp;The platform brings the tools — we bring the meaning.</p>
+    <div style="position:absolute;right:90px;bottom:120px;width:300px">
+      <div class="card navy" style="padding:16px 20px"><h3 style="letter-spacing:.18em;font-size:14px">HARNESS</h3><p style="font-size:12px">definitions • caveats • examples • answer rules</p></div>
+      <div style="width:2px;height:22px;border-left:2px dashed var(--gold);margin:0 0 0 30px"></div>
+      <div class="card gold" style="padding:13px 20px;width:82%;margin-left:20px"><h3 style="font-family:var(--mono);font-size:14px">skill.md</h3><p style="font-size:12px">repeatable task recipe</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>USCIS &nbsp;•&nbsp; Chief Data and Analytics Office</span><b>01 / 21</b></div>
+</section>
+
+<!-- ============ 2 · THE PROBLEM ============ -->
+<section class="slide">
+  <div class="eyebrow">Why we are here</div>
+  <h1>The problem is not only “can AI answer?”</h1>
+  <p class="sub">The harder question: can it answer with the right <span class="term" data-t="Meaning" data-tip="Approved definitions and counting logic — what a term or metric officially means here, not what the model guesses it means.">meaning</span>, limits, and reviewability?</p>
+  <div class="body">
+    <div class="row">
+      <div class="card red hov" style="flex:1"><div class="ic rd"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>Without shared context</h3><p>Different teams ask the same question and get answers that look reasonable — but mean different things.</p></div>
+      <div class="arrow">→</div>
+      <div class="card navy hov" style="flex:1"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <h3>With a <span class="term" style="color:#fff;border-color:var(--gold)" data-t="Harness" data-tip="A reusable, reviewed context package: definitions, caveats, examples, and answer expectations that travel with the data product.">harness</span></h3><p>Definitions, caveats, examples, and answer rules travel with the data product and AI workflow.</p></div>
+      <div class="arrow">→</div>
+      <div class="card gold hov" style="flex:1"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div>
+        <h3>With <span class="term" data-t="skill.md" data-tip="A small Markdown instruction file for one repeatable task: trigger, steps, quality bar, and guardrails.">skill files</span></h3><p>Repeatable task recipes tell the assistant how to do one kind of work the same way, each time.</p></div>
+    </div>
+    <div class="band tint" style="margin-top:26px"><div class="lbl" style="color:var(--blue)">Leadership takeaway</div>
+      <b>AI readiness is not waiting for one feature to unlock.</b> It is preparing the data, metadata, examples, review process, and reusable instructions so AI is valuable the day approved capabilities arrive.</div>
+  </div>
+  <div class="foot"><span></span><b>02 / 21</b></div>
+</section>
+
+<!-- ============ 3 · VOCABULARY ============ -->
+<section class="slide">
+  <div class="eyebrow">Shared language</div>
+  <h1>Plain-English vocabulary first</h1>
+  <p class="sub">Six pieces leadership will hear about — hover any card for the memory hook.</p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card hov" data-t="Memory hook" data-tip="LLM = the brain." style="cursor:help"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div><h3>LLM</h3><p>A language engine that predicts and generates text or code.</p></div>
+      <div class="card hov" data-t="Memory hook" data-tip="Assistant = the front desk." style="cursor:help"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Chatbot / Assistant</h3><p>The front door a user types into. It may call tools, data, or models.</p></div>
+      <div class="card hov" data-t="Memory hook" data-tip="Endpoint = the secure service window." style="cursor:help"><div class="ic"><svg class="i" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div><h3>Model Serving Endpoint</h3><p>A secure service window: an app sends a request, the endpoint returns a response.</p></div>
+      <div class="card hov" data-t="Memory hook" data-tip="Genie = the data Q&A room." style="cursor:help"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div><h3>Genie Space / Agent</h3><p>A Databricks data Q&amp;A room for natural-language questions about governed data.</p></div>
+      <div class="card hov" data-t="Memory hook" data-tip="Unity Catalog = library catalog + security desk + map." style="cursor:help;border-color:var(--gold)"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Unity Catalog</h3><p>Databricks governance layer for permissions, metadata, lineage, audit, discovery.</p></div>
+      <div class="card hov" data-t="Memory hook" data-tip="Data product = a trusted, ready-to-use dataset." style="cursor:help"><div class="ic"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div><h3>Data Product</h3><p>A trusted table, view, metric view, or curated, dashboard-ready dataset.</p></div>
+    </div>
+    <div class="band gold" style="margin-top:24px"><b>Memory hook:</b>&ensp;LLM = brain &nbsp;•&nbsp; assistant = front desk &nbsp;•&nbsp; endpoint = service window &nbsp;•&nbsp; Genie = data Q&amp;A room</div>
+    <p style="font-size:11px;color:var(--faint);font-style:italic;margin-top:12px">Databricks docs now say “Genie Agent”; many teams still say “Genie Space.” Conceptual until USCIS environment availability is confirmed.</p>
+  </div>
+  <div class="foot"><span></span><b>03 / 21</b></div>
+</section>
+
+<!-- ============ 4 · DATABRICKS PICTURE ============ -->
+<section class="slide" id="s4">
+  <div class="eyebrow">The platform</div>
+  <h1>The Databricks picture</h1>
+  <p class="sub">The platform provides the workbench; the harness provides the working instructions. <b style="color:var(--blue)">Click any layer for detail</b>, or toggle what governance covers.</p>
+  <div class="body">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:14px">
+      <div class="switch"><button class="on" onclick="gov(false,this)">Full picture</button><button onclick="gov(true,this)">Highlight governance</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.05fr .12fr 1fr;gap:6px;align-items:center" id="dbx">
+      <div>
+        <div class="stackrow uc" onclick="openDrawer('uc')"><div class="si"><svg class="i" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><div><b>Unity Catalog</b><span>governed access + metadata</span></div></div>
+        <div class="stackrow" onclick="openDrawer('dp')"><div class="si"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div><div><b>Governed data products</b><span>tables • views • metrics</span></div></div>
+        <div class="stackrow" onclick="openDrawer('genie')"><div class="si"><svg class="i" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg></div><div><b>Genie Space / Agent</b><span>natural-language data Q&amp;A</span></div></div>
+        <div class="stackrow" onclick="openDrawer('ms')"><div class="si"><svg class="i" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div><div><b>Model Serving</b><span>models exposed through endpoints</span></div></div>
+        <div class="stackrow" style="margin-bottom:0" onclick="openDrawer('dash')"><div class="si"><svg class="i" viewBox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></div><div><b>Dashboards / Apps</b><span>answers delivered to users</span></div></div>
+      </div>
+      <div class="arrow" style="text-align:center">⟶</div>
+      <div id="hRow">
+        <div class="card navy hov hchip h-harness" style="padding:18px 22px;cursor:pointer" onclick="openDrawer('harness')"><h3 style="letter-spacing:.16em;font-size:14px">HARNESS</h3><p style="font-size:12.5px">Reusable context: definitions, caveats, data-product purpose, examples, answer rules.</p></div>
+        <div style="width:2px;height:20px;border-left:2px dashed var(--gold);margin-left:30px"></div>
+        <div class="card gold hov hchip" style="padding:14px 22px;width:86%;cursor:pointer" onclick="openDrawer('skill')"><h3 style="font-family:var(--mono);font-size:14px">skill.md</h3><p style="font-size:12.5px">Task recipe: when doing this job, follow these steps and quality checks.</p></div>
+        <div class="band tint" style="margin-top:16px;font-size:12.5px;padding:12px 16px"><b>They do not replace Databricks.</b> They prepare Databricks AI features to behave more consistently once enabled and approved.</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--faint);font-style:italic;margin-top:14px">Databricks docs: Genie is governed through Unity Catalog; Genie Agents are configured with Unity Catalog data, example SQL, instructions, and trusted assets.</p>
+  </div>
+  <div class="foot"><span></span><b>04 / 21</b></div>
+</section>
+
+<!-- ============ 5 · UNITY CATALOG ============ -->
+<section class="slide">
+  <div class="eyebrow">Governance foundation</div>
+  <h1>Unity Catalog: the governed library</h1>
+  <p class="sub">It controls access and metadata; the harness adds USCIS meaning.</p>
+  <div class="body">
+    <div class="band gold"><b>Memory hook:</b>&ensp;library catalog&ensp;+&ensp;security desk&ensp;+&ensp;map</div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card hov"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="ic" style="margin:0"><svg class="i" viewBox="0 0 24 24"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg></div><h3 style="margin:0">1 · Catalogs the assets</h3></div><p>Organizes assets in a governed namespace (<span style="font-family:var(--mono);font-size:12px">catalog.schema.object</span>): tables, views, volumes, functions, models, services.</p></div>
+      <div class="card hov"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="ic" style="margin:0"><svg class="i" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></div><h3 style="margin:0">2 · Controls who uses them</h3></div><p>Permissions for users, groups, service principals. <span class="term" data-t="Fine-grained controls" data-tip="Row filters restrict which rows a user sees; column masks hide or transform sensitive values — applied automatically at query time.">Row filters and column masks</span> restrict what a user sees at query time.</p></div>
+      <div class="card hov"><div style="display:flex;gap:12px;align-items:center;margin-bottom:8px"><div class="ic" style="margin:0"><svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg></div><h3 style="margin:0">3 · Tracks trust signals</h3></div><p>Discovery, <span class="term" data-t="Lineage" data-tip="Where the data came from and what depends on it downstream — essential for impact analysis before changes.">lineage</span>, auditing, tags, and impact analysis across data and AI assets.</p></div>
+    </div>
+    <div class="row" style="margin-top:18px;gap:8px;align-items:center">
+      <div class="fchip navy"><b>Unity Catalog</b><span>governed access</span></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="fchip"><b>Data Products</b><span>approved tables</span></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="fchip gold"><b>Harness</b><span>meaning + caveats</span></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="fchip"><b>skill.md</b><span>task recipe</span></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="fchip green"><b>AI</b><span>usable answer</span></div>
+    </div>
+    <div class="band tint" style="margin-top:16px"><b>Important boundary:</b> Unity Catalog does not replace the harness. It governs assets and access; the harness explains local business meaning, caveats, and answer expectations.</div>
+  </div>
+  <div class="foot"><span></span><b>05 / 21</b></div>
+</section>
+
+<!-- ============ 6 · WHAT IS A HARNESS ============ -->
+<section class="slide">
+  <div class="eyebrow">Core concept nº 1</div>
+  <h1>What is an AI harness?</h1>
+  <p class="sub">The mission guidebook that travels with the AI. <b style="color:var(--blue)">Click any piece to open it.</b></p>
+  <div class="body">
+    <div class="hub-wrap">
+      <div>
+        <div class="card hov sat" onclick="openDrawer('meaning')"><div style="display:flex;gap:10px;align-items:center"><div class="ic soft" style="margin:0;width:34px;height:34px"><svg class="i" viewBox="0 0 24 24"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><h3 style="margin:0;font-size:15px">Approved meaning</h3></div><p style="margin-top:8px">What key terms and metrics mean here.</p></div>
+        <div class="card hov sat" onclick="openDrawer('bounds')"><div style="display:flex;gap:10px;align-items:center"><div class="ic soft" style="margin:0;width:34px;height:34px"><svg class="i" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg></div><h3 style="margin:0;font-size:15px">Use boundaries</h3></div><p style="margin-top:8px">What the assistant should not infer or decide.</p></div>
+      </div>
+      <div class="hub"><div class="ht">CDAO AI HARNESS</div><p>definitions • caveats • approved counting logic • example questions • strong-answer patterns • review owners</p></div>
+      <div>
+        <div class="card hov sat" onclick="openDrawer('style')"><div style="display:flex;gap:10px;align-items:center"><div class="ic soft" style="margin:0;width:34px;height:34px"><svg class="i" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div><h3 style="margin:0;font-size:15px">Answer style</h3></div><p style="margin-top:8px">What a useful response should include.</p></div>
+        <div class="card hov sat" onclick="openDrawer('examples')"><div style="display:flex;gap:10px;align-items:center"><div class="ic soft" style="margin:0;width:34px;height:34px"><svg class="i" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div><h3 style="margin:0;font-size:15px">Examples</h3></div><p style="margin-top:8px">Good questions and strong-answer patterns.</p></div>
+      </div>
+    </div>
+    <p class="punch" style="margin-top:28px">The harness does not answer by itself. It prepares the AI to answer better.</p>
+  </div>
+  <div class="foot"><span></span><b>06 / 21</b></div>
+</section>
+
+<!-- ============ 7 · WHY IT MATTERS ============ -->
+<section class="slide">
+  <div class="eyebrow">The difference it makes</div>
+  <h1>Why a harness matters</h1>
+  <p class="sub">The same words can mean different things without context. <b style="color:var(--blue)">Flip the switch.</b></p>
+  <div class="body" style="align-items:center;display:flex;flex-direction:column;justify-content:center">
+    <div class="band navy" style="font-family:var(--serif);font-style:italic;font-size:21px;padding:14px 34px">“Why did workload change this month?”</div>
+    <div class="switch" style="margin:22px 0">
+      <button class="on" onclick="harnessDemo(false,this)">Without a harness</button>
+      <button onclick="harnessDemo(true,this)">With a harness</button>
+    </div>
+    <div id="demoA" class="card red" style="max-width:760px;width:100%">
+      <p style="font-family:var(--mono);font-size:15px;color:var(--ink);margin-bottom:10px">“Workload increased this month.”</p>
+      <p>May be true — but it misses the definition, comparison period, workload mix, reporting lag, and caveats.</p>
+    </div>
+    <div id="demoB" class="card green" style="max-width:760px;width:100%;display:none">
+      <p style="font-family:var(--mono);font-size:14.5px;color:var(--ink);margin-bottom:10px">“Under the approved definition, the metric changed. Before interpreting, check the date window, form mix, refresh timing, and known caveats.”</p>
+      <p>Same question — now grounded in the approved definition, with caveats surfaced up front.</p>
+    </div>
+    <div class="band tint" style="margin-top:22px;max-width:760px;width:100%"><b>The goal is not to replace the analyst.</b> The goal is to make the first answer safer, clearer, and easier to review.</div>
+  </div>
+  <div class="foot"><span></span><b>07 / 21</b></div>
+</section>
+
+<!-- ============ 8 · WHAT GOES INSIDE ============ -->
+<section class="slide">
+  <div class="eyebrow">Anatomy</div>
+  <h1>What goes inside a harness?</h1>
+  <p class="sub">Short enough to use, clear enough to review.</p>
+  <div class="body">
+    <div class="grid2" style="gap:14px">
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">1</div><div><h3 style="font-size:15px">Business purpose</h3><p>What problem are we helping users answer?</p></div></div>
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">4</div><div><h3 style="font-size:15px">Caveats</h3><p>What limits, lag, or quality issues matter?</p></div></div>
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">2</div><div><h3 style="font-size:15px">Trusted data products</h3><p>Which tables, views, or metrics are in scope?</p></div></div>
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">5</div><div><h3 style="font-size:15px">Answer expectations</h3><p>What should a good answer include?</p></div></div>
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">3</div><div><h3 style="font-size:15px">Definitions</h3><p>What do key terms and counts mean?</p></div></div>
+      <div class="card hov" style="display:flex;gap:14px;align-items:flex-start;padding:16px 20px"><div class="num">6</div><div><h3 style="font-size:15px">Review ownership</h3><p>Who validates meaning and usage?</p></div></div>
+    </div>
+    <div class="band navy" style="margin-top:22px"><span style="color:var(--gold);font-weight:700;letter-spacing:.18em;font-size:11px">DESIGN RULE&ensp;</span> Build it as a human-readable playbook first. Technical forms can come later.</div>
+  </div>
+  <div class="foot"><span></span><b>08 / 21</b></div>
+</section>
+
+<!-- ============ 9 · BUILD A HARNESS ============ -->
+<section class="slide">
+  <div class="eyebrow">The build</div>
+  <h1>How to build a harness</h1>
+  <p class="sub">Six practical steps — no overengineering required.</p>
+  <div class="body">
+    <div class="grid3" style="gap:16px">
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">1</span>&ensp;Pick one use case</h3><p>One familiar, low-risk data product or dashboard question.</p></div>
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">2</span>&ensp;Name the reviewers</h3><p>A data steward plus an analytics validator.</p></div>
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">3</span>&ensp;Write the meaning</h3><p>Definitions, caveats, scope, owners, refresh timing.</p></div>
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">4</span>&ensp;Add examples</h3><p>Good questions, bad questions, strong-answer examples.</p></div>
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">5</span>&ensp;Test it</h3><p>Ask 10 <span class="term" data-t="Benchmark questions" data-tip="A fixed set of questions with expected answers — the test suite that tells you whether guidance is working.">benchmark questions</span>; compare expected answers.</p></div>
+      <div class="card hov"><h3 style="font-size:15px"><span style="color:var(--gold);font-family:var(--serif);font-size:20px">6</span>&ensp;Version it</h3><p>Store, review, revise, and reuse the playbook.</p></div>
+    </div>
+    <div class="band green" style="margin-top:22px"><b style="color:var(--green)">Output:</b>&ensp;one reviewed harness page&ensp;+&ensp;benchmark questions&ensp;+&ensp;a decision on what to scale.</div>
+  </div>
+  <div class="foot"><span></span><b>09 / 21</b></div>
+</section>
+
+<!-- ============ 10 · HARNESS EXAMPLE ============ -->
+<section class="slide">
+  <div class="eyebrow">Worked example</div>
+  <h1>Harness example: one safe pattern</h1>
+  <p class="sub">A generic metric question keeps the concept non-sensitive. <b style="color:var(--blue)">Click the checklist as you present it.</b></p>
+  <div class="body">
+    <div class="row">
+      <div style="flex:1">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="background:linear-gradient(150deg,#1B3A66,var(--navy));padding:14px 22px;color:var(--gold);font-weight:700;letter-spacing:.16em;font-size:12.5px">EXAMPLE HARNESS — WORKLOAD TREND</div>
+          <div style="padding:16px 22px">
+            <div style="display:grid;grid-template-columns:110px 1fr;gap:9px 16px;font-size:13px">
+              <b style="color:var(--blue);font-size:11px;letter-spacing:.14em">PURPOSE</b><span>Explain why a workload metric changed over time.</span>
+              <b style="color:var(--blue);font-size:11px;letter-spacing:.14em">DATA SCOPE</b><span>One governed data product or dashboard-ready dataset.</span>
+              <b style="color:var(--blue);font-size:11px;letter-spacing:.14em">DEFINITIONS</b><span>Workload, received, completed, pending, cycle time.</span>
+              <b style="color:var(--blue);font-size:11px;letter-spacing:.14em">CAVEATS</b><span>Reporting lag, refresh time, workload mix, form grouping, data-quality notes.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1.05">
+        <div class="card tint" style="padding:18px 20px">
+          <h3 style="font-size:13px;letter-spacing:.14em;color:var(--navy)">HARNESS ANSWER EXPECTATIONS &nbsp;<span id="chkCount" style="color:var(--gold)">0 / 8</span></h3>
+          <div id="chkList" style="margin-top:8px">
+            <div class="chk"><div class="box">✓</div>Start with the plain-English answer.</div>
+            <div class="chk"><div class="box">✓</div>State the approved metric definition.</div>
+            <div class="chk"><div class="box">✓</div>Compare the same date windows.</div>
+            <div class="chk"><div class="box">✓</div>Check refresh timing and reporting lag.</div>
+            <div class="chk"><div class="box">✓</div>Mention workload mix before implying cause.</div>
+            <div class="chk"><div class="box">✓</div>Offer one useful next check.</div>
+            <div class="chk"><div class="box">✓</div>Avoid adjudicative conclusions.</div>
+            <div class="chk"><div class="box">✓</div>Say when confidence is limited.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>10 / 21</b></div>
+</section>
+
+<!-- ============ 11 · SKILL.MD ============ -->
+<section class="slide">
+  <div class="eyebrow">Core concept nº 2</div>
+  <h1>What is a skill.md file?</h1>
+  <p class="sub">A reusable recipe for one kind of work. <b style="color:var(--blue)">Hover any line for the why.</b></p>
+  <div class="body">
+    <div class="row">
+      <div class="code" style="flex:1.1">
+        <div class="bar"><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i><i style="background:var(--faint)"></i><span class="fn">explain_metric_change / skill.md</span></div>
+        <pre><span class="cl c" data-t="Frontmatter" data-tip="A tiny metadata header. Assistants use it to decide when this skill applies.">---</span><span class="cl"><span class="k">name:</span> <span class="w">explain_metric_change</span></span><span class="cl"><span class="k">description:</span> Use when asked why a metric changed.</span><span class="cl c">---</span>
+<span class="cl w" data-t="Ordered steps" data-tip="Steps run before any answer is drafted — the method travels with the task, not with one person's memory.">Before answering:</span><span class="cl" data-t="Step 1" data-tip="Prevents answering about the wrong metric or the wrong table.">1. Confirm the metric and data product.</span><span class="cl" data-t="Step 2" data-tip="The harness holds the approved definition — the skill points to it rather than re-inventing it.">2. Read the approved definition from the harness.</span><span class="cl" data-t="Step 3" data-tip="Most misleading comparisons come from mismatched date windows.">3. Compare the same date windows.</span><span class="cl" data-t="Step 4" data-tip="Fresh-looking numbers may be incomplete: reporting lag and mix shifts change the story.">4. Check lag, mix, and known caveats.</span><span class="cl" data-t="Step 5" data-tip="Ends with honesty about certainty plus a concrete next action for the analyst.">5. State confidence and next check.</span>
+<span class="cl r" data-t="Guardrail" data-tip="A hard boundary. Skills say what NOT to do as clearly as what to do.">Never make adjudicative decisions.</span></pre>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+        <div class="card"><h3 style="font-size:12.5px;letter-spacing:.16em;color:var(--blue)">PLAIN-ENGLISH DEFINITION</h3>
+          <p style="font-size:15px;color:var(--ink);font-weight:500;margin-top:6px">A skill.md file is a small Markdown instruction file that explains how to perform one specific task consistently.</p>
+          <p style="margin-top:10px">It can be used by people, AI assistants, or future app workflows.<br><br>It is not automatically a Databricks feature unless connected to an approved workflow.</p></div>
+        <div class="card gold"><p class="punch" style="font-size:19px;text-align:left;color:var(--navy)">The harness says what the world means. The skill says how to do one job in that world.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>11 / 21</b></div>
+</section>
+
+<!-- ============ 12 · HARNESS VS SKILL ============ -->
+<section class="slide">
+  <div class="eyebrow">Keep them straight</div>
+  <h1>Harness vs. skill.md</h1>
+  <p class="sub">They work together — but they are not the same thing.</p>
+  <div class="body">
+    <div class="grid2">
+      <div class="card navy hov"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <h3 style="font-size:19px">Harness = shared world model</h3>
+        <p style="color:var(--gold);font-weight:600;margin:6px 0">Defines the data topic.</p>
+        <p>Approved terms, caveats, data-product scope, examples, owners, benchmark questions, and answer expectations.</p>
+        <p style="margin-top:12px"><b style="color:var(--gold)">Best analogy:</b> <span style="color:#fff">a guidebook or operating manual.</span></p></div>
+      <div class="card gold hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div>
+        <h3 style="font-size:19px">skill.md = task recipe</h3>
+        <p style="color:var(--blue);font-weight:600;margin:6px 0">Defines one repeatable job.</p>
+        <p style="color:var(--ink)">Trigger, steps, quality checks, guardrails, and completion criteria.</p>
+        <p style="margin-top:12px;color:var(--ink)"><b style="color:var(--blue)">Best analogy:</b> a recipe card or SOP.</p></div>
+    </div>
+    <div class="band tint" style="margin-top:22px"><b style="color:var(--blue)">Together:</b>&ensp;<b>the harness gives the assistant context; the skill gives the assistant process.</b></div>
+  </div>
+  <div class="foot"><span></span><b>12 / 21</b></div>
+</section>
+
+<!-- ============ 13 · BUILD A SKILL ============ -->
+<section class="slide">
+  <div class="eyebrow">The build</div>
+  <h1>How to build a skill.md file</h1>
+  <p class="sub">Five questions make a skill clear enough to reuse.</p>
+  <div class="body">
+    <div class="row" style="gap:12px">
+      <div class="card hov" style="flex:1;padding:16px"><h3 style="font-size:14px">⚡ Trigger</h3><p style="font-size:12px">When should this skill be used?</p></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="card hov" style="flex:1;padding:16px"><h3 style="font-size:14px">🗂 Inputs</h3><p style="font-size:12px">What information must be available?</p></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="card hov" style="flex:1;padding:16px"><h3 style="font-size:14px">☰ Steps</h3><p style="font-size:12px">What happens first, second, third?</p></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="card hov" style="flex:1;padding:16px"><h3 style="font-size:14px">◎ Quality bar</h3><p style="font-size:12px">How do we know the output is good enough?</p></div><div class="arrow" style="font-size:18px">→</div>
+      <div class="card hov" style="flex:1;padding:16px"><h3 style="font-size:14px">🛡 Guardrails</h3><p style="font-size:12px">What must the assistant not do?</p></div>
+    </div>
+    <div class="code" style="margin-top:22px">
+      <div class="bar"><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i><i style="background:var(--faint)"></i><span class="fn">skill skeleton</span></div>
+      <pre><span class="c">---</span>
+<span class="k">name:</span> <span class="w">&lt;task-name&gt;</span>        <span class="k">description:</span> Use when &lt;trigger&gt;.
+<span class="c">---</span>
+<span class="k">Goal:</span>        one sentence
+<span class="k">Steps:</span>       ordered list with completion checks
+<span class="k">Guardrails:</span>  what to avoid — and what to do instead
+<span class="k">References:</span>  harness page or glossary</pre>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>13 / 21</b></div>
+</section>
+
+<!-- ============ 14 · PUBLIC EXAMPLES ============ -->
+<section class="slide">
+  <div class="eyebrow">Proof from the field</div>
+  <h1>Public skill examples: what we can learn</h1>
+  <p class="sub">Good skills are small, specific, and repeatable.</p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card hov"><span style="display:inline-block;background:#10233F;color:var(--gold);font-family:var(--mono);font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px">/grill-me</span>
+        <p style="font-size:14.5px;font-weight:600;color:var(--navy);margin-top:12px">Interview the user until the plan is clear.</p>
+        <hr style="border:none;border-top:1px solid var(--hair);margin:12px 0">
+        <p style="font-size:10.5px;font-weight:700;letter-spacing:.18em;color:var(--blue)">CDAO ADAPTATION</p>
+        <p style="margin-top:5px">Clarify a data request before building the dashboard, query, or harness.</p></div>
+      <div class="card hov"><span style="display:inline-block;background:#10233F;color:var(--gold);font-family:var(--mono);font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px">/to-prd</span>
+        <p style="font-size:14.5px;font-weight:600;color:var(--navy);margin-top:12px">Turn conversation into a structured requirement.</p>
+        <hr style="border:none;border-top:1px solid var(--hair);margin:12px 0">
+        <p style="font-size:10.5px;font-weight:700;letter-spacing:.18em;color:var(--blue)">CDAO ADAPTATION</p>
+        <p style="margin-top:5px">Convert a stakeholder discussion into a data-product brief or Jira epic.</p></div>
+      <div class="card hov"><span style="display:inline-block;background:#10233F;color:var(--gold);font-family:var(--mono);font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px">/tdd</span>
+        <p style="font-size:14.5px;font-weight:600;color:var(--navy);margin-top:12px">Use a red → green feedback loop.</p>
+        <hr style="border:none;border-top:1px solid var(--hair);margin:12px 0">
+        <p style="font-size:10.5px;font-weight:700;letter-spacing:.18em;color:var(--blue)">CDAO ADAPTATION</p>
+        <p style="margin-top:5px">Write benchmark questions and expected answers before broad AI use.</p></div>
+    </div>
+    <div class="band gold" style="margin-top:22px"><b>Lesson for leadership:</b> skill files do not need to be big. They need to be precise.</div>
+    <p style="font-size:11px;color:var(--faint);font-style:italic;margin-top:12px">Public reference: Matt Pocock's skills repository and AI Hero article on agent skills. Adapt every example to USCIS governance before use.</p>
+  </div>
+  <div class="foot"><span></span><b>14 / 21</b></div>
+</section>
+
+<!-- ============ 15 · EXAMPLE SKILL ============ -->
+<section class="slide">
+  <div class="eyebrow">Worked example</div>
+  <h1>Example skill: clarify a data request</h1>
+  <p class="sub">How a skill file helps before any SQL is written.</p>
+  <div class="body">
+    <div class="row">
+      <div class="code" style="flex:1.15">
+        <div class="bar"><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i><i style="background:var(--faint)"></i><span class="fn">clarify_data_request / skill.md</span></div>
+        <pre><span class="c">---</span>
+<span class="k">name:</span> <span class="w">clarify_data_request</span>
+<span class="k">description:</span> Use when a request is ambiguous.
+<span class="c">---</span>
+<span class="k">Goal:</span> reach shared understanding before analysis.
+
+<span class="w">Steps:</span>
+1. Restate the request in plain language.
+2. Ask for target audience and decision need.
+3. Identify metric, date range, grouping, data product.
+4. Ask which caveats must be included.
+5. Stop when the request is a clear task.
+
+<span class="k">Output:</span> short problem statement + open questions.</pre>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+        <div class="card tint hov"><h3 style="font-size:15px">Why this matters</h3><p>Many AI failures start before the model answers: the question itself was unclear.</p></div>
+        <div class="card hov"><h3 style="font-size:15px">How it helps the contract</h3><p>Capture requirements faster, reduce rework, and turn meetings into usable artifacts.</p></div>
+        <div class="card green hov"><h3 style="font-size:15px">How to measure value</h3><p>Fewer clarification cycles, faster handoff, reduced rework, better first-draft quality.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>15 / 21</b></div>
+</section>
+
+<!-- ============ 16 · JOURNEY ============ -->
+<section class="slide">
+  <div class="eyebrow">End to end</div>
+  <h1>The journey of one question</h1>
+  <p class="sub">A good answer is guided, grounded, checked, and explained. <b style="color:var(--blue)">Click “Send the question” to watch it travel.</b></p>
+  <div class="body">
+    <div style="text-align:center;margin-bottom:20px"><button class="navbtn" style="background:var(--navy);color:#fff;border-color:var(--navy);padding:11px 26px" onclick="runJourney()">▶ Send the question</button></div>
+    <div class="row" style="gap:14px" id="journey">
+      <div class="jstep"><span class="n">1</span><div class="jic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>User asks</h4><p>Plain-language question</p></div>
+      <div class="arrow">→</div>
+      <div class="jstep"><span class="n">2</span><div class="jic"><svg viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div><h4>Select skill</h4><p>Which recipe applies?</p></div>
+      <div class="arrow">→</div>
+      <div class="jstep"><span class="n">3</span><div class="jic"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><h4>Read harness</h4><p>Definitions and caveats</p></div>
+      <div class="arrow">→</div>
+      <div class="jstep"><span class="n">4</span><div class="jic"><svg viewBox="0 0 24 24"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></div><h4>Use platform</h4><p>Genie, SQL, endpoint, or dashboard</p></div>
+      <div class="arrow">→</div>
+      <div class="jstep"><span class="n">5</span><div class="jic"><svg viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></div><h4>Return answer</h4><p>Cited, caveated, reviewable</p></div>
+    </div>
+    <div id="jmsg" style="text-align:center;margin-top:18px;font-size:14px;color:var(--mut);min-height:22px;font-style:italic"></div>
+    <div class="band navy" style="margin-top:12px;text-align:center"><b>For USCIS use, final decisions and accountability remain with humans and approved processes.</b></div>
+  </div>
+  <div class="foot"><span></span><b>16 / 21</b></div>
+</section>
+
+<!-- ============ 17 · THREE LAYERS ============ -->
+<section class="slide">
+  <div class="eyebrow">Governance</div>
+  <h1>Three layers of trust</h1>
+  <p class="sub">Access, meaning, and action are controlled separately — on purpose. <b style="color:var(--blue)">Click a layer.</b></p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card hov" style="cursor:pointer" onclick="openDrawer('access')"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:24px">Access</h3>
+        <p style="font-style:italic;color:var(--blue);font-weight:600;margin:6px 0">Who can see or query data?</p>
+        <p>Unity Catalog, permissions, row filters, column masks, approved data products.</p><button class="more">Open detail →</button></div>
+      <div class="card navy hov" style="cursor:pointer" onclick="openDrawer('meaning2')"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:24px">Meaning</h3>
+        <p style="font-style:italic;color:var(--gold);font-weight:600;margin:6px 0">What does the answer mean?</p>
+        <p>Harness, semantic definitions, metadata, examples, caveats, benchmark questions.</p><button class="more" style="color:var(--gold)">Open detail →</button></div>
+      <div class="card gold hov" style="cursor:pointer" onclick="openDrawer('action')"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:24px">Action</h3>
+        <p style="font-style:italic;color:var(--blue);font-weight:600;margin:6px 0">What can AI do next?</p>
+        <p style="color:var(--ink)">skill.md, workflow rules, human review, records handling, approval path.</p><button class="more">Open detail →</button></div>
+    </div>
+    <div class="band tint" style="margin-top:22px"><b>Platform controls access &nbsp;•&nbsp; harness controls meaning &nbsp;•&nbsp; people control decisions.</b></div>
+    <p style="font-size:11px;color:var(--faint);font-style:italic;margin-top:12px">Databricks docs: Genie user data access is governed by Unity Catalog privileges, row filters, and column masks.</p>
+  </div>
+  <div class="foot"><span></span><b>17 / 21</b></div>
+</section>
+
+<!-- ============ 18 · TEAMS START NOW ============ -->
+<section class="slide">
+  <div class="eyebrow">Mobilize</div>
+  <h1>What teams can start now</h1>
+  <p class="sub">Preparation is valuable even before every AI feature is available.</p>
+  <div class="body">
+    <div id="teamrows">
+      <div class="stackrow" style="cursor:default"><div class="si"><svg class="i" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5"/></svg></div><div style="flex:1;display:flex;align-items:baseline;gap:20px"><b style="min-width:190px">Data Management</b><span>Acronyms, definitions, stewardship, tags, lineage, metadata &amp; catalog readiness.</span></div></div>
+      <div class="stackrow" style="cursor:default"><div class="si"><svg class="i" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div style="flex:1;display:flex;align-items:baseline;gap:20px"><b style="min-width:190px">Data Engineering</b><span>Curated views, data products, refresh notes, source caveats, quality checks.</span></div></div>
+      <div class="stackrow" style="cursor:default"><div class="si"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><div style="flex:1;display:flex;align-items:baseline;gap:20px"><b style="min-width:190px">Data Analytics</b><span>Business questions, strong-answer examples, benchmark questions, interpretation rules.</span></div></div>
+      <div class="stackrow" style="cursor:default"><div class="si"><svg class="i" viewBox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></div><div style="flex:1;display:flex;align-items:baseline;gap:20px"><b style="min-width:190px">Dashboards / BI</b><span>Usage metrics, dashboard context, chart narration patterns, adoption tracking.</span></div></div>
+      <div class="stackrow" style="cursor:default"><div class="si"><svg class="i" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><div style="flex:1;display:flex;align-items:baseline;gap:20px"><b style="min-width:190px">PMO / Documentation</b><span>Confluence pages, reusable templates, ROI tracking, handoff artifacts.</span></div></div>
+    </div>
+    <div class="band green" style="margin-top:16px"><b style="color:var(--green)">The goal is not piecemeal AI demos.</b>&ensp;<b>The goal is reusable, governed, cross-team AI readiness.</b></div>
+  </div>
+  <div class="foot"><span></span><b>18 / 21</b></div>
+</section>
+
+<!-- ============ 19 · 30-DAY PILOT ============ -->
+<section class="slide">
+  <div class="eyebrow">Prove it small</div>
+  <h1>A simple 30-day pilot pattern</h1>
+  <p class="sub">Small enough to prove value without overbuilding.</p>
+  <div class="body">
+    <div class="row" style="gap:14px">
+      <div class="card navy hov" style="flex:1"><h3 style="font-family:var(--serif);font-size:22px;color:var(--gold)">Week 1</h3><p style="margin-top:8px">• Pick one use case<br>• Choose one data product<br>• Name reviewers</p></div>
+      <div class="arrow">→</div>
+      <div class="card hov" style="flex:1"><h3 style="font-family:var(--serif);font-size:22px">Week 2</h3><p style="margin-top:8px">• Draft harness<br>• Write 3 skill files<br>• Create example questions</p></div>
+      <div class="arrow">→</div>
+      <div class="card hov" style="flex:1"><h3 style="font-family:var(--serif);font-size:22px">Week 3</h3><p style="margin-top:8px">• Test answers<br>• Compare expected outputs<br>• Fix unclear guidance</p></div>
+      <div class="arrow">→</div>
+      <div class="card hov" style="flex:1"><h3 style="font-family:var(--serif);font-size:22px">Week 4</h3><p style="margin-top:8px">• Review usefulness<br>• Decide expand / pause / revise</p></div>
+    </div>
+    <div class="band green" style="margin-top:24px"><div class="lbl" style="color:var(--green)">Pilot output</div><b>One reviewed harness, one small skill library, one benchmark set — and a decision on what to scale.</b></div>
+  </div>
+  <div class="foot"><span></span><b>19 / 21</b></div>
+</section>
+
+<!-- ============ 20 · LEADERSHIP DECIDES ============ -->
+<section class="slide">
+  <div class="eyebrow">The ask</div>
+  <h1>What leadership needs to decide</h1>
+  <p class="sub">The technical team builds the artifacts; leadership sets the boundaries.</p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Choose the pilot</h3><p style="font-style:italic;color:var(--blue);font-weight:600">Which data product, dashboard, or use case goes first?</p><p style="margin-top:8px">A good pilot is valuable, low-risk, and familiar to reviewers.</p></div>
+      <div class="card hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Name reviewers</h3><p style="font-style:italic;color:var(--blue);font-weight:600">Who validates definitions, caveats, and strong-answer examples?</p><p style="margin-top:8px">The harness should be owned by a review process, not one author.</p></div>
+      <div class="card gold hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div>
+        <h3>Set success criteria</h3><p style="font-style:italic;color:var(--blue);font-weight:600">What would make this useful after 30 days?</p><p style="margin-top:8px;color:var(--ink)">Less rework, faster onboarding, safer first answers, clearer metrics.</p></div>
+    </div>
+    <p class="punch" style="margin-top:30px">One pilot. Two reviewers. Thirty days. A written decision at the end.</p>
+  </div>
+  <div class="foot"><span></span><b>20 / 21</b></div>
+</section>
+
+<!-- ============ 21 · CAREFUL WORDING ============ -->
+<section class="slide">
+  <div class="eyebrow">Say it right</div>
+  <h1>Careful wording and sources</h1>
+  <p class="sub">Language that is ambitious but accurate.</p>
+  <div class="body">
+    <div class="grid2">
+      <div class="card green"><h3 style="color:var(--green)">✓ &nbsp;Use this wording</h3>
+        <p style="margin-top:10px;line-height:2;color:var(--ink)">“The harness guides meaning.”<br>“Databricks controls governed access.”<br>“skill.md files are reusable task recipes.”<br>“Feature availability depends on approved USCIS environment and governance.”</p></div>
+      <div class="card red"><h3 style="color:var(--red)">✕ &nbsp;Avoid this wording</h3>
+        <p style="margin-top:10px;line-height:2;color:var(--ink)">“The harness enforces permissions.”<br>“The AI guarantees correct answers.”<br>“Genie replaces analysts.”<br>“skill.md automatically runs inside Databricks without implementation.”</p></div>
+    </div>
+    <p style="font-size:11px;color:var(--faint);font-style:italic;margin-top:18px">Sources checked: official Databricks documentation (Genie/Genie Agents, Unity Catalog, Model Serving, Foundation Model APIs, data-quality monitoring); public Matt Pocock skill examples; USCIS/OPQ working context.</p>
+  </div>
+  <div class="foot"><span></span><b>21 / 21</b></div>
+</section>
+
+<div id="dots"></div>
+<div id="hint"><kbd>←</kbd> <kbd>→</kbd> navigate &nbsp; <kbd>G</kbd> overview</div>
+
+<script>
+/* ---------- deck framework ---------- */
+const slides=[...document.querySelectorAll('.slide')];
+const titles=["Cover","The problem","Vocabulary","Databricks picture","Unity Catalog","What is a harness?","Why a harness matters","What goes inside","Build a harness","Harness example","What is skill.md?","Harness vs skill","Build a skill","Public examples","Example skill","Journey of a question","Three layers of trust","Teams start now","30-day pilot","Leadership decides","Careful wording"];
+let i=0;
+const dots=document.getElementById('dots');
+slides.forEach((_,j)=>{const b=document.createElement('button');b.onclick=()=>show(j);dots.appendChild(b)});
+const gcells=document.getElementById('gcells');
+titles.forEach((t,j)=>{const b=document.createElement('button');b.className='cell';b.innerHTML=`<div class="n">${String(j+1).padStart(2,'0')}</div><div class="t">${t}</div>`;b.onclick=()=>{toggleGrid(false);show(j)};gcells.appendChild(b)});
+function show(n){
+  slides[i].classList.remove('active');
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides[i].classList.add('active');
+  document.getElementById('count').textContent=`${String(i+1).padStart(2,'0')} / ${slides.length}`;
+  document.getElementById('progress').style.width=((i+1)/slides.length*100)+'%';
+  [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i));
+  closeDrawer();
+}
+function nav(d){show(i+d)}
+show(0);
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('grid').classList.contains('on')&&e.key==='Escape'){toggleGrid(false);return}
+  if(e.key==='ArrowRight'||e.key===' ')nav(1);
+  if(e.key==='ArrowLeft')nav(-1);
+  if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+  if(e.key.toLowerCase()==='g')toggleGrid();
+  if(e.key==='Escape')closeDrawer();
+});
+function toggleGrid(f){const g=document.getElementById('grid');g.classList.toggle('on',f===undefined?!g.classList.contains('on'):f)}
+
+/* ---------- tooltips ---------- */
+const tip=document.getElementById('tip');
+document.addEventListener('mouseover',e=>{
+  const t=e.target.closest('[data-tip]');
+  if(!t){tip.classList.remove('on');return}
+  tip.innerHTML=(t.dataset.t?`<span class="t">${t.dataset.t}</span>`:'')+t.dataset.tip;
+  tip.classList.add('on');
+  const r=t.getBoundingClientRect();
+  tip.style.left=Math.min(window.innerWidth-340,Math.max(12,r.left))+'px';
+  tip.style.top=(r.bottom+10)+'px';
+});
+
+/* ---------- drawer ---------- */
+const D={
+ uc:{l:'Platform layer',t:'Unity Catalog',b:'<p>The Databricks governance layer. It organizes assets in a governed namespace, controls who can use them, and tracks trust signals.</p><ul><li>Permissions for users, groups, and service principals</li><li>Row filters and column masks at query time</li><li>Discovery, lineage, auditing, tags, impact analysis</li></ul><p><b>Boundary:</b> it governs assets and access — it does not explain what a metric means to this mission. That is the harness.</p>'},
+ dp:{l:'Platform layer',t:'Governed data products',b:'<p>Trusted tables, views, metric views, and dashboard-ready datasets — the approved raw material every AI answer should be grounded in.</p><ul><li>Curated and quality-checked by data engineering</li><li>Registered and discoverable through the catalog</li><li>Scoped into a harness one use case at a time</li></ul>'},
+ genie:{l:'Platform layer',t:'Genie Space / Agent',b:'<p>A Databricks natural-language Q&amp;A room over governed data. Databricks itself frames Genie as <i>a new analyst who needs context</i> — which is exactly what the harness supplies.</p><ul><li>Configured with Unity Catalog data, instructions, example SQL, and trusted assets</li><li>Best practice favors a small, well-chosen table scope per space</li><li>Access follows Unity Catalog privileges automatically</li></ul>'},
+ ms:{l:'Platform layer',t:'Model Serving',b:'<p>The Databricks pattern for exposing custom models, foundation models, and external models through secure endpoints.</p><ul><li>An app sends a request; the endpoint returns a model response</li><li>Endpoints are governable, auditable platform assets</li></ul>'},
+ dash:{l:'Platform layer',t:'Dashboards / Apps',b:'<p>Where answers reach users: dashboards, notebooks, and apps. With a harness upstream, what lands here arrives with definitions and caveats attached.</p>'},
+ harness:{l:'CDAO layer',t:'The harness',b:'<p>Reusable, reviewed context that travels with a data product: definitions, caveats, purpose, examples, and answer expectations.</p><ul><li>Human-readable playbook first; technical forms later</li><li>Reused in Genie instructions, prompts, and app logic</li><li>Owned by a review process, not one author</li></ul>'},
+ skill:{l:'CDAO layer',t:'skill.md',b:'<p>A small Markdown recipe for one repeatable job: trigger, inputs, steps, quality bar, guardrails.</p><ul><li>Visible, reviewable, versionable, reusable</li><li>Points to the harness for meaning</li><li>Not automatically a Databricks feature — it must be connected to an approved workflow</li></ul>'},
+ meaning:{l:'Harness component',t:'Approved meaning',b:'<p>What key terms and metrics mean <i>here</i> — the approved definition and counting logic, not the model\u2019s best guess.</p><ul><li>Metric definitions with counting rules</li><li>Term glossary scoped to the use case</li><li>Validated by named reviewers</li></ul>'},
+ style:{l:'Harness component',t:'Answer style',b:'<p>What a useful response should include, in order.</p><ul><li>Plain-English answer first</li><li>Approved definition stated</li><li>Caveats and refresh timing surfaced</li><li>One useful next check offered</li></ul>'},
+ bounds:{l:'Harness component',t:'Use boundaries',b:'<p>What the assistant should not infer or decide.</p><ul><li>No adjudicative conclusions</li><li>No cause claims without evidence</li><li>Explicit confidence statements when data is limited</li></ul>'},
+ examples:{l:'Harness component',t:'Examples',b:'<p>Good questions, bad questions, and strong-answer patterns — the fastest way to teach both people and assistants what quality looks like.</p>'},
+ access:{l:'Layer 1',t:'Access',b:'<p><b>Who can see or query data?</b></p><ul><li>Unity Catalog permissions</li><li>Row filters and column masks</li><li>Approved data products only</li></ul><p>Owned by the platform and its governance process.</p>'},
+ meaning2:{l:'Layer 2',t:'Meaning',b:'<p><b>What does the answer mean?</b></p><ul><li>Harness with semantic definitions</li><li>Metadata, examples, caveats</li><li>Benchmark questions</li></ul><p>Owned by CDAO stewardship and review.</p>'},
+ action:{l:'Layer 3',t:'Action',b:'<p><b>What can AI do next?</b></p><ul><li>skill.md task recipes and workflow rules</li><li>Human review and approval paths</li><li>Records handling requirements</li></ul><p>Owned by people. Final decisions stay with humans and approved processes.</p>'}
+};
+function openDrawer(k){const d=D[k];if(!d)return;
+  document.getElementById('dbody').innerHTML=`<span class="dl">${d.l}</span><h2>${d.t}</h2>${d.b}`;
+  document.getElementById('drawer').classList.add('open');document.getElementById('scrim').classList.add('on')}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('scrim').classList.remove('on')}
+
+/* ---------- slide 4 governance toggle ---------- */
+function gov(on,btn){document.getElementById('s4').classList.toggle('gv',on);
+  [...btn.parentElement.children].forEach(b=>b.classList.toggle('on',b===btn))}
+
+/* ---------- slide 7 demo toggle ---------- */
+function harnessDemo(on,btn){
+  document.getElementById('demoA').style.display=on?'none':'block';
+  document.getElementById('demoB').style.display=on?'block':'none';
+  [...btn.parentElement.children].forEach(b=>b.classList.toggle('on',b===btn))}
+
+/* ---------- slide 10 checklist ---------- */
+document.querySelectorAll('#chkList .chk').forEach(c=>c.addEventListener('click',()=>{
+  c.classList.toggle('on');
+  const n=document.querySelectorAll('#chkList .chk.on').length;
+  document.getElementById('chkCount').textContent=`${n} / 8`;
+}));
+
+/* ---------- slide 16 journey ---------- */
+const jmsgs=["A plain-language question arrives…","The right recipe is selected…","Definitions and caveats load from the harness…","The governed platform runs the work…","A cited, caveated, reviewable answer returns. ✓"];
+let jrun=null;
+function runJourney(){
+  const steps=[...document.querySelectorAll('#journey .jstep')];
+  steps.forEach(s=>s.classList.remove('lit','done'));
+  clearTimeout(jrun);let k=0;
+  (function step(){
+    steps.forEach((s,j)=>{s.classList.toggle('lit',j===k);s.classList.toggle('done',j<k)});
+    document.getElementById('jmsg').textContent=jmsgs[k];
+    if(k<steps.length-1){k++;jrun=setTimeout(step,950)}
+    else{jrun=setTimeout(()=>steps[k].classList.add('done'),950)}
+  })();
+}
+</script>
+</body>
+</html>
