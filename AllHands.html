@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Readiness Starts Now — Contractor All-Hands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003366; --navybg:#002240; --blue:#006699; --tint:#EAF1F6; --tint2:#D6E4EF;
+  --gold:#C0392B; --goldt:#F7EAE7; --faint:#999999; --hair:#D9DEE4; --ink:#2A2F36; --mut:#505050;
+  --green:#2E8913; --greent:#EAF4E6; --red:#962D22; --redt:#F6E4E1; --paper:#FFFFFF;
+  --serif:'Source Sans 3','Source Sans Pro',Arial,sans-serif;
+  --sans:'Source Sans 3','Source Sans Pro',-apple-system,'Segoe UI',Arial,sans-serif;
+  --mono:'Source Code Pro','Consolas','Courier New',monospace;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);overflow:hidden}
+button{font-family:var(--sans)}
+.uscislogo{background:url('data:image/png;base64,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') no-repeat center/contain;display:inline-block;flex:none}.logochip{position:absolute;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+#progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:50;transition:width .35s ease}
+#topbar{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;gap:14px;padding:0 20px;z-index:40;pointer-events:none}
+#topbar .brand{font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--faint);text-transform:uppercase}
+#topbar .spacer{flex:1}
+#topbar .ctr{pointer-events:auto;display:flex;align-items:center;gap:8px}
+.navbtn{border:1px solid var(--hair);background:#fff;color:var(--navy);border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s}
+.navbtn:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(22,46,81,.12);transform:translateY(-1px)}
+#count{font-size:12px;font-weight:600;color:var(--blue);min-width:56px;text-align:center;font-variant-numeric:tabular-nums}
+#dots{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:7px;z-index:40}
+#dots button{width:8px;height:8px;border-radius:50%;border:none;background:var(--hair);cursor:pointer;padding:0;transition:all .25s}
+#dots button.on{background:var(--gold);transform:scale(1.35)}
+#hint{position:fixed;bottom:14px;right:20px;font-size:11px;color:var(--faint);z-index:40}
+kbd{background:#fff;border:1px solid var(--hair);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:10px;color:var(--mut)}
+
+.slide{position:absolute;inset:0;padding:70px 84px 60px;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex;animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+h1{font-family:var(--serif);font-weight:700;font-size:48px;line-height:1.04;color:var(--navy);letter-spacing:-.01em}
+.sub{font-size:16.5px;color:var(--mut);margin-top:10px;max-width:940px}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
+.foot{border-top:1px solid var(--hair);padding-top:10px;display:flex;justify-content:space-between;font-size:11px;color:var(--faint)}
+.foot b{color:var(--blue)}
+.slide.dark{background:radial-gradient(120% 140% at 85% -20%,#1B3A66 0%,var(--navybg) 58%)}
+.slide.dark h1{color:#fff}
+.slide.dark .sub{color:var(--tint2)}
+.slide.dark .foot{border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.45)}
+
+.row{display:flex;gap:22px;align-items:stretch}
+.card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 24px;box-shadow:0 10px 30px rgba(22,46,81,.07);transition:transform .22s,box-shadow .22s,border-color .22s;position:relative}
+.card.hov:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(22,46,81,.14);border-color:var(--gold)}
+.card h3{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--mut);line-height:1.5}
+.card.navy{background:linear-gradient(150deg,#1B3A66,var(--navy));border-color:var(--navy)}
+.card.navy h3{color:#fff}.card.navy p{color:var(--tint2)}
+.card.gold{background:var(--goldt);border-color:var(--gold)}
+.card.tint{background:var(--tint);border-color:var(--tint2)}
+.card.green{background:var(--greent);border-color:#BFE3D4}
+.card.red{background:var(--redt);border-color:#E7C6C0}
+.ic{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:#fff;flex:none;margin-bottom:12px}
+.ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic.g{background:var(--gold)}.ic.g svg{stroke:#fff}
+.ic.grn{background:var(--green)}.ic.rd{background:var(--red)}.ic.bl{background:var(--blue)}
+.arrow{align-self:center;color:var(--gold);font-size:26px;font-weight:700;flex:none;user-select:none}
+.band{border-radius:14px;padding:16px 22px;font-size:15px}
+.band.tint{background:var(--tint);border:1px solid var(--tint2);color:var(--navy)}
+.band.gold{background:var(--goldt);border:1px solid var(--gold);color:var(--ink)}
+.band.navy{background:var(--navy);color:#fff}
+.band .lbl{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px}
+.punch{font-family:var(--serif);font-style:italic;font-weight:600;font-size:24px;color:var(--blue);text-align:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.term{border-bottom:1.5px dashed var(--gold);cursor:help;font-weight:600}
+#tip{position:fixed;z-index:90;max-width:320px;background:var(--navy);color:#fff;font-size:12.5px;line-height:1.5;padding:10px 14px;border-radius:10px;box-shadow:0 14px 34px rgba(15,33,56,.35);opacity:0;pointer-events:none;transition:opacity .15s}
+#tip.on{opacity:1}
+#tip .t{color:var(--gold);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:3px}
+.code{background:#10233F;border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(15,33,56,.25)}
+.code .bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.code .bar i{width:11px;height:11px;border-radius:50%;display:block}
+.code .bar .fn{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+.code pre{margin:0;padding:16px 20px;font-family:var(--mono);font-size:13.5px;line-height:1.85;color:var(--tint2);white-space:pre-wrap}
+.code .k{color:var(--gold);font-weight:600}.code .w{color:#fff;font-weight:600}.code .c{color:#7E93AE;font-style:italic}
+.cl{display:block;border-radius:6px;padding:0 8px;margin:0 -8px;cursor:pointer;transition:background .15s}
+.cl:hover{background:rgba(201,169,110,.14)}
+.switch{display:inline-flex;background:#fff;border:1px solid var(--hair);border-radius:999px;padding:4px;gap:4px;box-shadow:0 6px 18px rgba(22,46,81,.08)}
+.switch button{border:none;background:none;border-radius:999px;padding:9px 22px;font-size:13.5px;font-weight:600;color:var(--mut);cursor:pointer;transition:all .2s}
+.switch button.on{background:var(--navy);color:#fff}
+
+/* hero chips */
+.chips{display:flex;gap:14px;align-items:center;margin-top:34px}
+.chip{flex:1;border-radius:14px;padding:16px 18px;display:flex;gap:12px;align-items:center;transition:transform .25s;cursor:default}
+.chip:hover{transform:translateY(-4px)}
+.chip .ci{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.chip .ci svg{width:19px;height:19px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.chip b{font-size:14.5px;display:block}
+.chip span{font-size:12px;font-style:italic}
+.chip.c1{background:#fff;border:1px solid var(--hair)}.chip.c1 b{color:var(--navy)}.chip.c1 span{color:var(--mut)}.chip.c1 .ci{background:var(--navy)}.chip.c1 svg{stroke:#fff}
+.chip.c2{background:var(--navy);border:1px solid #006699}.chip.c2 b{color:#fff}.chip.c2 span{color:var(--tint2)}.chip.c2 .ci{background:var(--gold)}.chip.c2 svg{stroke:#fff}
+.chip.c3{background:var(--goldt);border:1px solid var(--gold)}.chip.c3 b{color:var(--navy)}.chip.c3 span{color:var(--mut)}.chip.c3 .ci{background:var(--navy)}.chip.c3 svg{stroke:#fff}
+.chip.c4{background:var(--greent);border:1px solid #BFE3D4}.chip.c4 b{color:var(--navy)}.chip.c4 span{color:var(--mut)}.chip.c4 .ci{background:var(--green)}.chip.c4 svg{stroke:#fff}
+
+/* puzzle */
+.pz{cursor:pointer;min-height:150px}
+.pz .back{display:none}
+.pz.flip .front{display:none}
+.pz.flip .back{display:block;animation:rise .3s ease both}
+.pz .tag{position:absolute;top:14px;right:16px;font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+
+/* collect cards */
+.collect{cursor:pointer;user-select:none}
+.collect .st{position:absolute;top:12px;right:14px;width:24px;height:24px;border-radius:50%;border:2px solid var(--hair);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;transition:all .2s}
+.collect.on{border-color:var(--green);background:var(--greent)}
+.collect.on .st{background:var(--green);border-color:var(--green)}
+
+/* ask picker */
+.ask{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--hair);border-radius:13px;padding:14px 18px;margin-bottom:10px;cursor:pointer;transition:all .2s;font-size:15px}
+.ask:hover{border-color:var(--gold);transform:translateX(4px)}
+.ask .an{width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:var(--serif);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none;transition:all .2s}
+.ask.on{border-color:var(--green);background:var(--greent)}
+.ask.on .an{background:var(--green);color:#fff}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="topbar">
+  <span class="uscislogo" style="width:19px;height:31px"></span>
+  <span class="brand">Contractor All-Hands &nbsp;•&nbsp; AI Readiness</span>
+  <span class="spacer"></span>
+  <span class="ctr">
+    <button class="navbtn" onclick="nav(-1)">←</button>
+    <span id="count"></span>
+    <button class="navbtn" onclick="nav(1)">→</button>
+  </span>
+</div>
+<div id="tip"></div>
+
+<!-- ============ 1 · COVER ============ -->
+<section class="slide dark">
+  <div class="logochip" style="right:64px;top:40px;width:60px;height:74px"><span class="uscislogo" style="width:40px;height:66px"></span></div>
+  <div class="body" style="justify-content:center">
+    <div class="eyebrow">Contractor all-hands &nbsp;•&nbsp; Future of work</div>
+    <h1 style="font-size:82px;color:#fff">AI Readiness<br>Starts Now</h1>
+    <p class="sub" style="font-size:21px;margin-top:16px">How every team helps prepare for the next way of working.</p>
+    <div class="chips">
+      <div class="chip c1"><div class="ci"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div><div><b>Governed data</b><span>facts</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c2"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div><b>+ Harness</b><span>meaning</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c3"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div><div><b>+ Skills</b><span>method</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c4"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><b>+ People</b><span>judgment</span></div></div>
+    </div>
+    <p style="margin-top:34px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold)">We are preparing the runway so future AI tools have somewhere safe and useful to land.</p>
+  </div>
+  <div class="foot"><span>USCIS &nbsp;•&nbsp; Chief Data and Analytics Office</span><b>01 / 10</b></div>
+</section>
+
+<!-- ============ 2 · WHY IT MATTERS ============ -->
+<section class="slide">
+  <div class="eyebrow">The big picture</div>
+  <h1>Why this matters to the whole contract</h1>
+  <p class="sub">AI tools are only as useful as the context, data, and workflows we give them.</p>
+  <div class="body">
+    <div class="row">
+      <div class="card hov" style="flex:1"><div class="ic"><svg class="i" viewBox="0 0 24 24"><rect width="7" height="7" x="14" y="3" rx="1"/><path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:23px">Tools</h3><p>Genie, model endpoints, dashboards, notebooks, apps, and assistants.</p></div>
+      <div class="arrow">→</div>
+      <div class="card navy hov" style="flex:1"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:23px">Readiness</h3><p>Metadata, definitions, data products, examples, caveats, and review loops.</p></div>
+      <div class="arrow">→</div>
+      <div class="card gold hov" style="flex:1"><div class="ic"><svg class="i" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <h3 style="font-family:var(--serif);font-size:23px">Value</h3><p style="color:var(--ink)">Better answers, less rework, clearer handoffs, faster onboarding, visible impact.</p></div>
+    </div>
+    <div class="band tint" style="margin-top:26px">
+      <p style="font-family:var(--serif);font-size:23px;font-weight:600;color:var(--navy)">The opportunity is bigger than one feature.</p>
+      <p style="margin-top:6px;font-size:14.5px;color:var(--mut)">It is a contract-wide shift toward reusable, governed knowledge — and every project gets to show its impact with numbers.</p></div>
+  </div>
+  <div class="foot"><span></span><b>02 / 10</b></div>
+</section>
+
+<!-- ============ 3 · PUZZLE ============ -->
+<section class="slide">
+  <div class="eyebrow">Everyone plays</div>
+  <h1>Think of this as a puzzle</h1>
+  <p class="sub">Each team owns a piece that makes the whole system smarter. <b style="color:var(--blue)">Click your team to reveal your piece.</b></p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card navy hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5"/></svg></div><h3>Data Management</h3><p>definitions • metadata • stewardship</p></div>
+        <div class="back"><h3>Your piece</h3><p>One trusted glossary and tagged, findable metadata — the raw context every AI tool will read first.</p></div></div>
+      <div class="card hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Data Engineering</h3><p>data products • quality checks</p></div>
+        <div class="back"><h3>Your piece</h3><p>Curated views and refresh notes that make data trustworthy enough to hand to an assistant.</p></div></div>
+      <div class="card hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div><h3>Analytics</h3><p>questions • examples • validation</p></div>
+        <div class="back"><h3>Your piece</h3><p>The real business questions plus what a strong answer looks like — the benchmark set.</p></div></div>
+      <div class="card hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic"><svg class="i" viewBox="0 0 24 24"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></div><h3>Visualization</h3><p>usage • adoption • storytelling</p></div>
+        <div class="back"><h3>Your piece</h3><p>Dashboard context and usage numbers — proof of adoption and the caveats charts need.</p></div></div>
+      <div class="card hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic"><svg class="i" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><h3>PMO / Docs</h3><p>templates • ROI • handoffs</p></div>
+        <div class="back"><h3>Your piece</h3><p>Reusable templates and ROI tracking that turn finished work into visible, countable impact.</p></div></div>
+      <div class="card gold hov pz" onclick="this.classList.toggle('flip')"><span class="tag">Flip</span>
+        <div class="front"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M19 7h-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2Z"/><path d="M12 12v4"/><path d="M10 14h4"/></svg></div><h3>Everyone</h3><p style="color:var(--ink)">bring context others do not know</p></div>
+        <div class="back"><h3>Your piece</h3><p style="color:var(--ink)">The thing only your team knows — an acronym, a caveat, a gotcha — becomes shared knowledge.</p></div></div>
+    </div>
+    <p class="punch" style="margin-top:24px">No single team owns AI readiness. The power is in connecting the pieces.</p>
+  </div>
+  <div class="foot"><span></span><b>03 / 10</b></div>
+</section>
+
+<!-- ============ 4 · WHAT IS A HARNESS ============ -->
+<section class="slide">
+  <div class="eyebrow">New vocabulary nº 1</div>
+  <h1>What is a harness?</h1>
+  <p class="sub">A shared playbook that gives AI the local meaning of our work. <b style="color:var(--blue)">Try the toggle.</b></p>
+  <div class="body" style="align-items:center;display:flex;flex-direction:column;justify-content:center">
+    <div class="band navy" style="text-align:center;max-width:720px;width:100%">
+      <div style="font-weight:700;letter-spacing:.24em;color:var(--gold);font-size:14px">HARNESS</div>
+      <p style="margin-top:6px;font-size:14px;color:var(--tint2)">definitions • caveats • examples • answer expectations • review owners</p>
+    </div>
+    <div class="switch" style="margin:22px 0">
+      <button class="on" onclick="hd(0,this)">Before</button>
+      <button onclick="hd(1,this)">After</button>
+      <button onclick="hd(2,this)">Result</button>
+    </div>
+    <div style="max-width:720px;width:100%">
+      <div class="card red hdp" style="text-align:center"><h3 style="color:var(--red)">Before</h3><p style="font-size:15px;color:var(--ink)">AI guesses what the words mean.</p></div>
+      <div class="card tint hdp" style="text-align:center;display:none"><h3 style="color:var(--blue)">After</h3><p style="font-size:15px;color:var(--ink)">AI uses shared context before answering.</p></div>
+      <div class="card green hdp" style="text-align:center;display:none"><h3 style="color:var(--green)">Result</h3><p style="font-size:15px;color:var(--ink)">Fewer confusing first drafts. Faster reviews.</p></div>
+    </div>
+    <p class="punch" style="margin-top:26px">The harness turns institutional knowledge into a reusable asset.</p>
+  </div>
+  <div class="foot"><span></span><b>04 / 10</b></div>
+</section>
+
+<!-- ============ 5 · SKILL.MD ============ -->
+<section class="slide">
+  <div class="eyebrow">New vocabulary nº 2</div>
+  <h1>What is a skill.md file?</h1>
+  <p class="sub">A small recipe for one repeatable job. <b style="color:var(--blue)">Hover the steps.</b></p>
+  <div class="body">
+    <div class="row">
+      <div class="code" style="flex:1.15">
+        <div class="bar"><i style="background:var(--gold)"></i><i style="background:var(--blue)"></i><i style="background:var(--faint)"></i><span class="fn">explain_chart / skill.md</span></div>
+        <pre><span class="cl"><span class="k">name:</span> <span class="w">explain_chart</span></span><span class="cl"><span class="k">description:</span> Use when summarizing a dashboard chart.</span>
+<span class="cl w">Steps:</span><span class="cl" data-t="Lead with the point" data-tip="Readers get the headline first — not a tour of the axes.">1. State the main pattern first.</span><span class="cl" data-t="One source of truth" data-tip="The approved definition comes from shared context, so every summary counts things the same way.">2. Use the approved metric definition.</span><span class="cl" data-t="Honest numbers" data-tip="A fresh-looking chart can still be missing late-arriving data.">3. Mention caveats and refresh timing.</span><span class="cl" data-t="Stay in bounds" data-tip="Correlation is not cause — the recipe bakes that discipline in.">4. Avoid claiming cause without evidence.</span><span class="cl" data-t="Keep momentum" data-tip="Every summary hands the reader a useful next move.">5. End with one useful next question.</span></pre>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+        <div class="card tint hov"><h3>Why it matters</h3><p style="font-size:14px">Skills make good work repeatable — instead of depending on one person remembering the right process.</p></div>
+        <div class="card gold hov"><h3>Team mindset</h3><p style="font-size:14.5px;color:var(--ink);font-weight:600">If your team repeats a task, that task may become a skill.</p><p style="margin-top:6px">Write it once, review it, reuse it everywhere.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>05 / 10</b></div>
+</section>
+
+<!-- ============ 6 · START NOW ============ -->
+<section class="slide">
+  <div class="eyebrow">No waiting required</div>
+  <h1>Work we can start now</h1>
+  <p class="sub">We do not need to wait for tools to organize the knowledge AI will need. <b style="color:var(--blue)">Click what your team could own</b> — <span id="collCount" style="color:var(--gold);font-weight:700">0 / 6</span></p>
+  <div class="body">
+    <div class="grid3" id="coll">
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><h3 style="font-size:15px">Acronym glossary</h3><p>one trusted source for recurring terms</p></div>
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></div><h3 style="font-size:15px">Metric definitions</h3><p>approved meaning and counting rules</p></div>
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div><h3 style="font-size:15px">Data-product inventory</h3><p>what exists, who owns it, when to use it</p></div>
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></div><h3 style="font-size:15px">Benchmark questions</h3><p>how we test whether answers are useful</p></div>
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><h3 style="font-size:15px">ROI notes</h3><p>hours saved, rework avoided, usage gained</p></div>
+      <div class="card hov collect"><div class="st">✓</div><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></div><h3 style="font-size:15px">Reusable skills</h3><p>repeatable recipes for common tasks</p></div>
+    </div>
+    <div class="band navy" style="margin-top:20px"><div class="lbl" style="color:var(--gold)">On the horizon</div>
+      Connecting an <span class="term" style="color:#fff;border-color:var(--gold)" data-t="Tool-agnostic" data-tip="Whichever enterprise catalog is confirmed — the pattern works the same. One source of definitions, acronyms, and system context that every team and every AI tool can read.">enterprise metadata catalog</span> — so definitions, acronyms, and system context flow to every team and every future AI tool, instead of being rebuilt by hand.</div>
+  </div>
+  <div class="foot"><span></span><b>06 / 10</b></div>
+</section>
+
+<!-- ============ 7 · WHAT GOOD LOOKS LIKE ============ -->
+<section class="slide">
+  <div class="eyebrow">Raising the bar</div>
+  <h1>What “good” looks like</h1>
+  <p class="sub">The goal is connected work, not isolated demos.</p>
+  <div class="body">
+    <div class="grid3">
+      <div class="card red hov"><h3 style="color:var(--red)">Less of this</h3>
+        <p style="line-height:2;color:var(--ink);margin-top:8px">• One-off prompts<br>• Unclear definitions<br>• Teams rebuilding the same glossary<br>• Dashboards with hidden context<br>• No impact numbers</p></div>
+      <div class="card green hov"><h3 style="color:var(--green)">More of this</h3>
+        <p style="line-height:2;color:var(--ink);margin-top:8px">• Shared context<br>• Reusable data products<br>• Skill files for repeatable tasks<br>• Benchmarks and examples<br>• ROI and usage evidence</p></div>
+      <div class="card tint hov"><h3 style="color:var(--blue)">Why it matters</h3>
+        <p style="line-height:1.8;color:var(--ink);margin-top:8px">AI tools will be judged by usefulness.<br><br>Usefulness depends on our preparation, documentation, and review loops.<br><br><b>Every finished project should point to a number.</b></p></div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>07 / 10</b></div>
+</section>
+
+<!-- ============ 8 · CONTRIBUTE ============ -->
+<section class="slide">
+  <div class="eyebrow">Your move</div>
+  <h1>How teams can contribute</h1>
+  <p class="sub">Start with one recurring question or process from your area.</p>
+  <div class="body">
+    <div class="grid2">
+      <div class="card navy hov"><div class="ic g"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg></div>
+        <h3>Bring a question</h3><p>What do people ask your team over and over?</p></div>
+      <div class="card hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+        <h3>Bring a definition</h3><p>What term causes confusion?</p></div>
+      <div class="card hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>Bring a caveat</h3><p>What always gets missed?</p></div>
+      <div class="card hov"><div class="ic"><svg class="i" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></div>
+        <h3>Bring an example</h3><p>What does a good answer look like?</p></div>
+    </div>
+    <div class="band gold" style="margin-top:22px"><b>Small inputs from each team become the shared context future AI tools need.</b> Cross-team conversations start next — each team gets its own puzzle, then we connect the dots.</div>
+  </div>
+  <div class="foot"><span></span><b>08 / 10</b></div>
+</section>
+
+<!-- ============ 9 · THE ASK ============ -->
+<section class="slide">
+  <div class="eyebrow">Before you log off</div>
+  <h1>The 5-minute all-hands ask</h1>
+  <p class="sub">Leave with one idea your team can contribute. <b style="color:var(--blue)">Click the one you'll bring.</b></p>
+  <div class="body">
+    <div class="row">
+      <div style="flex:1.6">
+        <div class="card tint" style="padding:20px 24px">
+          <h3 style="font-size:16px">Before tomorrow ends, write down one of these:</h3>
+          <div style="margin-top:12px">
+            <div class="ask" onclick="pick(this)"><div class="an">1</div>A recurring data question your team answers.</div>
+            <div class="ask" onclick="pick(this)"><div class="an">2</div>A confusing acronym or term your team explains.</div>
+            <div class="ask" onclick="pick(this)"><div class="an">3</div>A dashboard caveat users often miss.</div>
+            <div class="ask" onclick="pick(this)"><div class="an">4</div>A process that could become a skill.md recipe.</div>
+            <div class="ask" onclick="pick(this)" style="margin-bottom:0"><div class="an">5</div>A metric that could show impact or ROI.</div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:.8">
+        <div class="card navy" style="height:100%;display:flex;flex-direction:column;justify-content:center">
+          <div class="ic g" style="width:52px;height:52px"><svg class="i" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <h3 style="font-size:19px">Why now?</h3>
+          <p id="pickMsg">Your idea becomes a definition, a caveat, a benchmark, or a skill — a permanent piece of the shared runway.</p>
+          <p style="margin-top:16px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold)">One idea per team is a win.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span></span><b>09 / 10</b></div>
+</section>
+
+<!-- ============ 10 · CLOSE ============ -->
+<section class="slide dark">
+  <div class="body" style="justify-content:center">
+    <div class="eyebrow">Close</div>
+    <h1 style="font-size:52px;color:#fff;max-width:1050px">Future of work = connected data + shared context + repeatable methods.</h1>
+    <div class="chips" style="max-width:1050px">
+      <div class="chip c1"><div class="ci"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div><div><b>Governed data</b><span>facts</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c2"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div><b>+ Harness</b><span>meaning</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c3"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg></div><div><b>+ Skills</b><span>method</span></div></div>
+      <div class="arrow">→</div>
+      <div class="chip c4"><div class="ci"><svg class="i" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><b>+ People</b><span>judgment</span></div></div>
+    </div>
+    <p style="margin-top:38px;font-family:var(--serif);font-style:italic;font-size:27px;color:var(--gold)">That is how AI moves from “chat” to a repeatable way of working.</p>
+  </div>
+  <div class="foot"><span></span><b>10 / 10</b></div>
+</section>
+
+<div id="dots"></div>
+<div id="hint"><kbd>←</kbd> <kbd>→</kbd> navigate</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const dots=document.getElementById('dots');
+slides.forEach((_,j)=>{const b=document.createElement('button');b.onclick=()=>show(j);dots.appendChild(b)});
+function show(n){slides[i].classList.remove('active');i=Math.max(0,Math.min(slides.length-1,n));slides[i].classList.add('active');
+  document.getElementById('count').textContent=`${String(i+1).padStart(2,'0')} / ${slides.length}`;
+  document.getElementById('progress').style.width=((i+1)/slides.length*100)+'%';
+  [...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i))}
+function nav(d){show(i+d)}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')nav(1);if(e.key==='ArrowLeft')nav(-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+const tip=document.getElementById('tip');
+document.addEventListener('mouseover',e=>{const t=e.target.closest('[data-tip]');if(!t){tip.classList.remove('on');return}
+  tip.innerHTML=(t.dataset.t?`<span class="t">${t.dataset.t}</span>`:'')+t.dataset.tip;tip.classList.add('on');
+  const r=t.getBoundingClientRect();tip.style.left=Math.min(window.innerWidth-340,Math.max(12,r.left))+'px';tip.style.top=(r.bottom+10)+'px'});
+function hd(n,btn){document.querySelectorAll('.hdp').forEach((p,j)=>p.style.display=j===n?'block':'none');
+  [...btn.parentElement.children].forEach(b=>b.classList.toggle('on',b===btn))}
+document.querySelectorAll('.collect').forEach(c=>c.addEventListener('click',()=>{c.classList.toggle('on');
+  document.getElementById('collCount').textContent=`${document.querySelectorAll('.collect.on').length} / 6`}));
+function pick(el){document.querySelectorAll('.ask').forEach(a=>a.classList.remove('on'));el.classList.add('on');
+  document.getElementById('pickMsg').innerHTML='<b style="color:#fff">Locked in.</b> Bring it to your team lead — it becomes a permanent piece of the shared runway.'}
+</script>
+</body>
+</html>
